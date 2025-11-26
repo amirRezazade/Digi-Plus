@@ -6,6 +6,7 @@ import NavbarSearchBox from "./NavbarSearchBox";
 import NavbarShoppingCart from "./NavbarShoppingCart";
 import NavbarUserName from "./NavbarUserName";
 import NavbarLink from "./NavbarLink";
+import NavbarProductsList from "./NavbarProductsList";
 
 export default function Navbar() {
   return (
@@ -90,7 +91,7 @@ export default function Navbar() {
           <NavbarShoppingCart />
         </div>
       </div>
-      <nav className=" fixed w-screen h-screen top-0 right-0 lg:static lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0">
+      <nav className=" fixed w-screen h-screen max-h-screen top-0 right-0 lg:static lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0">
         <div className="flex justify-between lg:items-center gap-3 lg:gap-0 lg:py-3.5 bg-white w-70 h-full lg:w-auto px-5 py-2.5 lg:px-0 flex-col lg:flex-row">
           <div className="lg:hidden flex justify-center items-center py-5 border-b border-light-gray">
             <button className="me-auto cursor-pointer">
@@ -103,8 +104,8 @@ export default function Navbar() {
             </button>
             <img className="max-w-40 me-auto" src={logo} alt="" />
           </div>
-          <div className="text-base text-white order-3 lg:order-1 grow lg:grow-0">
-            <button className="flex items-center xl:gap-1 lg:pe-2 xl:pe-5 p-1 rounded-3xl gradient relative cursor-pointer">
+          <div className="text-base text-white order-3 lg:order-1 grow lg:grow-0 relative group ">
+            <button className="hidden lg:flex items-center xl:gap-1 lg:pe-2 xl:pe-5 p-1 rounded-3xl gradient relative cursor-pointer">
               <span className="bg-white rounded-full size-10 flex justify-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" className="fill-org">
                   <path d="M0 2.5C0 1.67156 0.671562 1 1.5 1H4.5C5.32812 1 6 1.67156 6 2.5V5.5C6 6.32812 5.32812 7 4.5 7H1.5C0.671562 7 0 6.32812 0 5.5V2.5ZM1.5 5.5H4.5V2.5H1.5V5.5ZM0 10.5C0 9.67188 0.671562 9 1.5 9H4.5C5.32812 9 6 9.67188 6 10.5V13.5C6 14.3281 5.32812 15 4.5 15H1.5C0.671562 15 0 14.3281 0 13.5V10.5ZM1.5 13.5H4.5V10.5H1.5V13.5ZM12.5 1C13.3281 1 14 1.67156 14 2.5V5.5C14 6.32812 13.3281 7 12.5 7H9.5C8.67188 7 8 6.32812 8 5.5V2.5C8 1.67156 8.67188 1 9.5 1H12.5ZM12.5 2.5H9.5V5.5H12.5V2.5ZM8 10.5C8 9.67188 8.67188 9 9.5 9H12.5C13.3281 9 14 9.67188 14 10.5V13.5C14 14.3281 13.3281 15 12.5 15H9.5C8.67188 15 8 14.3281 8 13.5V10.5ZM9.5 13.5H12.5V10.5H9.5V13.5Z"></path>
@@ -117,6 +118,10 @@ export default function Navbar() {
                 </svg>
               </span>
             </button>
+            <p className="lg:hidden text-xl font-bold text-dark">
+              دسته بندی <span className="text-red">محصولات</span>
+            </p>
+            <NavbarProductsList />
           </div>
           <ul className="hidden order-2 lg:flex items-center gap-1.5 xl:gap-5 text-gray text-sm me-auto lg:ms-1 xl:ms-3">
             <li className="relative group rounded-[18px]  hover:text-org hover:bg-light transition-colors duration-300">

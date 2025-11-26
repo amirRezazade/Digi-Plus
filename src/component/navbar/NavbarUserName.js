@@ -1,20 +1,21 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 export default function NavbarUserName() {
-  let user = "Amir";
-
-  return (
-    <div className="relative group hover:shadow-[0_4px_8px_0_#DC2F0233] transition-opacity duration-300 rounded-xl">
-      <button className="min-w-full lg:min-w-33 xl:min-w-38 h-12 xl:max-w-50 cursor-pointer lg:bg-light border border-light-gray lg:border-yel2  rounded-xl flex justify-center items-center gap-2 fill-org text-org hover:fill-white hover:text-white hover:bg-red hover:border-transparent transition-colors  duration-300">
-        <span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" className="">
-            <path d="M12.1429 13.0625H7.85714C3.51786 13.0625 0 16.4484 0 20.625C0 21.3843 0.639732 22 1.42857 22H18.5714C19.3603 22 20 21.3843 20 20.625C20 16.4484 16.4821 13.0625 12.1429 13.0625ZM2.18705 19.9375C2.53973 17.2262 4.94643 15.125 7.85714 15.125H12.1429C15.0518 15.125 17.4598 17.2283 17.8125 19.9375H2.18705ZM10 11C13.1558 11 15.7143 8.53746 15.7143 5.5C15.7143 2.46254 13.1558 0 10 0C6.8442 0 4.28571 2.46254 4.28571 5.5C4.28571 8.53789 6.84375 11 10 11ZM10 2.0625C11.9692 2.0625 13.5714 3.60465 13.5714 5.5C13.5714 7.39535 11.9692 8.9375 10 8.9375C8.0308 8.9375 6.42857 7.39492 6.42857 5.5C6.42857 3.60465 8.03125 2.0625 10 2.0625Z"></path>
-          </svg>
-        </span>
-        <span className=" text-sm font-semibold truncate">{user ? user : "حساب کاربری"}</span>
-      </button>
-      {user && (
-        <div className="absolute top-[180%] opacity-0 invisible group-hover:top-[135%] group-hover:visible group-hover:opacity-100 transition-[opacity_top_visibility] duration-300 left-0 bg-white w-55 px-5 py-3 rounded-2xl shadow-md ">
+  let user = "amir";
+  let [isOpen, setIsOpen] = useState(true);
+  if (user) {
+    return (
+      <div className={`relative group lg:hover:shadow-[0_4px_8px_0_#DC2F0233] rounded-xl overflow-hidden lg:overflow-visible transition-all duration-300 ${isOpen ? "max-h-12 lg:max-h-max" : "max-h-100 lg:max-h-max"}`}>
+        <button onClick={() => setIsOpen(!isOpen)} className="min-w-full lg:min-w-30 xl:min-w-38 h-12 xl:max-w-50 cursor-pointer lg:bg-light border border-light-gray lg:border-yel2  rounded-xl flex justify-center items-center gap-2 fill-org text-org hover:fill-white hover:text-white hover:bg-red hover:border-transparent transition-colors  duration-300">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" className="">
+              <path d="M12.1429 13.0625H7.85714C3.51786 13.0625 0 16.4484 0 20.625C0 21.3843 0.639732 22 1.42857 22H18.5714C19.3603 22 20 21.3843 20 20.625C20 16.4484 16.4821 13.0625 12.1429 13.0625ZM2.18705 19.9375C2.53973 17.2262 4.94643 15.125 7.85714 15.125H12.1429C15.0518 15.125 17.4598 17.2283 17.8125 19.9375H2.18705ZM10 11C13.1558 11 15.7143 8.53746 15.7143 5.5C15.7143 2.46254 13.1558 0 10 0C6.8442 0 4.28571 2.46254 4.28571 5.5C4.28571 8.53789 6.84375 11 10 11ZM10 2.0625C11.9692 2.0625 13.5714 3.60465 13.5714 5.5C13.5714 7.39535 11.9692 8.9375 10 8.9375C8.0308 8.9375 6.42857 7.39492 6.42857 5.5C6.42857 3.60465 8.03125 2.0625 10 2.0625Z"></path>
+            </svg>
+          </span>
+          <span className=" text-sm font-semibold truncate">{user}</span>
+        </button>
+        <div className="lg:absolute top-[180%] lg:opacity-0 lg:invisible my-2 lg:my-0 lg:group-hover:top-[135%] lg:group-hover:visible lg:group-hover:opacity-100 transition-[opacity_top_visibility] duration-300 left-0 bg-white w-full lg:w-55 px-5 py-3 rounded-2xl border border-light-gray lg:border-0 lg:shadow-md ">
           <ul className="flex flex-col  text-sm text-gray divide-y divide-light-gray">
             <li className="py-3 ">
               <Link className="flex items-center justify-between text-hover">
@@ -27,7 +28,7 @@ export default function NavbarUserName() {
               </Link>
             </li>
             <li className="py-3">
-              <Link className="flex items-center gap-3 text-hover">
+              <Link to={"/my-account/orders"} className="flex items-center gap-3 text-hover">
                 <span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <path d="M4.32507 5.31686C4.16673 5.31686 4.00007 5.2502 3.8834 5.13353C3.64173 4.89186 3.64173 4.49186 3.8834 4.2502L6.9084 1.2252C7.15007 0.983529 7.55007 0.983529 7.79173 1.2252C8.0334 1.46686 8.0334 1.86686 7.79173 2.10853L4.76673 5.13353C4.64173 5.2502 4.4834 5.31686 4.32507 5.31686Z"></path>
@@ -42,7 +43,7 @@ export default function NavbarUserName() {
               </Link>
             </li>
             <li className="py-3">
-              <Link className="flex items-center gap-3 text-hover">
+              <Link to={"/my-account/wishlist"} className="flex items-center gap-3 text-hover">
                 <span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <path d="M9.99984 18.0418C9.7415 18.0418 9.4915 18.0085 9.28317 17.9335C6.09984 16.8418 1.0415 12.9668 1.0415 7.24183C1.0415 4.32516 3.39984 1.9585 6.29984 1.9585C7.70817 1.9585 9.02484 2.5085 9.99984 3.49183C10.9748 2.5085 12.2915 1.9585 13.6998 1.9585C16.5998 1.9585 18.9582 4.3335 18.9582 7.24183C18.9582 12.9752 13.8998 16.8418 10.7165 17.9335C10.5082 18.0085 10.2582 18.0418 9.99984 18.0418ZM6.29984 3.2085C4.0915 3.2085 2.2915 5.01683 2.2915 7.24183C2.2915 12.9335 7.7665 16.1002 9.6915 16.7585C9.8415 16.8085 10.1665 16.8085 10.3165 16.7585C12.2332 16.1002 17.7165 12.9418 17.7165 7.24183C17.7165 5.01683 15.9165 3.2085 13.7082 3.2085C12.4415 3.2085 11.2665 3.80016 10.5082 4.82516C10.2748 5.14183 9.7415 5.14183 9.50817 4.82516C8.73317 3.79183 7.5665 3.2085 6.29984 3.2085Z"></path>
@@ -52,7 +53,7 @@ export default function NavbarUserName() {
               </Link>
             </li>
             <li className="py-3">
-              <Link className="flex items-center gap-3 text-hover">
+              <Link to={"/my-account/comments"} className="flex items-center gap-3 text-hover">
                 <span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <path d="M12.9168 9.375H7.0835C6.74183 9.375 6.4585 9.09167 6.4585 8.75C6.4585 8.40833 6.74183 8.125 7.0835 8.125H12.9168C13.2585 8.125 13.5418 8.40833 13.5418 8.75C13.5418 9.09167 13.2585 9.375 12.9168 9.375Z"></path>
@@ -63,7 +64,7 @@ export default function NavbarUserName() {
               </Link>
             </li>
             <li className="py-3">
-              <Link className="flex items-center gap-3 hover:text-red hover:fill-red transition-colors duration-300">
+              <Link to={"/login"} className="flex items-center gap-3 hover:text-red hover:fill-red transition-colors duration-300">
                 <span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <path d="M14.5336 12.8085C14.3752 12.8085 14.2169 12.7502 14.0919 12.6252C13.8502 12.3835 13.8502 11.9835 14.0919 11.7419L15.7836 10.0502L14.0919 8.35853C13.8502 8.11686 13.8502 7.71686 14.0919 7.4752C14.3336 7.23353 14.7336 7.23353 14.9752 7.4752L17.1086 9.60853C17.3502 9.85019 17.3502 10.2502 17.1086 10.4919L14.9752 12.6252C14.8502 12.7502 14.6919 12.8085 14.5336 12.8085Z"></path>
@@ -76,7 +77,20 @@ export default function NavbarUserName() {
             </li>
           </ul>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return (
+      <div className=" lg:hover:shadow-[0_4px_8px_0_#DC2F0233] rounded-xl transition-colors duration-300 ">
+        <NavLink to={"/my-account"} className="min-w-full lg:min-w-30 xl:min-w-38 h-12 xl:max-w-50 cursor-pointer lg:bg-light border border-light-gray lg:border-yel2  rounded-xl flex justify-center items-center gap-2 fill-org text-org hover:fill-white hover:text-white hover:bg-red hover:border-transparent transition-colors  duration-300">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" className="">
+              <path d="M12.1429 13.0625H7.85714C3.51786 13.0625 0 16.4484 0 20.625C0 21.3843 0.639732 22 1.42857 22H18.5714C19.3603 22 20 21.3843 20 20.625C20 16.4484 16.4821 13.0625 12.1429 13.0625ZM2.18705 19.9375C2.53973 17.2262 4.94643 15.125 7.85714 15.125H12.1429C15.0518 15.125 17.4598 17.2283 17.8125 19.9375H2.18705ZM10 11C13.1558 11 15.7143 8.53746 15.7143 5.5C15.7143 2.46254 13.1558 0 10 0C6.8442 0 4.28571 2.46254 4.28571 5.5C4.28571 8.53789 6.84375 11 10 11ZM10 2.0625C11.9692 2.0625 13.5714 3.60465 13.5714 5.5C13.5714 7.39535 11.9692 8.9375 10 8.9375C8.0308 8.9375 6.42857 7.39492 6.42857 5.5C6.42857 3.60465 8.03125 2.0625 10 2.0625Z"></path>
+            </svg>
+          </span>
+          <span className=" text-sm font-semibold truncate">ورود / ثبت نام</span>
+        </NavLink>
+      </div>
+    );
+  }
 }
