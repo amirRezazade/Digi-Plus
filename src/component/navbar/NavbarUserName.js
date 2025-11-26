@@ -5,7 +5,7 @@ export default function NavbarUserName() {
 
   return (
     <div className="relative group hover:shadow-[0_4px_8px_0_#DC2F0233] transition-opacity duration-300 rounded-xl">
-      <button className="min-w-38 h-12 max-w-50 cursor-pointer bg-light border border-yel2  rounded-xl flex justify-center items-center gap-2 fill-org text-org hover:fill-white hover:text-white hover:bg-red hover:border-transparent transition-colors  duration-300">
+      <button className="min-w-full lg:min-w-33 xl:min-w-38 h-12 xl:max-w-50 cursor-pointer lg:bg-light border border-light-gray lg:border-yel2  rounded-xl flex justify-center items-center gap-2 fill-org text-org hover:fill-white hover:text-white hover:bg-red hover:border-transparent transition-colors  duration-300">
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" className="">
             <path d="M12.1429 13.0625H7.85714C3.51786 13.0625 0 16.4484 0 20.625C0 21.3843 0.639732 22 1.42857 22H18.5714C19.3603 22 20 21.3843 20 20.625C20 16.4484 16.4821 13.0625 12.1429 13.0625ZM2.18705 19.9375C2.53973 17.2262 4.94643 15.125 7.85714 15.125H12.1429C15.0518 15.125 17.4598 17.2283 17.8125 19.9375H2.18705ZM10 11C13.1558 11 15.7143 8.53746 15.7143 5.5C15.7143 2.46254 13.1558 0 10 0C6.8442 0 4.28571 2.46254 4.28571 5.5C4.28571 8.53789 6.84375 11 10 11ZM10 2.0625C11.9692 2.0625 13.5714 3.60465 13.5714 5.5C13.5714 7.39535 11.9692 8.9375 10 8.9375C8.0308 8.9375 6.42857 7.39492 6.42857 5.5C6.42857 3.60465 8.03125 2.0625 10 2.0625Z"></path>
@@ -14,7 +14,7 @@ export default function NavbarUserName() {
         <span className=" text-sm font-semibold truncate">{user ? user : "حساب کاربری"}</span>
       </button>
       {user && (
-        <div className="absolute top-[150%] opacity-0 invisible group-hover:top-[135%] group-hover:visible group-hover:opacity-100 transition-[opacity_top_visibility] duration-300 left-0 bg-white w-55 px-5 py-3 rounded-2xl shadow-md ">
+        <div className="absolute top-[180%] opacity-0 invisible group-hover:top-[135%] group-hover:visible group-hover:opacity-100 transition-[opacity_top_visibility] duration-300 left-0 bg-white w-55 px-5 py-3 rounded-2xl shadow-md ">
           <ul className="flex flex-col  text-sm text-gray divide-y divide-light-gray">
             <li className="py-3 ">
               <Link className="flex items-center justify-between text-hover">

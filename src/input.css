@@ -26,6 +26,9 @@ body {
 .text-hover {
   @apply hover:fill-org hover:text-org transition-[color_fill] duration-300;
 }
+.navbar-hidden-item {
+  @apply absolute top-[180%] opacity-0 invisible group-hover:top-[149%] border border-light-gray shadow-sm group-hover:visible group-hover:opacity-100 transition-[opacity_top_visibility] duration-300 right-0 bg-white  px-5 py-3 rounded-2xl;
+}
 :root {
   --dp-white: #ffffff;
   --dp-gray: #666666;
