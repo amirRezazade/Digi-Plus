@@ -395,6 +395,9 @@ body {
   .my-3 {
     margin-block: calc(var(--spacing) * 3);
   }
+  .ms-4 {
+    margin-inline-start: calc(var(--spacing) * 4);
+  }
   .me-4 {
     margin-inline-end: calc(var(--spacing) * 4);
   }
@@ -569,6 +572,9 @@ body {
   }
   .justify-center {
     justify-content: center;
+  }
+  .gap-0 {
+    gap: calc(var(--spacing) * 0);
   }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
@@ -1557,6 +1563,11 @@ body {
       margin-inline-start: calc(var(--spacing) * 3);
     }
   }
+  .xl\:ms-4 {
+    @media (width >= 80rem) {
+      margin-inline-start: calc(var(--spacing) * 4);
+    }
+  }
   .xl\:inline-block {
     @media (width >= 80rem) {
       display: inline-block;
@@ -1575,6 +1586,16 @@ body {
   .xl\:gap-1 {
     @media (width >= 80rem) {
       gap: calc(var(--spacing) * 1);
+    }
+  }
+  .xl\:gap-1\.5 {
+    @media (width >= 80rem) {
+      gap: calc(var(--spacing) * 1.5);
+    }
+  }
+  .xl\:gap-2 {
+    @media (width >= 80rem) {
+      gap: calc(var(--spacing) * 2);
     }
   }
   .xl\:gap-5 {
@@ -1597,9 +1618,19 @@ body {
       padding-inline: calc(var(--spacing) * 3);
     }
   }
+  .xl\:ps-2 {
+    @media (width >= 80rem) {
+      padding-inline-start: calc(var(--spacing) * 2);
+    }
+  }
   .xl\:ps-4 {
     @media (width >= 80rem) {
       padding-inline-start: calc(var(--spacing) * 4);
+    }
+  }
+  .xl\:ps-6 {
+    @media (width >= 80rem) {
+      padding-inline-start: calc(var(--spacing) * 6);
     }
   }
   .xl\:pe-5 {
@@ -1636,6 +1667,11 @@ body {
   .\32 xl\:max-w-\[1400px\] {
     @media (width >= 96rem) {
       max-width: 1400px;
+    }
+  }
+  .\32 xl\:gap-5 {
+    @media (width >= 96rem) {
+      gap: calc(var(--spacing) * 5);
     }
   }
 }
