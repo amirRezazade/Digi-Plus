@@ -21,7 +21,7 @@ export default function NavbarUserName() {
               <Link className="flex items-center justify-between text-hover">
                 <span>{user}</span>
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" class="m-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" className="m-0">
                     <path d="M6.24996 13.5026C6.10746 13.5026 5.96496 13.4501 5.85246 13.3376L0.962461 8.44764C0.167461 7.65264 0.167461 6.34764 0.962461 5.55264L5.85246 0.662637C6.06996 0.445137 6.42996 0.445137 6.64746 0.662637C6.86496 0.880137 6.86496 1.24014 6.64746 1.45764L1.75746 6.34764C1.39746 6.70764 1.39746 7.29264 1.75746 7.65264L6.64746 12.5426C6.86496 12.7601 6.86496 13.1201 6.64746 13.3376C6.53496 13.4426 6.39246 13.5026 6.24996 13.5026Z"></path>
                   </svg>
                 </span>
