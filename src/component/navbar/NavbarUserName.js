@@ -17,14 +17,14 @@ export default function NavbarUserName() {
         </button>
         <div className="lg:absolute top-[180%] lg:opacity-0 lg:invisible my-2 lg:my-0 lg:group-hover:top-[135%] lg:group-hover:visible lg:group-hover:opacity-100 transition-[opacity_top_visibility] duration-300 left-0 bg-white w-full lg:w-55 px-5 py-3 rounded-2xl border border-light-gray lg:border-0 lg:shadow-md ">
           <ul className="flex flex-col  text-sm text-gray divide-y divide-light-gray">
-            <li className="py-3 ">
-              <Link className="flex items-center justify-between text-hover">
-                <span>{user}</span>
+            <li className="py-3">
+              <Link to={"/my-account/profile"} className="flex items-center gap-3 text-hover">
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" className="m-0">
-                    <path d="M6.24996 13.5026C6.10746 13.5026 5.96496 13.4501 5.85246 13.3376L0.962461 8.44764C0.167461 7.65264 0.167461 6.34764 0.962461 5.55264L5.85246 0.662637C6.06996 0.445137 6.42996 0.445137 6.64746 0.662637C6.86496 0.880137 6.86496 1.24014 6.64746 1.45764L1.75746 6.34764C1.39746 6.70764 1.39746 7.29264 1.75746 7.65264L6.64746 12.5426C6.86496 12.7601 6.86496 13.1201 6.64746 13.3376C6.53496 13.4426 6.39246 13.5026 6.24996 13.5026Z"></path>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 22" className="">
+                    <path d="M12.1429 13.0625H7.85714C3.51786 13.0625 0 16.4484 0 20.625C0 21.3843 0.639732 22 1.42857 22H18.5714C19.3603 22 20 21.3843 20 20.625C20 16.4484 16.4821 13.0625 12.1429 13.0625ZM2.18705 19.9375C2.53973 17.2262 4.94643 15.125 7.85714 15.125H12.1429C15.0518 15.125 17.4598 17.2283 17.8125 19.9375H2.18705ZM10 11C13.1558 11 15.7143 8.53746 15.7143 5.5C15.7143 2.46254 13.1558 0 10 0C6.8442 0 4.28571 2.46254 4.28571 5.5C4.28571 8.53789 6.84375 11 10 11ZM10 2.0625C11.9692 2.0625 13.5714 3.60465 13.5714 5.5C13.5714 7.39535 11.9692 8.9375 10 8.9375C8.0308 8.9375 6.42857 7.39492 6.42857 5.5C6.42857 3.60465 8.03125 2.0625 10 2.0625Z"></path>
                   </svg>
                 </span>
+                <span>{user}</span>
               </Link>
             </li>
             <li className="py-3">
@@ -64,7 +64,7 @@ export default function NavbarUserName() {
               </Link>
             </li>
             <li className="py-3">
-              <Link to={"/login"} className="flex items-center gap-3 hover:text-red hover:fill-red transition-colors duration-300">
+              <Link to={"/login"} className="flex items-center gap-3 hover:text-red-600 hover:fill-red-600 transition-colors duration-300">
                 <span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <path d="M14.5336 12.8085C14.3752 12.8085 14.2169 12.7502 14.0919 12.6252C13.8502 12.3835 13.8502 11.9835 14.0919 11.7419L15.7836 10.0502L14.0919 8.35853C13.8502 8.11686 13.8502 7.71686 14.0919 7.4752C14.3336 7.23353 14.7336 7.23353 14.9752 7.4752L17.1086 9.60853C17.3502 9.85019 17.3502 10.2502 17.1086 10.4919L14.9752 12.6252C14.8502 12.7502 14.6919 12.8085 14.5336 12.8085Z"></path>
