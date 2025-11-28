@@ -7,8 +7,10 @@ import NavbarShoppingCart from "./NavbarShoppingCart";
 import NavbarUserName from "./NavbarUserName";
 import NavbarLink from "./NavbarLink";
 import NavbarProductsList from "./NavbarProductsList";
+import { useState } from "react";
 
 export default function Navbar() {
+  let [openMenu, setOpenMenu] = useState(false);
   return (
     <header>
       <Link to="/" className=" overflow-hidden">
@@ -43,7 +45,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="custom-container flex flex-wrap lg:flex-nowrap justify-between gap-4 lg:gap-x-8 gap-y-2 sm:gap-y-4 mt-2.5 lg:mt-3.5">
-        <button className="lg:hidden">
+        <button className="lg:hidden p-1.5 cursor-pointer" onClick={() => setOpenMenu(!openMenu)}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor">
             <path d="M24 19.875C24 20.4984 23.4984 21 22.875 21L4.125 21C3.50156 21 3 20.4984 3 19.875C3 19.2516 3.50156 18.75 4.125 18.75L22.875 18.75C23.4984 18.75 24 19.2516 24 19.875ZM21 12.375C21 12.9984 20.4984 13.5 19.875 13.5L1.125 13.5C0.501561 13.5 -1.20783e-06 12.9984 -1.15333e-06 12.375C-1.09882e-06 11.7516 0.501561 11.25 1.125 11.25L19.875 11.25C20.4984 11.25 21 11.7516 21 12.375ZM3 4.875C3 4.25156 3.50156 3.75 4.125 3.75L22.875 3.75C23.4984 3.75 24 4.25156 24 4.875C24 5.49844 23.4984 6 22.875 6L4.125 6C3.50156 6 3 5.49844 3 4.875Z"></path>
           </svg>
@@ -91,10 +93,10 @@ export default function Navbar() {
           <NavbarShoppingCart />
         </div>
       </div>
-      <nav className=" fixed w-screen h-screen max-h-screen top-0 right-0 lg:static lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0">
-        <div className="relative hidden-scrollbar flex justify-between lg:items-center gap-3 lg:gap-0 lg:py-3.5 bg-white w-70 min-h-full max-h-full  lg:w-auto px-5 lg:px-0 flex-col lg:flex-row overflow-y-auto lg:overflow-y-visible">
+      <nav className={`fixed w-screen h-screen max-h-screen top-0 right-0 lg:static lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0 transition-all duration-300 delay-200 opacity-0 invisible lg:opacity-100 lg:visible ${openMenu ? "opacity-100 visible" : ""}`} onClick={(e) => (e.target.nodeName == "NAV" ? setOpenMenu(false) : "")}>
+        <div className={`relative hidden-scrollbar flex justify-between lg:items-center gap-3 lg:gap-0 lg:py-3.5 bg-white w-70 min-h-full max-h-full  lg:w-auto px-5 lg:px-0 flex-col lg:flex-row overflow-y-auto lg:overflow-y-visible transition-transform duration-500  lg:translate-x-0  ${openMenu ? "" : "translate-x-1/1"}`}>
           <div className="sticky top-0 z-1 bg-white lg:hidden flex justify-center items-center py-5 border-b border-light-gray ">
-            <button className="me-auto cursor-pointer">
+            <button className="me-auto cursor-pointer p-1.5 " onClick={() => setOpenMenu(false)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24" fill="none">
                 <path
                   d="M15.605 17.5781C16.0734 18.0173 16.0734 18.7298 15.605 19.1691C15.1365 19.6083 14.3765 19.6082 13.908 19.1691L7.99999 13.5891L2.04999 19.1672C1.58154 19.6064 0.821487 19.6064 0.352987 19.1672C-0.115512 18.728 -0.115462 18.0155 0.352987 17.5762L6.30499 12L0.351337 6.37968C-0.117112 5.94051 -0.117112 5.22797 0.351337 4.78875C0.819788 4.34953 1.57984 4.34958 2.04834 4.78875L7.99999 10.4109L13.95 4.83281C14.4184 4.39364 15.1785 4.39364 15.647 4.83281C16.1155 5.27198 16.1154 5.98453 15.647 6.42375L9.69499 12L15.605 17.5781Z"

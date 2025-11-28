@@ -3,8 +3,8 @@ import NavbarLink from "./NavbarLink";
 import { useState } from "react";
 
 export default function NavbarProductsList() {
-  const [active, setActive] = useState("food");
-  const [open, setOpen] = useState("food");
+  const [active, setActive] = useState("digital");
+  const [open, setOpen] = useState("digital");
   const [openSubLink, setOpenSubLink] = useState(null);
 
   const categories = [
