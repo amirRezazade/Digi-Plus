@@ -12,7 +12,7 @@ import { useState } from "react";
 export default function Navbar() {
   let [openMenu, setOpenMenu] = useState(false);
   return (
-    <header>
+    <>
       <Link to="/" className=" overflow-hidden">
         <img className="hidden sm:block w-full max-h-16 bg-transparent" src={baner} alt="black-friday-logo" />
         <img className="sm:hidden block w-full max-h-16 bg-transparent" src={mobileBaner} alt="black-friday-mobile-logo" />
@@ -233,6 +233,6 @@ export default function Navbar() {
         </div>
       </nav>
       <hr className="custom-container text-light-gray mt-5 lg:mt-0.5" />
-    </header>
+    </>
   );
 }

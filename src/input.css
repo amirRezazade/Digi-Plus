@@ -71,6 +71,23 @@ body {
   color: #ffffff;
 }
 
+/* swiper js costum style  */
+.swiper-pagination-bullet {
+  background-color: #f8d5cc !important;
+  opacity: 100 !important;
+  transition: background-color 0.4s ease, width 0.4s ease, height 0.4s ease !important;
+}
+.swiper-pagination-horizontal .swiper-pagination-bullet-active {
+  width: 16px !important;
+  background-color: #dc2f02 !important;
+  border-radius: 5px !important;
+}
+.swiper-pagination-vertical .swiper-pagination-bullet-active {
+  height: 16px !important;
+  background-color: #dc2f02 !important;
+  border-radius: 5px !important;
+}
+
 @theme {
   --font-peyda: "peyda";
   --breakpoint-xs: 450px;
