@@ -51,7 +51,7 @@ export default function HomeDayOffersSlider(params) {
   }, [second]);
 
   return (
-    <div className="shrink-0  max-w-3/12 aspect-square h-full fill-white relative overflow-hidden">
+    <div className="my-4 md:my-8 xl:my-0 mx-auto xl:mx-0 max-w-90 md:max-w-100 xl:col-span-2 aspect-square h-full fill-white relative overflow-hidden">
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 320 322" class="dp-single-carousel-bg-lg-svg">
         <mask id="path-1-inside-1_2097_14060">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M320 24C320 10.7452 309.255 0 296 0H24C10.7452 0 0 10.7452 0 24V298C0 311.255 10.7452 322 24 322H296C309.255 322 320 311.255 320 298V249.4C320 236.145 304.965 223.756 304.04 210.534C304.013 210.159 304 209.781 304 209.4V112.6C304 112.219 304.013 111.841 304.04 111.466C304.965 98.2436 320 85.8549 320 72.6V24Z"></path>

@@ -1,5 +1,6 @@
 body {
   font-family: peyda;
+  overflow-x: hidden;
 }
 
 @font-face {
