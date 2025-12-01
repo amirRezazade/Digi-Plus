@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,10 +8,10 @@ import "swiper/css/pagination";
 export default function HomeMainSlider() {
   let products = [1, 2, 3, 4];
   return (
-    <div className="  xl:col-span-9  min-h-auto relative">
+    <div className="  xl:col-span-9 min-h-auto relative rounded-xl md:rounded-4xl overflow-hidden">
       <Swiper
         className="max-w-full "
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Autoplay]}
         navigation={{
           nextEl: ".my-next",
           prevEl: ".my-prev",
@@ -19,6 +19,10 @@ export default function HomeMainSlider() {
         pagination={{
           el: ".my-pagination",
           clickable: true,
+        }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
         }}
         spaceBetween={50}
         speed={700}

@@ -1,4 +1,5 @@
 import Navbar from "../../component/navbar/Navbar";
+import Title from "../../component/titles/Title";
 import HomeCategorySlider from "./HomeCategorySlider";
 import HomeDayOffersSlider from "./HomeDayOffersSlider";
 import HomeMainSlider from "./HomeMainSlider";
@@ -12,6 +13,9 @@ export default function Home() {
           <HomeDayOffersSlider />
         </div>
         <div className="my-10 md:my-15 text-sm">
+          <div className="sm:hidden">
+            <Title text={"دسته‌بندی‌"} redText={"محصولات"} />
+          </div>
           <HomeCategorySlider />
         </div>
       </header>

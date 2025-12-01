@@ -93,7 +93,7 @@ export default function Navbar() {
           <NavbarShoppingCart />
         </div>
       </div>
-      <nav className={`fixed w-screen h-screen max-h-screen top-0 right-0 lg:static lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0 transition-all duration-300 delay-200 opacity-0 invisible lg:opacity-100 lg:visible ${openMenu ? "opacity-100 visible" : ""}`} onClick={(e) => (e.target.nodeName == "NAV" ? setOpenMenu(false) : "")}>
+      <nav className={`fixed w-screen h-screen max-h-screen z-10 top-0 right-0 lg:relative lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0 transition-all duration-300 delay-200 opacity-0 invisible lg:opacity-100 lg:visible ${openMenu ? "opacity-100 visible" : ""}`} onClick={(e) => (e.target.nodeName == "NAV" ? setOpenMenu(false) : "")}>
         <div className={`relative hidden-scrollbar flex justify-between lg:items-center gap-3 lg:gap-0 lg:py-3.5 bg-white w-70 min-h-full max-h-full  lg:w-auto px-5 lg:px-0 flex-col lg:flex-row overflow-y-auto lg:overflow-y-visible transition-transform duration-500  lg:translate-x-0  ${openMenu ? "" : "translate-x-1/1"}`}>
           <div className="sticky top-0 z-1 bg-white lg:hidden flex justify-center items-center py-5 border-b border-light-gray ">
             <button className="me-auto cursor-pointer p-1.5 " onClick={() => setOpenMenu(false)}>
