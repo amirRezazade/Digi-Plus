@@ -1,0 +1,66 @@
+import { Link } from "react-router-dom";
+import AddToShoppingCartLargeBtn from "../btns/AddToShoppingCartLargeBtn";
+
+export default function ProductCart({ product }) {
+  return (
+    <div className=" group aspect-2/3 flex flex-col justify-between relative text-sm rounded-2xl border border-light-gray text-gray bg-white p-3 gray-shaddow overflow-hidden">
+      <Link to={product.id} className="grow flex flex-col max-h-2/3">
+        <img className="mx-auto grow" src={product.img} alt={product.name} />
+        <h4 className=" text-center pb-2">{product.name}</h4>
+      </Link>
+      <div className="absolute top-1/6 -left-1/2 transition-[left] duration-500 group-hover:left-2  flex flex-col gap-1 border border-light-gray rounded-lg shadow-sm bg-white">
+        <button className="p-1.5 cursor-pointer relative group/item">
+          <span className="stroke-dark hover:stroke-org fill-white">
+            <svg width="18px" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  clip-rule="evenodd"
+                  d="M6.47358 1.96511C8.27963 1.93827 10.2651 2.62414 12 4.04838C13.7349 2.62414 15.7204 1.93827 17.5264 1.96511C19.5142 1.99465 21.3334 2.90112 22.2141 4.68531C23.0878 6.45529 22.9326 8.87625 21.4643 11.7362C19.9939 14.6003 17.1643 18.0021 12.4867 21.8566C12.4382 21.898 12.3855 21.9324 12.3298 21.9596C12.1243 22.0601 11.8798 22.0624 11.6702 21.9596C11.6145 21.9324 11.5618 21.898 11.5133 21.8566C6.83565 18.0021 4.00609 14.6003 2.53569 11.7362C1.06742 8.87625 0.912211 6.45529 1.78589 4.68531C2.66659 2.90112 4.4858 1.99465 6.47358 1.96511Z"
+                  fill-rule="evenodd"
+                ></path>
+              </g>
+            </svg>
+          </span>
+          <span className="opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0 ">افزودن به علاقه مندی ها</span>
+        </button>
+        <button className="p-1.5 cursor-pointer relative group/item">
+          <span className="stroke-gray hover:stroke-org fill-white">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g id="Interface / Search_Magnifying_Glass">
+                  <path id="Vector" d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke-width="1.08" stroke-linecap="round" stroke-linejoin="round"></path>{" "}
+                </g>
+              </g>
+            </svg>
+          </span>
+          <span className="opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0 ">مشاهده سریع</span>
+        </button>
+        <button className="p-1.5 cursor-pointer relative group/item">
+          <span className="stroke-gray hover:fill-org fill-gray">
+            <svg width="20" height="20" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke-width="0.00032">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <title>arrows-shuffle</title>
+                <path d="M26.885 18.115c-0.226-0.226-0.539-0.366-0.884-0.366-0.691 0-1.251 0.56-1.251 1.251 0 0.345 0.14 0.658 0.366 0.884l1.865 1.865h-6.68l-1.695-2.459c-0.228-0.328-0.604-0.54-1.029-0.54-0.69 0-1.249 0.559-1.249 1.249 0 0.265 0.083 0.511 0.223 0.713l-0.003-0.004 2.067 3c0.229 0.328 0.604 0.541 1.029 0.541h7.336l-1.865 1.865c-0.226 0.226-0.366 0.539-0.366 0.884 0 0.691 0.56 1.251 1.251 1.251 0.345 0 0.658-0.14 0.884-0.366l4-4c0.225-0.227 0.365-0.54 0.365-0.885s-0.139-0.658-0.365-0.885l0 0zM2 10.249l7.343 0.001 1.694 2.459c0.228 0.329 0.604 0.541 1.029 0.541 0.69 0 1.25-0.56 1.25-1.25 0-0.265-0.082-0.511-0.223-0.713l0.003 0.004-2.066-3c-0.228-0.329-0.604-0.541-1.029-0.541-0 0-0 0-0 0l-8-0.001c-0.69 0-1.25 0.56-1.25 1.25s0.56 1.25 1.25 1.25v0zM26.981 10.25l-1.866 1.866c-0.226 0.226-0.366 0.539-0.366 0.884 0 0.691 0.56 1.251 1.251 1.251 0.346 0 0.658-0.14 0.885-0.367v0l4-4c0.025-0.025 0.034-0.059 0.057-0.086 0.183-0.19 0.296-0.449 0.296-0.735 0-0.001 0-0.003 0-0.004v0c0.001-0.021 0.012-0.038 0.012-0.059s-0.011-0.038-0.012-0.059c0-0.001 0-0.003 0-0.005 0-0.285-0.113-0.543-0.296-0.733l0 0c-0.023-0.027-0.032-0.062-0.058-0.088l-4-4c-0.226-0.227-0.539-0.367-0.885-0.367-0.691 0-1.251 0.56-1.251 1.251 0 0.345 0.14 0.658 0.366 0.884v0l1.866 1.866h-6.981c-0 0-0 0-0 0-0.418 0-0.788 0.205-1.015 0.52l-0.003 0.004-9.626 13.477h-7.356c-0.69 0-1.25 0.56-1.25 1.25s0.56 1.25 1.25 1.25v0h8c0.418-0 0.788-0.205 1.015-0.52l0.003-0.004 9.625-13.477z"></path>
+              </g>
+            </svg>
+          </span>
+          <span className="opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0 ">مقایسه</span>
+        </button>
+      </div>
+      <div className="grow max-h-1/3 flex flex-col justify-end pt-2 border-t border-light-gray/80">
+        <div className="text-center">
+          <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.Discount}</span>
+          <span className="text-gray/50 line-through text-sm mx-2">${(product.price / (1 - product.Discount / 100)).toFixed(2)}</span>
+        </div>
+        <p className="text-lg lg:text-xl text-center text-red font-bold mt-0.5">{product.price} $</p>
+        <AddToShoppingCartLargeBtn product={product} />
+      </div>
+    </div>
+  );
+}

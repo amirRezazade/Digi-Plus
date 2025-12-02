@@ -3,6 +3,8 @@ import Title from "../../component/titles/Title";
 import HomeCategorySlider from "./HomeCategorySlider";
 import HomeDayOffersSlider from "./HomeDayOffersSlider";
 import HomeMainSlider from "./HomeMainSlider";
+import bgRounded from "../../assets/images/bg-images/bg-round.png";
+import AmazingOffers from "./AmazingOffer/AmazingOffers";
 export default function Home() {
   return (
     <>
@@ -19,6 +21,11 @@ export default function Home() {
           <HomeCategorySlider />
         </div>
       </header>
+      <section className="relative">
+        <img className="hidden xl:inline-block absolute right-0 top-0" src={bgRounded} alt="" />
+        <AmazingOffers />
+        <img className="hidden xl:inline-block absolute left-0 top-0 rotate-180" src={bgRounded} alt="" />
+      </section>
     </>
   );
 }
