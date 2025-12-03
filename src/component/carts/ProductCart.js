@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import AddToShoppingCartLargeBtn from "../btns/AddToShoppingCartLargeBtn";
+import AddToFavoritesBtn from "./AddToFavoritesBtn";
+import QuickViewBtn from "./QuickViewBtn";
 
-export default function ProductCart({ product }) {
+export default function ProductCart({ product, onQuickview }) {
   return (
     <div className=" group aspect-2/3 flex flex-col justify-between relative text-sm rounded-2xl border border-light-gray text-gray bg-white p-3 gray-shaddow overflow-hidden">
       <Link to={product.id} className="grow flex flex-col max-h-2/3">
@@ -9,36 +11,9 @@ export default function ProductCart({ product }) {
         <h4 className=" text-center pb-2">{product.name}</h4>
       </Link>
       <div className="absolute top-1/6 -left-1/2 transition-[left] duration-500 group-hover:left-2  flex flex-col gap-1 border border-light-gray rounded-lg shadow-sm bg-white">
-        <button className="p-1.5 cursor-pointer relative group/item">
-          <span className="stroke-dark hover:stroke-org fill-white">
-            <svg width="18px" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  clip-rule="evenodd"
-                  d="M6.47358 1.96511C8.27963 1.93827 10.2651 2.62414 12 4.04838C13.7349 2.62414 15.7204 1.93827 17.5264 1.96511C19.5142 1.99465 21.3334 2.90112 22.2141 4.68531C23.0878 6.45529 22.9326 8.87625 21.4643 11.7362C19.9939 14.6003 17.1643 18.0021 12.4867 21.8566C12.4382 21.898 12.3855 21.9324 12.3298 21.9596C12.1243 22.0601 11.8798 22.0624 11.6702 21.9596C11.6145 21.9324 11.5618 21.898 11.5133 21.8566C6.83565 18.0021 4.00609 14.6003 2.53569 11.7362C1.06742 8.87625 0.912211 6.45529 1.78589 4.68531C2.66659 2.90112 4.4858 1.99465 6.47358 1.96511Z"
-                  fill-rule="evenodd"
-                ></path>
-              </g>
-            </svg>
-          </span>
-          <span className="opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0 ">افزودن به علاقه مندی ها</span>
-        </button>
-        <button className="p-1.5 cursor-pointer relative group/item">
-          <span className="stroke-gray hover:stroke-org fill-white">
-            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-              <g id="SVGRepo_iconCarrier">
-                <g id="Interface / Search_Magnifying_Glass">
-                  <path id="Vector" d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke-width="1.08" stroke-linecap="round" stroke-linejoin="round"></path>{" "}
-                </g>
-              </g>
-            </svg>
-          </span>
-          <span className="opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0 ">مشاهده سریع</span>
-        </button>
+        <AddToFavoritesBtn id={product.id} />
+        <QuickViewBtn id={product.id} onQuickview={onQuickview} />
+
         <button className="p-1.5 cursor-pointer relative group/item">
           <span className="stroke-gray hover:fill-org fill-gray">
             <svg width="20" height="20" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke-width="0.00032">

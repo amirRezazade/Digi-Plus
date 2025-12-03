@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import AmazingOfferSlider from "./AmazingOfferSlider";
 import { useEffect, useState } from "react";
-export default function AmazingOffers() {
+export default function AmazingOffers({ onQuickview }) {
   let [second, setSecond] = useState(15);
   let [min, setMin] = useState(23);
 
@@ -50,7 +50,7 @@ export default function AmazingOffers() {
           مشاهده محصولات
         </Link>
       </div>
-      <AmazingOfferSlider />
+      <AmazingOfferSlider onQuickview={onQuickview} />
       <div className="text-center py-5 sm:hidden">
         <Link
           to="/shop"

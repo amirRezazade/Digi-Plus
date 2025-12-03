@@ -67,7 +67,13 @@ body {
 .hidden-scrollbar::-webkit-scrollbar {
   width: 0px;
 }
-
+.modal-bg {
+  @apply fixed h-screen w-screen top-0 left-0 p-4 xs:p-10 z-99 bg-black/60 backdrop-blur-lg sm:flex items-center justify-center overflow-y-auto;
+}
+.body-lock {
+  max-height: 100dvh;
+  overflow: hidden;
+}
 ::selection {
   background-color: var(--dp-org);
   color: #ffffff;
