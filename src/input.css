@@ -95,6 +95,9 @@ body {
   background-color: #dc2f02 !important;
   border-radius: 5px !important;
 }
+.swiper-slide-thumb-active {
+  opacity: 100 !important;
+}
 
 /* tailwind costumation  */
 @theme {
