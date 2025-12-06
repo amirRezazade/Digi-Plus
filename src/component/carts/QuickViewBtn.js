@@ -1,6 +1,6 @@
 export default function QuickViewBtn({ id, onQuickview }) {
   return (
-    <button onClick={() => onQuickview(id)} className="p-1.5 cursor-pointer relative group/item">
+    <button onClick={() => onQuickview(id)} className="p-1 cursor-pointer relative group/item">
       <span className="stroke-gray hover:stroke-org fill-white">
         <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
