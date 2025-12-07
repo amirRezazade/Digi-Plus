@@ -1,60 +1,57 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { getLocal, setLocal, cartTotalPrice } from "../../utils/funcs";
 export default function NavbarShoppingCart() {
-  let products = [
-    {
-      id: 98,
-      img: "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/1.webp",
-      price: 13999.99,
-      Discount: 5.05,
-      name: "Apple ifone 15 pro max",
-      quantity: 2,
-      rating: 4.0464,
-    },
-    {
-      id: 79,
-      img: "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/1.webp",
-      price: 1799.99,
-      Discount: 11.14,
-      name: "Apple ifone 15 pro max",
-      quantity: 2,
-      rating: 4.5245,
-    },
-    {
-      id: 127,
-      img: "https://cdn.dummyjson.com/product-images/smartphones/oppo-k1/2.webp",
-      price: 299.99,
-      Discount: 18.29,
-      name: "Apple ifone 15 pro max",
-      quantity: 2,
-      rating: 4.5245,
-    },
-    {
-      id: 115,
-      img: "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/1.webp",
-      price: 14999.99,
-      // Discount: 6.92,
-      name: "Apple ifone 15 pro max",
-      quantity: 2,
-      rating: 4.5245,
-    },
-  ];
+  let [products, setProduct] = useState(getLocal("cart") || []);
   let [openMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
-    let closeMenu = function (e) {
-      if (!e.target.closest(".shopping-cart")) {
-        setOpenMenu(false);
-      }
-    };
-    window.addEventListener("click", closeMenu);
-    return () => window.removeEventListener("click", closeMenu);
+    function localChanged() {
+      setTimeout(() => {
+        setProduct(getLocal("cart") || []);
+      }, 400);
+    }
+    window.addEventListener("local-changed", localChanged);
+    return () => window.removeEventListener("local-changed", localChanged);
   }, []);
 
+  useEffect(() => {
+    let closeMenu = function () {
+      setOpenMenu(false);
+    };
+    window.addEventListener("click", (e) => !e.target.closest(".shopping-cart") && closeMenu());
+    window.addEventListener("scroll", () => window.scrollY > 300 && closeMenu());
+    return () => {
+      window.removeEventListener("click", closeMenu);
+      window.removeEventListener("scroll", closeMenu);
+    };
+  }, []);
+
+  function toggleMenu() {
+    setOpenMenu(!openMenu);
+    setProduct(getLocal("cart") || []);
+  }
+  function deletItem(id, elem) {
+    let li = elem.closest("li");
+    li.style.transform = "translateX(-100%)";
+    let cartList = getLocal("cart");
+    let index = cartList.findIndex((item) => item.id == id);
+    cartList.splice(index, 1);
+    setLocal("cart", cartList);
+    setTimeout(() => {
+      setProduct(getLocal("cart") || []);
+    }, 400);
+  }
+  function QuantityControl(id, text) {
+    let cartList = getLocal("cart");
+    let index = cartList.findIndex((item) => item.id == id);
+    text == "plus" ? cartList[index].quantity++ : cartList[index].quantity--;
+    setLocal("cart", cartList);
+    setProduct(getLocal("cart") || []);
+  }
   return (
-    <div className="relative shopping-cart">
-      <button onClick={() => setOpenMenu(!openMenu)} className="flex items-center gap-1 p-0.5 sm:p-1 rounded-3xl gradient relative cursor-pointer">
+    <div onClick={(e) => e.stopPropagation()} className="relative shopping-cart sm:w-45">
+      <button onClick={toggleMenu} className="w-full flex items-center gap-1 p-0.5 sm:p-1 rounded-3xl gradient relative cursor-pointer">
         <span className="bg-white rounded-full size-10 flex justify-center items-center">
           <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -63,8 +60,8 @@ export default function NavbarShoppingCart() {
             ></path>
           </svg>
         </span>
-        <span className="text-white px-3 hidden sm:inline-block">۲۴,۵۰۰,۰۰۰ تومان</span>
-        <span className="size-4 text-org bg-white rounded-full text-xs absolute top-0 left-0 flex justify-center items-center sm-shaddow">2</span>
+        <span className="grow text-white px-3 hidden sm:inline-block font-bold">{cartTotalPrice()} $</span>
+        <span className="size-4 text-org bg-white rounded-full text-xs absolute top-0 left-0 flex justify-center items-center sm-shaddow">{products.length}</span>
       </button>
 
       <div className={`absolute ${openMenu ? "" : "opacity-0 invisible"} transition-[opacity_visibility] duration-400 top-[110%] left-0 flex flex-col text-gray rounded-2xl shadow-sm w-72 h-105 px-2 border border-light-gray bg-white z-19`}>
@@ -81,32 +78,49 @@ export default function NavbarShoppingCart() {
         </Link>
         <ul className="grow border-y border-light-gray divide-y divide-dashed divide-light-gray overflow-y-auto hidden-scrollbar">
           {products.map((product) => (
-            <li key={product.id} className=" py-1.5">
+            <li key={product.id} className=" transition-transform duration-300 py-1.5">
               <div className="flex justify-between items-center gap-1.5 h-12 ">
-                <Link to={`/product/${product.id}`} className="shrink-0 size-13">
-                  <img src={product.img} alt={product.name} />
+                <Link to={`/product/${product.id}`} className="shrink-0 size-15">
+                  <img src={product.thumbnail} alt={product.title} />
                 </Link>
 
-                <p className="grow text-sm truncate text-wrap overflow-hidden line-clamp-2 leading-5 text-dark">{product.name}</p>
-                <button className="self-start cursor-pointer bg-yel rounded-lg p-1 transition-colors duration-300 hover:fill-white hover:bg-red fill-red ">
+                <p className="grow text-sm truncate text-wrap overflow-hidden line-clamp-2 leading-5 text-dark">{product.title}</p>
+                <button onClick={(e) => deletItem(product.id, e.target)} className="self-start cursor-pointer bg-yel rounded-lg p-1 transition-colors duration-300 hover:fill-white hover:bg-red fill-red ">
                   <svg width="17" height="17" viewBox="0 0 16 16" id="trash-16px" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                     <g id="SVGRepo_iconCarrier">
-                      {" "}
                       <path
                         id="Path_23"
                         data-name="Path 23"
                         d="M-250.5-236H-255v-1.5a1.5,1.5,0,0,0-1.5-1.5h-3a1.5,1.5,0,0,0-1.5,1.5v1.5h-4.5a.5.5,0,0,0-.5.5.5.5,0,0,0,.5.5h1.5v10.5a1.5,1.5,0,0,0,1.5,1.5h9a1.5,1.5,0,0,0,1.5-1.5V-235h1.5a.5.5,0,0,0,.5-.5A.5.5,0,0,0-250.5-236Zm-9.5-1.5a.5.5,0,0,1,.5-.5h3a.5.5,0,0,1,.5.5v1.5h-4Zm7,13a.5.5,0,0,1-.5.5h-9a.5.5,0,0,1-.5-.5V-235h10Zm-7-9v8a.5.5,0,0,1-.5.5.5.5,0,0,1-.5-.5v-8a.5.5,0,0,1,.5-.5A.5.5,0,0,1-260-233.5Zm4.5-.5a.5.5,0,0,1,.5.5v8a.5.5,0,0,1-.5.5.5.5,0,0,1-.5-.5v-8A.5.5,0,0,1-255.5-234Zm-2,.5v8a.5.5,0,0,1-.5.5.5.5,0,0,1-.5-.5v-8a.5.5,0,0,1,.5-.5A.5.5,0,0,1-257.5-233.5Z"
                         transform="translate(266 239)"
-                      ></path>{" "}
+                      ></path>
                     </g>
                   </svg>
                 </button>
               </div>
               <div className="flex justify-between items-end pt-2">
                 <div>
-                  <div className="flex items-start justify-center text-xs text-[#FAA307] gap-1 ">
+                  <span className="text-xs ">مانده در انبار: {product.stock}</span>
+
+                  <div className="w-21 flex border border-light-gray rounded-md mt-1 ">
+                    <button onClick={() => QuantityControl(product.id, "plus")} disabled={product.quantity == product.stock} className="cursor-pointer fill-red px-1 py-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <rect x="2" y="7" width="12" height="2" rx="1"></rect>
+                        <rect x="7" y="14" width="12" height="2" rx="1" transform="rotate(-90 7 14)"></rect>
+                      </svg>
+                    </button>
+                    <span className="grow text-center px-2 py-1">{product.quantity}</span>
+                    <button onClick={() => QuantityControl(product.id, "minus")} disabled={product.quantity == 1} className="cursor-pointer fill-red px-1 py-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <rect x="2" y="7" width="12" height="2" rx="1"></rect>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-start justify-end text-sm text-[#FAA307] gap-1 ">
                     <span>{product.rating.toFixed(1)}</span>
                     <span>
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="currentcolor" xmlns="http://www.w3.org/2000/svg">
@@ -119,26 +133,10 @@ export default function NavbarShoppingCart() {
                       </svg>
                     </span>
                   </div>
-                  <div className="flex border border-light-gray rounded-md ">
-                    <button className="cursor-pointer fill-red px-1 py-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                        <rect x="2" y="7" width="12" height="2" rx="1"></rect>
-                        <rect x="7" y="14" width="12" height="2" rx="1" transform="rotate(-90 7 14)"></rect>
-                      </svg>
-                    </button>
-                    <span className="px-2 py-1">{product.quantity}</span>
-                    <button className="cursor-pointer fill-red px-1 py-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                        <rect x="2" y="7" width="12" height="2" rx="1"></rect>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div>
-                  {product.Discount && (
+                  {product.discountPercentage && (
                     <div>
-                      <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.Discount}</span>
-                      <span className="text-gray/80 line-through  mx-2 text-xs">${(product.price / (1 - product.Discount / 100)).toFixed(2)}</span>
+                      <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.discountPercentage}</span>
+                      <span className="text-gray/80 line-through  mx-2 text-xs">${(product.price / (1 - product.discountPercentage / 100)).toFixed(2)}</span>
                     </div>
                   )}
                   <p className="text-base  text-red font-bold mt-0.5 text-end">{product.price} $</p>
@@ -150,7 +148,7 @@ export default function NavbarShoppingCart() {
         <div className="flex items-center justify-between p-2">
           <div className="flex flex-col gap-1">
             <span className="text-xs"> جمع مبلغ سفارش: </span>
-            <span className=" text-dark font-semibold">35346$</span>
+            <span className=" text-dark font-semibold">{cartTotalPrice()} $</span>
           </div>
           <Link to={"/checkout"} className="py-2 px-3 rounded-lg border border-yel2 bg-light text-org text-sm  transition-colors duration-300 hover:text-white hover:bg-red">
             ثبت سفارش

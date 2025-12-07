@@ -2,14 +2,24 @@ import { Link } from "react-router-dom";
 import AddToShoppingCartLargeBtn from "../btns/AddToShoppingCartLargeBtn";
 import AddToFavoritesBtn from "./AddToFavoritesBtn";
 import QuickViewBtn from "./QuickViewBtn";
+import { formatedPrice } from "../../utils/funcs";
+import { useEffect, useState } from "react";
 
 export default function ProductCart({ product, onQuickview }) {
   return (
-    <div className=" group aspect-2/3 flex flex-col justify-between relative text-sm rounded-2xl border border-light-gray text-gray bg-white p-3 gray-shaddow overflow-hidden">
-      <Link to={product.id} className="grow flex flex-col max-h-2/3">
-        <img className="mx-auto grow" src={product.img} alt={product.name} />
-        <h4 className=" text-center pb-2">{product.name}</h4>
+    <div className=" group  flex flex-col justify-between relative text-sm rounded-2xl border border-light-gray text-gray bg-white p-3 gray-shaddow overflow-hidden">
+      <Link to={`/product/${product.id}`} className="  max-h-2/3">
+        <img className="mx-auto aspect-square" src={product.thumbnail} alt={product.title} />
+        <h4 className=" text-center py-2">{product.title}</h4>
       </Link>
+      <div className="grow max-h-1/3 flex flex-col justify-end pt-2 border-t border-light-gray/80">
+        <div className="text-center">
+          <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.discountPercentage}</span>
+          <span className="text-gray/50 line-through text-sm mx-2">${formatedPrice(product.price / (1 - product.discountPercentage / 100))}</span>
+        </div>
+        <p className="text-lg lg:text-xl text-center text-red font-bold mt-0.5">{formatedPrice(product.price)} $</p>
+        <AddToShoppingCartLargeBtn product={product} />
+      </div>
       <div className="absolute top-1/6 -left-1/2 transition-[left] duration-500 group-hover:left-2  flex flex-col gap-1 border border-light-gray rounded-lg shadow-sm bg-white">
         <AddToFavoritesBtn id={product.id} />
         <QuickViewBtn id={product.id} onQuickview={onQuickview} />
@@ -27,14 +37,6 @@ export default function ProductCart({ product, onQuickview }) {
           </span>
           <span className="opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0 ">مقایسه</span>
         </button>
-      </div>
-      <div className="grow max-h-1/3 flex flex-col justify-end pt-2 border-t border-light-gray/80">
-        <div className="text-center">
-          <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.Discount}</span>
-          <span className="text-gray/50 line-through text-sm mx-2">${(product.price / (1 - product.Discount / 100)).toFixed(2)}</span>
-        </div>
-        <p className="text-lg lg:text-xl text-center text-red font-bold mt-0.5">{product.price} $</p>
-        <AddToShoppingCartLargeBtn id={product.id} />
       </div>
     </div>
   );

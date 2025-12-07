@@ -13,6 +13,8 @@ export default function ProductQuickViewModal({ productId, onQuickview }) {
   } else document.body.classList.remove("body-lock");
 
   useEffect(() => {
+    console.log(productId);
+
     setData(null);
     if (productId) {
       fetch(`https://dummyjson.com/products/${productId}`)

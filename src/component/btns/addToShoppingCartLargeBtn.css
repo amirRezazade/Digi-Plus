@@ -4,6 +4,7 @@
   --cart: #fff;
   --dots: #fff;
   cursor: pointer;
+  width: 100%;
   position: relative;
   outline: none;
   height: 40px;
@@ -23,6 +24,7 @@
   }
 
   .success {
+    width: 100%;
     color: #ffffff;
     opacity: var(--o, 0);
     transform: translate(-50%, var(--y, 12px));
@@ -33,25 +35,23 @@
     transition-delay: var(--d, 0s);
   }
   .dots {
-    width: 4px;
-    height: 4px;
-    top: 20px;
+    top: 10px;
     left: 50%;
-    margin-left: -7px;
-    border-radius: 2px;
+    margin-left: -9px;
     position: absolute;
-    transform-origin: 10px 50%;
-    background: var(--dots);
-    box-shadow: 5px 0 0 var(--dots), 10px 0 0 var(--dots);
+
     opacity: var(--o, 0);
-    transform: scale(var(--s, 0.4));
     transition: opacity 0.3s, transform 0.3s;
     transition-delay: var(--d, 0s);
   }
   .cart {
     position: absolute;
-    top: 30%;
-    right: 100%;
+    width: 200px;
+    top: 20%;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    justify-content: end;
     z-index: 1;
     overflow: hidden;
   }
@@ -63,17 +63,8 @@
       --o: 0;
       --s: 0.8;
       --d: 0s;
-      &:before {
-        --r: -180deg;
-      }
-      &:after {
-        --r: -90deg;
-      }
     }
     .dots {
-      --o: 1;
-      --s: 1;
-      --d: 0.3s;
       animation: dots 2s linear forwards;
     }
     .success {
@@ -81,7 +72,7 @@
       --y: 0;
       --d: 1.8s;
     }
-    .cart {
+    .cart svg {
       animation: cart 2.3s;
     }
   }
@@ -101,48 +92,53 @@
     }
   }
 }
-
+.cart svg {
+  fill: white !important;
+  opacity: 0;
+}
 @keyframes cart {
+  20% {
+    opacity: 1;
+  }
   41%,
-  49%,
-  57%,
-  60% {
-    transform: translateX(105px) rotate(0deg);
+  46%,
+  49% {
+    transform: translateX(85px);
+    opacity: 1;
   }
-  40%,
-  47% {
-    transform: translateX(105px);
+  57% {
+    transform: translateX(85px);
+    opacity: 1;
   }
   60% {
-    transform: translateX(115px) rotate(-13deg);
+    transform: translateX(100px);
+    opacity: 0.8;
+  }
+  83% {
+    opacity: 0.5;
   }
   100% {
-    transform: translateX(230px) rotate(-19deg);
+    opacity: 0;
+    transform: translateX(200px);
   }
 }
 
 @keyframes dots {
   5% {
     transform: translateY(0);
-  }
-  25% {
-    transform: translateY(-20px) rotate(-32deg);
-    box-shadow: 5px 0 0 var(--dots), 10px 0 0 var(--dots);
-  }
-  31% {
-    box-shadow: 5px -4px 0 var(--dots), 10px -8px 0 var(--dots);
-  }
-  32% {
-    transform: translateY(-5px) rotate(0deg);
     opacity: 1;
   }
-  45% {
-    box-shadow: 5px 0 0 var(--dots), 10px 0 0 var(--dots);
+  25% {
+    transform: translateY(-18px) rotate(-25deg);
   }
-
-  50%,
+  45% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
   100% {
-    box-shadow: none;
     opacity: 0;
   }
 }
