@@ -4,6 +4,7 @@ import "./addToShoppingCartLargeBtn.css";
 export default function AddToShoppingCartLargeBtn({ product }) {
   let [inCart, setInCart] = useState(false);
   let [reRender, setReRender] = useState(true);
+
   useEffect(() => {
     function localChanged() {
       setReRender((prev) => !prev);
@@ -12,8 +13,6 @@ export default function AddToShoppingCartLargeBtn({ product }) {
     return () => window.removeEventListener("local-changed", localChanged);
   }, []);
   useEffect(() => {
-    console.log(product);
-
     let cart = getLocal("cart");
 
     if (cart) {
@@ -22,7 +21,7 @@ export default function AddToShoppingCartLargeBtn({ product }) {
       else setInCart(false);
     }
   }, [reRender]);
-
+  if (!product) return null;
   function addToCart() {
     let cartList = getLocal("cart") || [];
     let isInTheCart = cartList.findIndex((item) => item.id == product.id);

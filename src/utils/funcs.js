@@ -14,7 +14,7 @@ function formatedPrice(num) {
   return formatted;
 }
 function cartTotalPrice() {
-  let cart = getLocal("cart");
+  let cart = getLocal("cart") || [];
   let total = 0;
   cart.forEach((item) => (total += item.quantity * item.price));
   let formatted = total.toLocaleString("en-US", {

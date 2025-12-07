@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import "./AddToFavoritesBtn.css";
+import { getLocal, setLocal } from "../../utils/funcs";
 export default function AddToFavoritesBtn({ id }) {
   let [inFavorite, setInFavorite] = useState(false);
 
   useEffect(() => {
-    let favorites = JSON.parse(localStorage.getItem("favorites"));
+    let favorites = getLocal("favorites") || [];
     let isInFavorites = favorites.findIndex((item) => item == id);
     if (isInFavorites > -1) setInFavorite(true);
   }, [inFavorite]);
   function addToFavorite(id) {
-    let favoriteList = JSON.parse(localStorage.getItem("favorites")) || [];
+    let favoriteList = getLocal("favorites") || [];
     let isInTheList = favoriteList.findIndex((item) => item == id);
     if (isInTheList === -1) {
       favoriteList.push(id);
@@ -18,7 +19,7 @@ export default function AddToFavoritesBtn({ id }) {
       favoriteList.splice(isInTheList, 1);
       setInFavorite(false);
     }
-    localStorage.setItem("favorites", JSON.stringify(favoriteList));
+    setLocal("favorites", favoriteList);
   }
 
   return (

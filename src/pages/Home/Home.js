@@ -6,10 +6,13 @@ import HomeMainSlider from "./HomeMainSlider";
 import bgRounded from "../../assets/images/bg-images/bg-round.png";
 import AmazingOffers from "./AmazingOffer/AmazingOffers";
 import ProductQuickViewModal from "../../component/carts/ProductQuickViewModal";
-import { useState } from "react";
+import { createContext, useState } from "react";
+import CompareModal from "../../component/carts/CompareModal";
+
+export const CompareContext = createContext();
 export default function Home() {
   let [quickViewId, setQuickViewId] = useState(null);
-
+  let [compareToggle, setCompareToggle] = useState(false);
   return (
     <>
       <Navbar />
@@ -25,13 +28,16 @@ export default function Home() {
           <HomeCategorySlider />
         </div>
       </header>
-      <section className="relative">
-        <img className="hidden xl:inline-block absolute right-0 top-0" src={bgRounded} alt="" />
-        <AmazingOffers onQuickview={(id) => setQuickViewId(id)} />
-        <img className="hidden xl:inline-block absolute left-0 top-0 rotate-180" src={bgRounded} alt="" />
-      </section>
+      <CompareContext.Provider value={{ compareToggle, setCompareToggle }}>
+        <section className="relative">
+          <img className="hidden xl:inline-block absolute right-0 top-0" src={bgRounded} alt="" />
+          <AmazingOffers onQuickview={(id) => setQuickViewId(id)} />
+          <img className="hidden xl:inline-block absolute left-0 top-0 rotate-180" src={bgRounded} alt="" />
+        </section>
 
-      <ProductQuickViewModal productId={quickViewId} onQuickview={(id) => setQuickViewId(id)} />
+        <ProductQuickViewModal productId={quickViewId} onQuickview={(id) => setQuickViewId(id)} />
+        <CompareModal />
+      </CompareContext.Provider>
     </>
   );
 }
