@@ -13,6 +13,7 @@ export const CompareContext = createContext();
 export default function Home() {
   let [quickViewId, setQuickViewId] = useState(null);
   let [compareToggle, setCompareToggle] = useState(false);
+  let [compareMaxLengthMessage, setCompareMaxLengthMessage] = useState(false);
   return (
     <>
       <Navbar />
@@ -28,7 +29,7 @@ export default function Home() {
           <HomeCategorySlider />
         </div>
       </header>
-      <CompareContext.Provider value={{ compareToggle, setCompareToggle }}>
+      <CompareContext.Provider value={{ compareToggle, setCompareToggle, compareMaxLengthMessage, setCompareMaxLengthMessage }}>
         <section className="relative">
           <img className="hidden xl:inline-block absolute right-0 top-0" src={bgRounded} alt="" />
           <AmazingOffers onQuickview={(id) => setQuickViewId(id)} />

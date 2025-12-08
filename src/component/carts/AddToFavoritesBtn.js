@@ -3,12 +3,21 @@ import "./AddToFavoritesBtn.css";
 import { getLocal, setLocal } from "../../utils/funcs";
 export default function AddToFavoritesBtn({ id }) {
   let [inFavorite, setInFavorite] = useState(false);
-
+  let [reRender, setReRender] = useState(false);
+  useEffect(() => {
+    function localChanged() {
+      setReRender((prev) => !prev);
+    }
+    window.addEventListener("local-changed", localChanged);
+    return () => window.removeEventListener("local-changed", localChanged);
+  }, []);
   useEffect(() => {
     let favorites = getLocal("favorites") || [];
     let isInFavorites = favorites.findIndex((item) => item == id);
     if (isInFavorites > -1) setInFavorite(true);
-  }, [inFavorite]);
+    else setInFavorite(false);
+  }, [inFavorite, reRender]);
+
   function addToFavorite(id) {
     let favoriteList = getLocal("favorites") || [];
     let isInTheList = favoriteList.findIndex((item) => item == id);

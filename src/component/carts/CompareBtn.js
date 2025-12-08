@@ -2,14 +2,19 @@ import { CompareContext } from "../../pages/Home/Home";
 import { useContext } from "react";
 import { getLocal, setLocal } from "../../utils/funcs";
 export default function CompareBtn({ product }) {
-  let { compareToggle, setCompareToggle } = useContext(CompareContext);
+  let { compareToggle, setCompareToggle, compareMaxLengthMessage, setCompareMaxLengthMessage } = useContext(CompareContext);
   function addToCompare(id) {
     let compareList = getLocal("compareProducts") || [];
     let index = compareList.findIndex((item) => item.id == id);
     if (index === -1) {
-      compareList.push(product);
-      setLocal("compareProducts", compareList);
-    }
+      if (compareList.length === 3) {
+        setCompareMaxLengthMessage(product);
+      } else {
+        compareList.push(product);
+        setLocal("compareProducts", compareList);
+        setCompareMaxLengthMessage(false);
+      }
+    } else setCompareMaxLengthMessage(false);
     setCompareToggle(true);
   }
   return (
