@@ -17,7 +17,7 @@ export default function AmazingOffers({ onQuickview }) {
   });
 
   return (
-    <div className="custom-container sm:flex items-center gap-3 mb-50 relative bg-no-repeat  bg-center sm:bg-right  overflow-hidden bg-[url(../src/assets/images/bg-images/bg-line-vertical.png)] sm:bg-[url(../src/assets/images/bg-images/bg-line.png)] md:before:absolute md:before:w-15 md:before:h-full before:pointer-events-none md:before:left-0 md:before:top-0 md:before:bg-linear-90 md:before:from-white md:before:to-[rgba(255, 255, 255, 0)] md:before:z-10">
+    <div className="custom-container sm:flex items-center gap-3  relative bg-no-repeat  bg-center sm:bg-right  overflow-hidden bg-[url(../src/assets/images/bg-images/bg-line-vertical.png)] sm:bg-[url(../src/assets/images/bg-images/bg-line.png)] md:before:absolute md:before:w-15 md:before:h-full before:pointer-events-none md:before:left-0 md:before:top-0 md:before:bg-linear-90 md:before:from-white md:before:to-[rgba(255, 255, 255, 0)] md:before:z-10">
       <div className="shrink-0 sm:min-w-[235px]  text-white flex flex-col justify-between gap-3 sm:gap-2 px-9 py-2 border-l border-white border-dashed ">
         <h4 className="text-3xl md:text-3xl pb-3 text-center border-b border-dashed border-white sm:border-0">
           پیشنهاد

@@ -8,6 +8,7 @@ import AmazingOffers from "./AmazingOffer/AmazingOffers";
 import ProductQuickViewModal from "../../component/carts/ProductQuickViewModal";
 import { createContext, useState } from "react";
 import CompareModal from "../../component/carts/CompareModal";
+import PopularBrandsSlider from "./PopularBrands/PopularBrandsSlider";
 
 export const CompareContext = createContext();
 export default function Home() {
@@ -29,8 +30,9 @@ export default function Home() {
           <HomeCategorySlider />
         </div>
       </header>
+      {/* start Amazing offers section  */}
       <CompareContext.Provider value={{ compareToggle, setCompareToggle, compareMaxLengthMessage, setCompareMaxLengthMessage }}>
-        <section className="relative">
+        <section className="relative ">
           <img className="hidden xl:inline-block absolute right-0 top-0" src={bgRounded} alt="" />
           <AmazingOffers onQuickview={(id) => setQuickViewId(id)} />
           <img className="hidden xl:inline-block absolute left-0 top-0 rotate-180" src={bgRounded} alt="" />
@@ -39,6 +41,17 @@ export default function Home() {
         <ProductQuickViewModal productId={quickViewId} onQuickview={(id) => setQuickViewId(id)} />
         <CompareModal />
       </CompareContext.Provider>
+      {/* finish Amazing offers section  */}
+      {/* start popular brands section  */}
+      <section className="my-30">
+        <div className="custom-container">
+          <div className="md:px-30">
+            <Title text={"محبوب ترین"} redText={"برند‌ها"} bgText={"popular brands"} />
+          </div>
+          <PopularBrandsSlider />
+        </div>
+      </section>
+      {/* finish popular brands section  */}
     </>
   );
 }

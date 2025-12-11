@@ -232,7 +232,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      <hr className="custom-container text-light-gray mt-5 lg:mt-0.5" />
+      <hr className="custom-container text-light-gray mt-3 sm:mt-5 lg:mt-0.5" />
     </>
   );
 }
