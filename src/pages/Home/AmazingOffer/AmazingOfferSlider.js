@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from "react";
 import ProductCart from "../../../component/carts/ProductCart";
 import { Swiper, SwiperSlide } from "swiper/react";
-export default memo(function AmazingOfferSlider({ onQuickview }) {
+export default memo(function AmazingOfferSlider() {
   let productsId = [80, 124, 12, 89, 106, 193];
   let [products, setProducts] = useState([]);
   useEffect(() => {
@@ -27,7 +27,7 @@ export default memo(function AmazingOfferSlider({ onQuickview }) {
       >
         {products.map((product) => (
           <SwiperSlide className="min-w-55 max-w-55">
-            <ProductCart product={product} onQuickview={onQuickview} />
+            <ProductCart product={product} />
           </SwiperSlide>
         ))}
       </Swiper>

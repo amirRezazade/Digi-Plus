@@ -6,7 +6,7 @@ import { formatedPrice } from "../../utils/funcs";
 import { useEffect, useState } from "react";
 import CompareBtn from "./CompareBtn";
 
-export default function ProductCart({ product, onQuickview }) {
+export default function ProductCart({ product }) {
   return (
     <div className=" group  flex flex-col justify-between relative text-sm rounded-2xl border border-light-gray text-gray bg-white p-3 gray-shaddow overflow-hidden">
       <Link to={`/product/${product.id}`} className="  max-h-2/3">
@@ -23,7 +23,7 @@ export default function ProductCart({ product, onQuickview }) {
       </div>
       <div className="absolute top-1/6 -left-1/2 transition-[left] duration-500 group-hover:left-2  flex flex-col gap-1 border border-light-gray rounded-lg shadow-sm bg-white">
         <AddToFavoritesBtn id={product.id} />
-        <QuickViewBtn id={product.id} onQuickview={onQuickview} />
+        <QuickViewBtn id={product.id} />
         <CompareBtn product={product} />
       </div>
     </div>

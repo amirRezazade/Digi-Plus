@@ -44,7 +44,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <div className="custom-container flex flex-wrap lg:flex-nowrap justify-between gap-4 lg:gap-x-8 gap-y-2 sm:gap-y-4 mt-2.5 lg:mt-3.5">
+      <div className="custom-container flex flex-wrap lg:flex-nowrap justify-between gap-4 xl:gap-x-8 gap-y-2 sm:gap-y-4 mt-2.5 lg:mt-3.5">
         <button className="lg:hidden p-1.5 cursor-pointer" onClick={() => setOpenMenu(!openMenu)}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor">
             <path d="M24 19.875C24 20.4984 23.4984 21 22.875 21L4.125 21C3.50156 21 3 20.4984 3 19.875C3 19.2516 3.50156 18.75 4.125 18.75L22.875 18.75C23.4984 18.75 24 19.2516 24 19.875ZM21 12.375C21 12.9984 20.4984 13.5 19.875 13.5L1.125 13.5C0.501561 13.5 -1.20783e-06 12.9984 -1.15333e-06 12.375C-1.09882e-06 11.7516 0.501561 11.25 1.125 11.25L19.875 11.25C20.4984 11.25 21 11.7516 21 12.375ZM3 4.875C3 4.25156 3.50156 3.75 4.125 3.75L22.875 3.75C23.4984 3.75 24 4.25156 24 4.875C24 5.49844 23.4984 6 22.875 6L4.125 6C3.50156 6 3 5.49844 3 4.875Z"></path>

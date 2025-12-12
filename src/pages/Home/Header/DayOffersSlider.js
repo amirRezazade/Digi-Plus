@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import AddToShoppingCartBtn from "../../component/btns/AddToShoppingCartBtn";
+import AddToShoppingCartBtn from "../../../component/btns/AddToShoppingCartBtn";
 import "swiper/css";
 import "swiper/css/pagination";
 export default function HomeDayOffersSlider(params) {

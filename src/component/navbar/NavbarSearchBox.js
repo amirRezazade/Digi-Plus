@@ -48,7 +48,7 @@ export default function NavbarSearchBox() {
   }
 
   return (
-    <div className={`search-box grow w-full rounded-2xl  order-3 lg:order-1 relative border transition-colors duration-300 ${showSearchOptions ? "border-transparent" : "border-light-gray"} `}>
+    <div className={`search-box grow w-full lg:w-auto rounded-2xl  order-3 lg:order-1 relative border transition-colors duration-300 ${showSearchOptions ? "border-transparent" : "border-light-gray"} `}>
       <div className="flex items-center gap-3 px-4 h-full py-3 ">
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" className="fill-dark-gray ">
