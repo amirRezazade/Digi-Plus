@@ -10,6 +10,7 @@ import { createContext, useState } from "react";
 import CompareModal from "../../component/carts/CompareModal";
 import PopularBrandsSlider from "./PopularBrands/PopularBrandsSlider";
 import TopCategories from "./TopCategories/TopCategories";
+import SpecialOffer from "./SpecialOffer/SpecialOffer";
 
 export const CompareContext = createContext();
 export const quickViewContext = createContext();
@@ -44,18 +45,8 @@ export default function Home() {
           <ProductQuickViewModal productId={quickViewId} onQuickview={(id) => setQuickViewId(id)} />
           <CompareModal />
           {/* finish Amazing offers section  */}
-          {/* start popular brands section  */}
-          <section className="my-30">
-            <div className="custom-container">
-              <div className="md:px-30">
-                <Title text={"محبوب ترین"} redText={"برند‌ها"} bgText={"popular brands"} />
-              </div>
-              <PopularBrandsSlider />
-            </div>
-          </section>
-          {/* finish popular brands section  */}
           {/* start top categories section  */}
-          <section className="my-30">
+          <section className="mt-10 md:mt-15 xl:mt-22">
             <div className="custom-container">
               <div className="md:px-30">
                 <Title text={"دسته‌بندی‌های"} redText={"منتخب"} bgText={"top categories"} />
@@ -64,6 +55,23 @@ export default function Home() {
             </div>
           </section>
           {/* finish top categories section  */}
+          {/* start popular brands section  */}
+          <section className="mt-10 md:mt-15 xl:mt-22">
+            <div className="custom-container">
+              <div className="md:px-30">
+                <Title text={"محبوب ترین"} redText={"برند‌ها"} bgText={"popular brands"} />
+              </div>
+              <PopularBrandsSlider />
+            </div>
+          </section>
+          {/* finish popular brands section  */}
+          {/* start special offer  */}
+          <section className="my-39 py-10 relative">
+            <img className="hidden lg:inline-block absolute right-0 top-1/3 xl:top-0 -z-2" src={bgRounded} alt="" />
+            <SpecialOffer />
+            <img className="hidden lg:inline-block absolute left-0 bottom-0 rotate-180 -z-2" src={bgRounded} alt="" />
+          </section>
+          {/* finish special offer  */}
         </CompareContext.Provider>
       </quickViewContext.Provider>
     </>

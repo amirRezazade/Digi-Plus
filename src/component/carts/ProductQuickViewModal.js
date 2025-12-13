@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AddToShoppingCartLargeBtn from "../btns/AddToShoppingCartLargeBtn";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper/modules";
+import { formatedPrice } from "../../utils/funcs";
 
 export default function ProductQuickViewModal({ productId, onQuickview }) {
   let [data, setData] = useState(null);
@@ -98,9 +99,9 @@ export default function ProductQuickViewModal({ productId, onQuickview }) {
                 </p>
                 <div className="">
                   <span className="text-sm px-1 sm-shaddow gradient rounded text-white">%{data.discountPercentage}</span>
-                  <span className="text-gray/50 line-through  mx-2">${(data.price / (1 - data.discountPercentage / 100)).toFixed(2)}</span>
+                  <span className="text-gray/50 line-through  mx-2">${formatedPrice(data.price / (1 - data.discountPercentage / 100))}</span>
                 </div>
-                <p className="text-lg md:text-2xl lg:text-3xl text-red font-bold mt-0.5 md:mt-1.5">{data.price} $</p>
+                <p className="text-lg md:text-2xl lg:text-3xl text-red font-bold mt-0.5 md:mt-1.5">{formatedPrice(data.price)} $</p>
               </div>
             </div>
             <div className="md:mb-2">
