@@ -1,6 +1,6 @@
 export default function Title({ text, redText, bgText }) {
   return (
-    <div className="flex justify-between items-center gap-3 py-10 relative overflow-hidden">
+    <div className="flex justify-between items-center gap-3 pt-6 sm:pt-10 lg:pt-13 pb-4 relative overflow-hidden">
       {bgText && <p className="title-bg-text">{bgText}</p>}
 
       <span className="border-b-2 border-light-gray grow"></span>

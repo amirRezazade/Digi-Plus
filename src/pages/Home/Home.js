@@ -11,6 +11,7 @@ import CompareModal from "../../component/carts/CompareModal";
 import PopularBrandsSlider from "./PopularBrands/PopularBrandsSlider";
 import TopCategories from "./TopCategories/TopCategories";
 import SpecialOffer from "./SpecialOffer/SpecialOffer";
+import Banners from "./Banners/Banners";
 
 export const CompareContext = createContext();
 export const quickViewContext = createContext();
@@ -66,12 +67,17 @@ export default function Home() {
           </section>
           {/* finish popular brands section  */}
           {/* start special offer  */}
-          <section className="my-39 py-10 relative">
+          <section className="mt-10 md:mt-15 xl:mt-22 sm:py-10 relative">
             <img className="hidden lg:inline-block absolute right-0 top-1/3 xl:top-0 -z-2" src={bgRounded} alt="" />
             <SpecialOffer />
             <img className="hidden lg:inline-block absolute left-0 bottom-0 rotate-180 -z-2" src={bgRounded} alt="" />
           </section>
           {/* finish special offer  */}
+          {/* start banners section  */}
+          <section className="hidden xs:block  md:mt-10 xl:mt-15">
+            <Banners />
+          </section>
+          {/* finish banners section  */}
         </CompareContext.Provider>
       </quickViewContext.Provider>
     </>

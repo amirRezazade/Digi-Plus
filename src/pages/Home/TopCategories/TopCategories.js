@@ -64,8 +64,8 @@ export default function TopCategories() {
       id: "womens-dresses,tops,womens-shoes",
       icon: (
         <svg version="1.1" id="Capa_1" width="18" height="18" viewBox="0 0 479.154 479.154">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
           <g id="SVGRepo_iconCarrier">
             <g>
               <g>
@@ -81,8 +81,8 @@ export default function TopCategories() {
       id: "vehicle,motorcycle",
       icon: (
         <svg version="1.1" id="Capa_1" width="24" height="24" viewBox="0 0 467.168 467.168">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
           <g id="SVGRepo_iconCarrier">
             <g>
               <g>
@@ -109,7 +109,7 @@ export default function TopCategories() {
     <div className="min-h-screen">
       <Swiper className="top-categories mx-auto text-gray fill-gray text-sm md:text-base" slidesPerView={"auto"} spaceBetween={15} centeredSlides={false}>
         {categories.map((cat) => (
-          <SwiperSlide className=" w-auto! py-2">
+          <SwiperSlide key={cat.id} className=" w-auto! py-2">
             <TopCategoriesBtn key={cat.id} name={cat.name} id={cat.id} category={category} onCategory={(cat) => setCategory(cat)} icon={cat.icon} />
           </SwiperSlide>
         ))}
@@ -132,7 +132,7 @@ export default function TopCategories() {
             <SwiperSlide className="w-full! my-2 ">
               <div className="grid! grid-cols-6 gap-4 md:gap-y-6">
                 {[...products].splice(0, 12).map((product) => (
-                  <div className="w-53! shrink-0">
+                  <div key={product.id} className="w-53! shrink-0">
                     <ProductCart product={product} />
                   </div>
                 ))}
