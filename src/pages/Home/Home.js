@@ -12,6 +12,7 @@ import PopularBrandsSlider from "./PopularBrands/PopularBrandsSlider";
 import TopCategories from "./TopCategories/TopCategories";
 import SpecialOffer from "./SpecialOffer/SpecialOffer";
 import Banners from "./Banners/Banners";
+import Footer from "../../component/footer/Footer";
 
 export const CompareContext = createContext();
 export const quickViewContext = createContext();
@@ -78,6 +79,9 @@ export default function Home() {
             <Banners />
           </section>
           {/* finish banners section  */}
+          <footer className="mb-40">
+            <Footer />
+          </footer>
         </CompareContext.Provider>
       </quickViewContext.Provider>
     </>
