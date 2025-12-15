@@ -122,6 +122,9 @@ body {
 .top-categories-product-swiper .swiper-wrapper {
   @apply w-[1400px]!;
 }
+footer .swiper-wrapper {
+  @apply min-w-[1500px]!  lg:min-w-[800px]!;
+}
 
 /* tailwind costumation  */
 @theme {

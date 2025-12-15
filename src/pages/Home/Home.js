@@ -79,7 +79,7 @@ export default function Home() {
             <Banners />
           </section>
           {/* finish banners section  */}
-          <footer className="mb-40">
+          <footer className="mt-40">
             <Footer />
           </footer>
         </CompareContext.Provider>
