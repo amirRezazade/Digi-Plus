@@ -1,24 +1,26 @@
 import { Link } from "react-router-dom";
-import footerBanner from "../../assets/images/footer-instagram.png";
 import "swiper/css";
 import "swiper/css/free-mode";
 
+import footerBanner from "../../assets/images/footer/footer-instagram.png";
+import footerMobileBanner from "../../assets/images/footer/footer-banner-mobile.png";
 import textLogo from "../../assets/images/footer/digiplusft.png";
 import logo from "../../assets/images/footer/footerlogo1.png";
 import zarinPal from "../../assets/images/footer/zarinpal.png";
 import mellat from "../../assets/images/footer/beh.png";
 import enemad from "../../assets/images/footer/enamad.png";
-
 import instagram from "../../assets/images/footer/instagram.svg";
 import whatsap from "../../assets/images/footer/whatsapp.svg";
 import youtube from "../../assets/images/footer/youtube.svg";
 import aparat from "../../assets/images/footer/aparat.svg";
 import FooterSlider from "./FooterSlider";
+
 export default function Footer() {
   return (
     <>
-      <div className="hidden xs:block mb-10 md:mb-15">
-        <img src={footerBanner} alt="instagram-banner" />
+      <div className=" mb-7 md:mb-15">
+        <img className="hidden xs:inline-block" src={footerBanner} alt="instagram-banner" />
+        <img className="xs:hidden" src={footerMobileBanner} alt="instagram-banner" />
       </div>
       <div className="custom-container">
         <div className=" grid grid-cols-1 lg:grid-cols-9 justify-between items-center gap-6 lg:gap-0 md:items-start sm:w-3/4 md:w-full mx-auto md:border-b-2 border-light-gray">
@@ -163,7 +165,7 @@ export default function Footer() {
                 </svg>
               </div>
             </div>
-            <div className="w-full  p-3 rounded-2xl my-8 lg:my-4 bg-light lg:bg-white border lg:border-0 border-org/40">
+            <div className="w-full  p-3 rounded-2xl mt-8 md:my-8 lg:my-4 lg:mb-0 bg-light lg:bg-white border lg:border-0 border-org/40">
               <div className="title-style before:h-full! relative pr-3">
                 <h2 className="font-bold text-black md:px-3 md:py-0.5 text-xl xs:text-2xl">
                   پیگیری <span className="text-red">سفارشات</span>
@@ -179,7 +181,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="lg:flex items-center justify-between gap-5 2xl:gap-8 py-8">
+        <div className="lg:flex items-center justify-between gap-5 2xl:gap-8 py-4">
           <div className="w-full md:grid grid-cols-10 items-center justify-between max-w-full text-center">
             <h2 className="col-span-2 lg:col-span-3 xl:col-span-2 text-start inline-block font-bold text-black text-nowrap md:px-3 py-3 md:py-0.5 text-xl xs:text-2xl md:text-xl lg:text-2xl relative before:absolute before:w-full before:h-1 md:before:w-1 md:before:h-full before:rounded-full before:bottom-0 before:right-0 before:bg-linear-264 before:from-red before:to-[#ff7b00] before:shadow-[-2px_0px_8px_0_#dc2f0233]  ">
               بیشترین

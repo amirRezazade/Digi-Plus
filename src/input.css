@@ -25,7 +25,8 @@
   font-family: peyda;
   src: url(./assets/fonts/IRANSansX-Medium.woff) format(woff);
 }
-body {
+body,
+html {
   font-family: peyda;
   overflow-x: hidden;
 }

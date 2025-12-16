@@ -13,6 +13,7 @@ import TopCategories from "./TopCategories/TopCategories";
 import SpecialOffer from "./SpecialOffer/SpecialOffer";
 import Banners from "./Banners/Banners";
 import Footer from "../../component/footer/Footer";
+import SupportCat from "../../component/SupportChat/SupportCat";
 
 export const CompareContext = createContext();
 export const quickViewContext = createContext();
@@ -79,9 +80,12 @@ export default function Home() {
             <Banners />
           </section>
           {/* finish banners section  */}
-          <footer className="mt-40">
+          <footer className="mt-20">
             <Footer />
           </footer>
+          {/* start support chat  */}
+          <SupportCat />
+          {/* finish support chat  */}
         </CompareContext.Provider>
       </quickViewContext.Provider>
     </>
