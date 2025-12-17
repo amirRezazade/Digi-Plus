@@ -127,6 +127,9 @@ footer .swiper-wrapper {
   @apply min-w-[1500px]!  lg:min-w-[800px]!;
 }
 
+.epr-emoji-category.epr_2rfz9o.epr_mw4zr1 {
+  /* display: none !important; */
+}
 /* tailwind costumation  */
 @theme {
   --font-peyda: "peyda";
