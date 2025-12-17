@@ -29,6 +29,7 @@ body,
 html {
   font-family: peyda;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* custom class */
