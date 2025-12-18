@@ -1,24 +1,38 @@
 import { useEffect, useRef, useState } from "react";
 import ChatBottom from "./ChatBottom";
 import { getLocal, setLocal } from "../../utils/funcs";
-
-export default function SupportCat() {
+import wallpaper from "../../assets/images/support-chat-wallpaper.jpg";
+export default function SupportCat({ onShowImg }) {
   let [openChat, setOpenChat] = useState(true);
   let [message, setMessage] = useState("");
   let bottomRef = useRef(null);
   let [messages, setMessages] = useState(getLocal("supportMessages") || []);
 
   useEffect(() => {
+    if (!getLocal("supportMessages")) {
+      let now = new Date();
+      let list = [
+        {
+          sender: "admin",
+          text: "سلام 👋 من پشتیبان DigiPlus هستم. چطور می‌تونم کمکت کنم؟ اینجا بنویس 🌱",
+          date: now.getHours() + ":" + now.getMinutes(),
+        },
+      ];
+      setLocal("supportMessages", list);
+      setMessages(getLocal("supportMessages"));
+    }
+
     const closeChat = function (e) {
-      if (!e.target.closest(".support-chat")) setOpenChat(false);
+      if (!e.target.closest(".support-chat") && !e.target.closest(".modal-bg")) setOpenChat(false);
     };
     window.addEventListener("mousedown", closeChat);
-    requestAnimationFrame(() => {
-      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    });
+
     return () => window.removeEventListener("mousedown", closeChat);
   }, []);
 
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
   function sendMessage() {
     if (message.trim()) {
       let now = new Date();
@@ -31,38 +45,41 @@ export default function SupportCat() {
       setMessages(newList);
       setMessage("");
       setLocal("supportMessages", newList);
-      requestAnimationFrame(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-      });
     }
   }
   function sendImg(file) {
     if (!file) return;
-    let now = new Date();
-    let url = URL.createObjectURL(file);
 
-    let obj = {
-      img: url,
-      date: now.getHours() + ":" + now.getMinutes(),
+    const now = new Date();
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setMessages((prev) => {
+        const updated = [
+          ...prev,
+          {
+            date: `${now.getHours()}:${now.getMinutes()}`,
+            img: reader.result,
+          },
+        ];
+        setLocal("supportMessages", updated);
+        return updated;
+      });
     };
-    let newList = [...messages, obj];
-    setMessages(newList);
-    setLocal("supportMessages", newList);
-    requestAnimationFrame(() => {
-      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    });
+
+    reader.readAsDataURL(file);
   }
 
   return (
-    <div className={`support-chat fixed bottom-3 right-3 sm:bottom-8 sm:right-8 text-sm z-1 flex flex-col items-start gap-1.5  transition-all duration-400 overflow-hidden  ${openChat ? " w-75 h-118 md:w-78 md:h-110 xl:w-90 xl:h-125" : "size-13 gap-0!"}`}>
-      <div className={`flex flex-col justify-between bg-white shadow-[-2px_-1px_8px_0px_#6666665c] rounded-2xl  overflow-hidden  w-[calc(100%-20px)] grow transition-all duration-500  ${openChat ? "m-2 " : "w-0! h-0!  opacity-0 overflow-hidden  "}`}>
-        <div className="flex items-center justify-end gap-3 p-2 gradient">
+    <div className={`support-chat fixed bottom-2 right-2 sm:bottom-5 md:right-8 text-sm z-1 lg:z-10 flex flex-col items-start gap-0.5   transition-all duration-400 overflow-hidden ${openChat ? "w-full h-[90dvh] xs:w-90 xs:h-130 sm:w-100  md:w-130 md:h-150 lg:w-140 xl:h-160 " : "size-13 gap-0!"}`}>
+      <div className={`flex flex-col justify-between bg-white shadow-[-2px_-1px_8px_0px_#6666665c] rounded-2xl  overflow-hidden  w-[calc(100%-20px)] grow transition-all duration-500  ${openChat ? "md:m-2 " : "w-0! h-0!  opacity-0 overflow-hidden  "}`}>
+        <div className="flex items-center justify-end gap-8 p-2 gradient">
           <div className=" flex items-center gap-2">
-            <span className="text-white">ادمین شماره 4</span>
+            <span className="text-white font-bold">پشتیبانی آنلاین </span>
             <span>
               <svg fill="white" height="33" width="33" version="1.1" id="Icons" viewBox="0 0 32 32">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
                   <path d="M16,2C9.4,2,4,7.4,4,14v3c0,2.8,2.2,5,5,5c0.6,0,1-0.4,1-1v-8c0-0.6-0.4-1-1-1c-1.1,0-2.1,0.4-2.9,1c0.5-5,4.8-9,9.9-9 s9.4,3.9,9.9,9c-0.8-0.6-1.8-1-2.9-1c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1c0.6,0,1.3-0.1,1.8-0.4c-1.1,2-2.8,3.6-4.9,4.5 c-0.2-1.2-1.2-2.2-2.5-2.2c-1.3,0-2.4,1.1-2.4,2.4c0,0.7,0.3,1.4,0.9,1.9c0.5,0.4,1,0.6,1.6,0.6c0.1,0,0.3,0,0.4,0 C23.6,28,28,22.9,28,17v-3C28,7.4,22.6,2,16,2z"></path>
                 </g>
@@ -76,22 +93,22 @@ export default function SupportCat() {
             </svg>
           </button>
         </div>
-        <div className="grow bg-gray max-h-full overflow-y-auto hidden-scrollbar " style={{ backgroundImage: 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdDuPATXQvKtq_tjfNDIy4KC-t-YiHwkPJ8y6kuiObtQ&ss")' }}>
-          <ul className="flex flex-col gap-2 p-2 pb-7">
-            <li className=" px-2.5 ms-auto gradient rounded-2xl max-w-9/10 text-white flex gap-2 items-end">
-              <span className="text-[10px] select-none">11:33</span>
-              <span className="py-2 "> سلام خوش اومدین</span>
-            </li>
-
-            {messages.map((mes) =>
-              mes.text ? (
-                <li className=" px-2.5 me-auto rounded-2xl max-w-9/10 text-dark bg-light-gray/60 flex gap-2 items-end">
+        <div className="grow bg-gray max-h-full overflow-y-auto hidden-scrollbar " style={{ backgroundImage: `url(${wallpaper})` }}>
+          <ul className="flex flex-col gap-3 p-2 pb-7">
+            {messages.map((mes, index) =>
+              mes.sender === "admin" ? (
+                <li key={index + mes} className=" px-2.5 ms-auto gradient rounded-2xl max-w-8/10 lg:max-w-100 text-white ">
+                  <p className="pt-2 ">{mes.text}</p>
+                  <span className="text-[10px] select-none">{mes.date}</span>
+                </li>
+              ) : mes.text ? (
+                <li key={index + mes} className=" px-2.5 me-auto rounded-2xl max-w-8/10 lg:max-w-100 text-dark bg-light-gray/60 ">
+                  <p className="pt-2 ">{mes.text}</p>
                   <span className="text-[10px] select-none text-gray">{mes.date}</span>
-                  <span className="py-2 ">{mes.text}</span>
                 </li>
               ) : (
-                <li className=" me-auto rounded-2xl max-w-9/10 text-dark bg-light-gray/60 flex flex-col gap-2 items-start">
-                  <img className="rounded-2xl object-cover text-center" src={mes.img} alt="test" />
+                <li key={index + mes} className=" me-auto rounded-t-2xl rounded-b-lg max-w-8/10 text-dark bg-light-gray/60 ">
+                  <img onClick={() => onShowImg(mes.img)} className="rounded-t-2xl object-cover cursor-pointer" src={mes.img} alt="img" />
                   <span className="text-[10px] select-none text-gray text-start px-3">{mes.date}</span>
                 </li>
               )
@@ -104,10 +121,10 @@ export default function SupportCat() {
       </div>
 
       {/* open close btn  */}
-      <button onClick={() => setOpenChat(!openChat)} className={`shrink-0 cursor-pointer size-13 flex justify-center items-center gradient rounded-full  transition-all duration-500 `}>
+      <button onClick={() => setOpenChat(!openChat)} className={`shrink-0 cursor-pointer size-11 md:size-13 flex justify-center items-center gradient rounded-full  transition-all duration-500 `}>
         <span>
           {openChat ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 16 24" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" className="size-5 md:size-8" viewBox="0 0 16 24" fill="none">
               <path
                 d="M15.605 17.5781C16.0734 18.0173 16.0734 18.7298 15.605 19.1691C15.1365 19.6083 14.3765 19.6082 13.908 19.1691L7.99999 13.5891L2.04999 19.1672C1.58154 19.6064 0.821487 19.6064 0.352987 19.1672C-0.115512 18.728 -0.115462 18.0155 0.352987 17.5762L6.30499 12L0.351337 6.37968C-0.117112 5.94051 -0.117112 5.22797 0.351337 4.78875C0.819788 4.34953 1.57984 4.34958 2.04834 4.78875L7.99999 10.4109L13.95 4.83281C14.4184 4.39364 15.1785 4.39364 15.647 4.83281C16.1155 5.27198 16.1154 5.98453 15.647 6.42375L9.69499 12L15.605 17.5781Z"
                 fill="#fff"
@@ -115,8 +132,8 @@ export default function SupportCat() {
             </svg>
           ) : (
             <svg fill="white" height="33" width="33" version="1.1" id="Icons" viewBox="0 0 32 32">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
                 <path d="M16,2C9.4,2,4,7.4,4,14v3c0,2.8,2.2,5,5,5c0.6,0,1-0.4,1-1v-8c0-0.6-0.4-1-1-1c-1.1,0-2.1,0.4-2.9,1c0.5-5,4.8-9,9.9-9 s9.4,3.9,9.9,9c-0.8-0.6-1.8-1-2.9-1c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1c0.6,0,1.3-0.1,1.8-0.4c-1.1,2-2.8,3.6-4.9,4.5 c-0.2-1.2-1.2-2.2-2.5-2.2c-1.3,0-2.4,1.1-2.4,2.4c0,0.7,0.3,1.4,0.9,1.9c0.5,0.4,1,0.6,1.6,0.6c0.1,0,0.3,0,0.4,0 C23.6,28,28,22.9,28,17v-3C28,7.4,22.6,2,16,2z"></path>
               </g>

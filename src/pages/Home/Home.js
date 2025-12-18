@@ -14,6 +14,7 @@ import SpecialOffer from "./SpecialOffer/SpecialOffer";
 import Banners from "./Banners/Banners";
 import Footer from "../../component/footer/Footer";
 import SupportCat from "../../component/SupportChat/SupportCat";
+import ImgFullScreen from "../../component/SupportChat/ImgFullScreen";
 
 export const CompareContext = createContext();
 export const quickViewContext = createContext();
@@ -21,6 +22,7 @@ export default function Home() {
   let [quickViewId, setQuickViewId] = useState(null);
   let [compareToggle, setCompareToggle] = useState(false);
   let [compareMaxLengthMessage, setCompareMaxLengthMessage] = useState(false);
+  let [imgFullScreen, setImgFullScreen] = useState(null);
   return (
     <>
       <quickViewContext.Provider value={{ setQuickViewId }}>
@@ -84,7 +86,9 @@ export default function Home() {
             <Footer />
           </footer>
           {/* start support chat  */}
-          <SupportCat />
+          <SupportCat onShowImg={(src) => setImgFullScreen(src)} />
+          <ImgFullScreen src={imgFullScreen} onclose={() => setImgFullScreen(null)} />
+
           {/* finish support chat  */}
         </CompareContext.Provider>
       </quickViewContext.Provider>
