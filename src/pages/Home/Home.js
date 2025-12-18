@@ -88,7 +88,6 @@ export default function Home() {
           {/* start support chat  */}
           <SupportCat onShowImg={(src) => setImgFullScreen(src)} />
           <ImgFullScreen src={imgFullScreen} onclose={() => setImgFullScreen(null)} />
-
           {/* finish support chat  */}
         </CompareContext.Provider>
       </quickViewContext.Provider>

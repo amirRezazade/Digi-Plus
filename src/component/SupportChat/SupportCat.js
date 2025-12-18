@@ -3,7 +3,7 @@ import ChatBottom from "./ChatBottom";
 import { getLocal, setLocal } from "../../utils/funcs";
 import wallpaper from "../../assets/images/support-chat-wallpaper.jpg";
 export default function SupportCat({ onShowImg }) {
-  let [openChat, setOpenChat] = useState(true);
+  let [openChat, setOpenChat] = useState(false);
   let [message, setMessage] = useState("");
   let bottomRef = useRef(null);
   let [messages, setMessages] = useState(getLocal("supportMessages") || []);
@@ -25,9 +25,9 @@ export default function SupportCat({ onShowImg }) {
     const closeChat = function (e) {
       if (!e.target.closest(".support-chat") && !e.target.closest(".modal-bg")) setOpenChat(false);
     };
-    window.addEventListener("mousedown", closeChat);
+    window.addEventListener("pointerdown", closeChat);
 
-    return () => window.removeEventListener("mousedown", closeChat);
+    return () => window.removeEventListener("pointerdown", closeChat);
   }, []);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function SupportCat({ onShowImg }) {
   }
 
   return (
-    <div className={`support-chat fixed bottom-2 right-2 sm:bottom-5 md:right-8 text-sm z-1 lg:z-10 flex flex-col items-start gap-0.5   transition-all duration-400 overflow-hidden ${openChat ? "w-full h-[90dvh] xs:w-90 xs:h-130 sm:w-100  md:w-130 md:h-150 lg:w-140 xl:h-160 " : "size-13 gap-0!"}`}>
+    <div className={`support-chat fixed bottom-2 right-2 sm:bottom-5 md:right-8 text-sm z-1 lg:z-10 flex flex-col items-start gap-0.5   transition-all duration-400 overflow-hidden ${openChat ? "w-full h-[90dvh] xs:w-90 xs:h-130 sm:w-100  md:w-130 md:h-150  " : "size-13 gap-0!"}`}>
       <div className={`flex flex-col justify-between bg-white shadow-[-2px_-1px_8px_0px_#6666665c] rounded-2xl  overflow-hidden  w-[calc(100%-20px)] grow transition-all duration-500  ${openChat ? "md:m-2 " : "w-0! h-0!  opacity-0 overflow-hidden  "}`}>
         <div className="flex items-center justify-end gap-8 p-2 gradient">
           <div className=" flex items-center gap-2">

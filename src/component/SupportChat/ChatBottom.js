@@ -58,7 +58,7 @@ export default function ChatBottom({ message, onMessage, sendMessage, sendImg })
 
   return (
     <div className="flex items-center gap-1 relative px-2 py-2">
-      <button onClick={send} className="size-10 p-0.5 gradient rounded-full  focus:outline-0">
+      <button onClick={send} disabled={!message.trim().length} className="size-10 p-0.5 gradient rounded-full cursor-pointer disabled:cursor-auto focus:outline-0 disabled:opacity-60">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
