@@ -23,5 +23,8 @@ function cartTotalPrice() {
   });
   return formatted ? formatted : 0;
 }
+function calcRealPrice(price, discount) {
+  return formatedPrice(price / (1 - discount / 100));
+}
 
-export { setLocal, getLocal, cartTotalPrice, formatedPrice };
+export { setLocal, getLocal, cartTotalPrice, formatedPrice, calcRealPrice };

@@ -48,6 +48,7 @@ html {
 }
 .gray-shaddow {
   box-shadow: 0px 4px 8px 0px #6666661a;
+  /* box-shadow: 0px 4px 8px 0px #3e3e3e1a; */
 }
 .text-hover {
   @apply hover:fill-org hover:text-org transition-[color_fill] duration-300;
@@ -127,10 +128,10 @@ html {
 footer .swiper-wrapper {
   @apply min-w-[1500px]!  lg:min-w-[800px]!;
 }
-
-.epr-emoji-category.epr_2rfz9o.epr_mw4zr1 {
-  /* display: none !important; */
+.product-swiper .swiper-slide-thumb-active {
+  border-color: var(--dp-org) !important;
 }
+
 /* tailwind costumation  */
 @theme {
   --font-peyda: "peyda";
@@ -144,5 +145,6 @@ footer .swiper-wrapper {
   --color-yel: #faa3071a;
   --color-light: #fff6e7;
   --color-yel2: #f9cfb4;
+  --color-star: #faa307;
 }
 @import "tailwindcss";

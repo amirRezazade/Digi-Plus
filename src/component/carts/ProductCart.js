@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AddToShoppingCartLargeBtn from "../btns/AddToShoppingCartLargeBtn";
 import AddToFavoritesBtn from "./AddToFavoritesBtn";
 import QuickViewBtn from "./QuickViewBtn";
-import { formatedPrice } from "../../utils/funcs";
+import { calcRealPrice, formatedPrice } from "../../utils/funcs";
 import CompareBtn from "./CompareBtn";
 
 export default function ProductCart({ product }) {
@@ -15,7 +15,7 @@ export default function ProductCart({ product }) {
       <div className="min-h-27 flex flex-col justify-end pt-2 border-t border-light-gray/80">
         <div className="text-center">
           <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.discountPercentage}</span>
-          <span className="text-gray/50 line-through text-sm mx-2">${formatedPrice(product.price / (1 - product.discountPercentage / 100))}</span>
+          <span className="text-gray/50 line-through text-sm mx-2">${calcRealPrice(product.price, product.discountPercentage)}</span>
         </div>
         <p className="text-lg lg:text-xl text-center text-red font-bold mt-0.5">{formatedPrice(product.price)} $</p>
         <AddToShoppingCartLargeBtn product={product} />

@@ -3,7 +3,7 @@ import Footer from "../../component/footer/Footer";
 import Navbar from "../../component/navbar/Navbar";
 import ImgFullScreen from "../../component/SupportChat/ImgFullScreen";
 import SupportCat from "../../component/SupportChat/SupportCat";
-import ProductInfo from "./ProductInfo";
+import Main from "./Main";
 
 export default function Product() {
   let [imgFullScreen, setImgFullScreen] = useState(null);
@@ -12,8 +12,8 @@ export default function Product() {
     <>
       <Navbar />
 
-      <main className="min-h-screen">
-        <ProductInfo />
+      <main className="">
+        <Main />
       </main>
       <footer className="mt-20">
         <Footer />
