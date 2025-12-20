@@ -235,7 +235,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-3  text-sm text-gray py-5 border-t-2 border-light-gray">
-          <div className="flex flex-col lg:flex-row items-center text-nowrap">
+          <div className="flex flex-col lg:flex-row items-center text-center xs:text-nowrap">
             <div className="mb-3 lg:mb-0 lg:me-4">
               <img src={logo} alt="logo" />
             </div>

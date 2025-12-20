@@ -25,8 +25,8 @@
   font-family: peyda;
   src: url(./assets/fonts/IRANSansX-Medium.woff) format(woff);
 }
-body,
-html {
+
+body {
   font-family: peyda;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -130,6 +130,7 @@ footer .swiper-wrapper {
 }
 .product-swiper .swiper-slide-thumb-active {
   border-color: var(--dp-org) !important;
+  opacity: 100% !important;
 }
 
 /* tailwind costumation  */

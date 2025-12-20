@@ -23,16 +23,17 @@ export default function Main() {
       <header className="relative custom-container ">
         {/* bread crump */}
         <BreadCrump category={response.category} brand={response.brand} title={response.title} />
-        <div className="relative  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-5 items-center">
-          <div className="md:col-span-2">
+        <div className=" relative grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 justify-between gap-5 xl:gap-8 lg:gap-y-0 xl:items-start">
+          <div className="md:col-span-4 lg:col-span-3 xl:col-span-3">
             <ProductImagesSlider images={response.images} id={response.id} />
           </div>
-          <div className="md:col-span-1 lg:col-span-2 xl:col-span-1">
+          <div className="md:col-span-2 lg:col-span-3 xl:col-span-2">
             <ProductInfo data={response} />
           </div>
-          <div className="md:col-span-1 ">
+          <div className="md:col-span-2 lg:col-span-2 lg:order-4 xl:order-0 xl:col-span-2 lg:sticky top-4 md:mt-16 lg:mt-0 xl:mt-16 h-fit">
             <ProductBuyCart data={response} />
           </div>
+          <div className="col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5 min-h-500 bg-blue-300">{/* reviews  */}</div>
         </div>
       </header>
     )

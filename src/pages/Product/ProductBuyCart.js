@@ -5,7 +5,7 @@ export default function ProductBuyCart({ data }) {
   let [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="flex flex-col justify-between px-4 py-6 mt-8 gap-5 text-gray text-sm shadow-[0px_2px_15px_0px_#3e3e3e1a] rounded-2xl ">
+    <div className="flex flex-col justify-between px-4 py-6 mt-4 gap-5 text-gray text-sm shadow-[0px_2px_15px_0px_#3e3e3e1a] rounded-2xl ">
       <div>
         <div className="flex justify-between">
           <span>شناسه محصول:</span>

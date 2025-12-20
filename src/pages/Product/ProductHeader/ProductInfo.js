@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 export default function ProductInfo({ data }) {
   return (
-    <div className="">
-      <h1 className="text-3xl text-center py-3 border-b border-light-gray text-dark">{data.title}</h1>
+    <>
+      <h1 className="md:w-[90vw] lg:w-auto xl:w-[50vw] text-3xl text-center py-3 border-b border-light-gray text-dark">{data.title}</h1>
       <div className=" pt-6 text-gray text-sm">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 lg:gap-6">
           <div className="flex items-start gap-3">
             <span className="flex gap-1.5 fill-star">
               <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +66,6 @@ export default function ProductInfo({ data }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
