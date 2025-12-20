@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import AddToShoppingCartLargeBtn from "./../../../component/btns/AddToShoppingCartLargeBtn";
-import { calcRealPrice, formatedPrice } from "../../../utils/funcs";
 
 export default function ProductInfo({ data }) {
   return (
     <div className="">
       <h1 className="text-3xl text-center py-3 border-b border-light-gray text-dark">{data.title}</h1>
-      <div className="md:grid grid-cols-2 gap-8 pt-6 text-gray text-sm">
-        <div className="flex flex-col gap-2.5">
+      <div className=" pt-6 text-gray text-sm">
+        <div className="flex flex-col gap-4">
           <div className="flex items-start gap-3">
             <span className="flex gap-1.5 fill-star">
               <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +29,7 @@ export default function ProductInfo({ data }) {
                 <path d="M14.0251 10.845C13.7551 11.115 13.6051 11.6325 13.6951 12L14.2126 14.2575C14.4301 15.195 14.2951 15.9 13.8301 16.2375C13.6426 16.3725 13.4176 16.44 13.1551 16.44C12.7726 16.44 12.3226 16.2975 11.8276 16.005L9.6301 14.7C9.2851 14.4975 8.7151 14.4975 8.3701 14.7L6.1726 16.005C5.3401 16.4925 4.6276 16.575 4.1701 16.2375C3.9976 16.11 3.8701 15.9375 3.7876 15.7125L12.9076 6.5925C13.2526 6.2475 13.7401 6.09 14.2126 6.1725L14.9701 6.3C15.7651 6.435 16.2976 6.795 16.4701 7.32C16.6351 7.845 16.4101 8.4525 15.8401 9.0225L14.0251 10.845Z"></path>
               </svg>
             </span>
-            <span className="text-dark text-base">{data.rating}</span>
+            <span className="text-dark  text-base ">{data.rating}</span>
           </div>
           <p>
             برند:
@@ -45,45 +43,26 @@ export default function ProductInfo({ data }) {
               {data.category}
             </Link>
           </p>
-          <p className="text-justify text-base">{data.description}</p>
-          <div className="">
-            <span className="text-dark">ویژگی های محصول</span>
-            <div className="flex items-baseline gap-5 my-4">
-              <ul className="flex flex-col gap-1.5">
-                <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">وزن</li>
-                <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">طول</li>
-                <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">ارتفاع</li>
-                <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">عمق</li>
-              </ul>
-              <ul className="flex flex-col gap-1.5">
-                <li>{data.weight}</li>
-                <li>{data.dimensions.width}</li>
-                <li>{data.dimensions.height}</li>
-                <li>{data.dimensions.depth}</li>
-              </ul>
+          <p className="text-justify  xl:text-sm text-base 2xl:text-base">{data.description}</p>
+          <div className="flex justify-between items-center gap-3">
+            <div>
+              <span className="text-dark">ویژگی های محصول</span>
+              <div className="flex items-baseline gap-8 mt-4">
+                <ul className="flex flex-col gap-1.5">
+                  <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">وزن</li>
+                  <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">طول</li>
+                  <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">ارتفاع</li>
+                  <li className="relative pr-4 before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:bg-linear-210 before:from-20% before:from-[#ff5200] to-red to-30%  before:rounded-full">عمق</li>
+                </ul>
+                <ul className="flex flex-col gap-1.5 text-dark">
+                  <li>{data.weight}</li>
+                  <li>{data.dimensions.width}</li>
+                  <li>{data.dimensions.height}</li>
+                  <li>{data.dimensions.depth}</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-between gap-3 shadow-[0px_2px_15px_0px_#3e3e3e1a] rounded-2xl px-4 py-6 ">
-          <div className="flex justify-between">
-            <span>شناسه محصول:</span>
-            <span className="text-dark">{data.sku}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>گارانتی:</span>
-            <span className="text-dark">{data.warrantyInformation}</span>
-          </div>
-
-          <div className="text-end">
-            <div class="mb-1.5">
-              <span class="text-xs px-1 sm-shaddow gradient rounded text-white">%{data.discountPercentage}</span>
-              <span class="text-gray/80 line-through text-sm mx-2">${calcRealPrice(data.price, data.discountPercentage)}</span>
-            </div>
-            <p class="text-xl md:text-2xl lg:text-3xl text-red font-bold mt-0.5">{formatedPrice(data.price)} $</p>
-            <div className="border-t border-light-gray pt-3 ">
-              <AddToShoppingCartLargeBtn product={data} />
-            </div>
+            <img className="max-w-38" src={data.meta.qrCode} alt="" />
           </div>
         </div>
       </div>

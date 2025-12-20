@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ProductImagesSlider from "./ProductHeader/ProductImagesSlider";
 import BreadCrump from "./ProductHeader/BreadCrump";
 import ProductInfo from "./ProductHeader/ProductInfo";
+import ProductBuyCart from "./ProductBuyCart";
 
 export default function Main() {
   let { id } = useParams();
@@ -19,13 +20,19 @@ export default function Main() {
 
   return (
     response && (
-      <header className="custom-container">
+      <header className="relative custom-container ">
         {/* bread crump */}
         <BreadCrump category={response.category} brand={response.brand} title={response.title} />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <ProductImagesSlider images={response.images} id={response.id} />
-          <ProductInfo data={response} />
+        <div className="relative  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-5 items-center">
+          <div className="md:col-span-2">
+            <ProductImagesSlider images={response.images} id={response.id} />
+          </div>
+          <div className="md:col-span-1 lg:col-span-2 xl:col-span-1">
+            <ProductInfo data={response} />
+          </div>
+          <div className="md:col-span-1 ">
+            <ProductBuyCart data={response} />
+          </div>
         </div>
       </header>
     )
