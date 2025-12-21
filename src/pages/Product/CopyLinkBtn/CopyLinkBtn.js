@@ -23,7 +23,7 @@ export default function CopyLinkBtn() {
           </g>
         </svg>
       </button>
-      <span className="opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0 ">{isCopy ? "لینک کپی شد" : "کپی کردن لینک"}</span>
+      <span className={`${!isCopy && "opacity-0 invisible"} group-hover/item:opacity-100 group-hover/item:visible group-hover/item:left-[160%] transition-[opacity_visibility] duration-400 absolute top-1/2 -translate-y-1/2 left-[140%] bg-red text-white text-[10px] rounded px-1.5 py-0.5 text-nowrap before:absolute before:size-1.5 before:bg-red before:top-1/2 before:-translate-1/2 before:rotate-45  before:left-0`}>{isCopy ? "لینک کپی شد" : "کپی کردن لینک"}</span>
     </span>
   );
 }

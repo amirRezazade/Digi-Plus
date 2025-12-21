@@ -4,6 +4,9 @@ import ProductImagesSlider from "./ProductHeader/ProductImagesSlider";
 import BreadCrump from "./ProductHeader/BreadCrump";
 import ProductInfo from "./ProductHeader/ProductInfo";
 import ProductBuyCart from "./ProductBuyCart";
+import Tags from "./Tags";
+import Reviews from "./Reviews";
+import AddComment from "./AddComment";
 
 export default function Main() {
   let { id } = useParams();
@@ -33,7 +36,11 @@ export default function Main() {
           <div className="md:col-span-2 lg:col-span-2 lg:order-4 xl:order-0 xl:col-span-2 lg:sticky top-4 md:mt-16 lg:mt-0 xl:mt-16 h-fit">
             <ProductBuyCart data={response} />
           </div>
-          <div className="col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5 min-h-500 bg-blue-300">{/* reviews  */}</div>
+          <div className="col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5 min-h-500 mt-10">
+            <Tags tags={response.tags} />
+            <Reviews reviews={response.reviews} />
+            <AddComment />
+          </div>
         </div>
       </header>
     )

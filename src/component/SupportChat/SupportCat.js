@@ -71,8 +71,8 @@ export default function SupportCat({ onShowImg }) {
   }
 
   return (
-    <div className={`support-chat fixed bottom-2 right-2 sm:bottom-5 md:right-8 text-sm z-1 lg:z-10 flex flex-col items-start gap-0.5   transition-all duration-400 overflow-hidden ${openChat ? "w-full h-[90dvh] xs:w-90 xs:h-130 sm:w-100  md:w-130 md:h-150  " : "size-13 gap-0!"}`}>
-      <div className={`flex flex-col justify-between bg-white shadow-[-2px_-1px_8px_0px_#6666665c] rounded-2xl  overflow-hidden  w-[calc(100%-20px)] grow transition-all duration-500  ${openChat ? "md:m-2 " : "w-0! h-0!  opacity-0 overflow-hidden  "}`}>
+    <div className={`support-chat fixed bottom-2 right-2 sm:bottom-5 md:right-8 text-sm z-5 lg:z-10 flex flex-col items-start gap-0.5   transition-[width_height] duration-400 overflow-hidden ${openChat ? "w-full h-[90dvh] xs:w-90 xs:h-130 sm:w-100  md:w-130 md:h-150  p-2" : "size-13 gap-0!"}`}>
+      <div className={`flex flex-col justify-between bg-white shadow-[-2px_-1px_8px_0px_#6666665c] rounded-2xl  overflow-hidden  w-[calc(100%-20px)] grow transition-[margin_width_height_opacity] duration-500  ${openChat ? "md:m-2 " : "w-0! h-0!  opacity-0 overflow-hidden  "}`}>
         <div className="flex items-center justify-end gap-8 p-2 gradient">
           <div className=" flex items-center gap-2">
             <span className="text-white font-bold">پشتیبانی آنلاین </span>
@@ -121,7 +121,7 @@ export default function SupportCat({ onShowImg }) {
       </div>
 
       {/* open close btn  */}
-      <button onClick={() => setOpenChat(!openChat)} className={`shrink-0 cursor-pointer size-11 md:size-13 flex justify-center items-center gradient rounded-full  transition-all duration-500 `}>
+      <button onClick={() => setOpenChat(!openChat)} className={`shrink-0 cursor-pointer size-11 md:size-13 flex justify-center items-center gradient rounded-full  `}>
         <span>
           {openChat ? (
             <svg xmlns="http://www.w3.org/2000/svg" className="size-5 md:size-8" viewBox="0 0 16 24" fill="none">

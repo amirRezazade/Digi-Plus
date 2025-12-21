@@ -33,15 +33,23 @@ export default function ProductInfo({ data }) {
           </div>
           <p>
             برند:
-            <Link to={`/shop/brand=${data.brand}`} className="text-red px-2">
-              {data.brand}
-            </Link>
+            {data.brand ? (
+              <Link to={`/shop/brand=${data.brand}`} className="text-red px-2">
+                {data.brand}
+              </Link>
+            ) : (
+              <span className="px-3">-------</span>
+            )}
           </p>
           <p>
             دسته بندی:
-            <Link to={`/shop/category=${data.category}`} className="text-red px-2">
-              {data.category}
-            </Link>
+            {data.category ? (
+              <Link to={`/shop/category=${data.category}`} className="text-red px-2">
+                {data.category}
+              </Link>
+            ) : (
+              <span className="px-3">دسته بندی نشده</span>
+            )}
           </p>
           <p className="text-justify  xl:text-sm text-base 2xl:text-base">{data.description}</p>
           <div className="flex justify-between items-center gap-3">
