@@ -178,7 +178,7 @@ export default function NavbarSearchBox() {
               {response.length ? (
                 [...response].splice(0, 6).map((product) => (
                   <div key={product.id}>
-                    <Link to={`/product/id=${product.id}`} className="inline-flex items-start gap-2 fill-gray hover:text-org hover:underline hover:fill-org  px-2 ">
+                    <Link to={`/product/${product.id}`} className="inline-flex items-start gap-2 fill-gray hover:text-org hover:underline hover:fill-org  px-2 ">
                       <span className=" ">
                         <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

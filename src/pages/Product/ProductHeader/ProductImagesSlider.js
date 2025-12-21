@@ -2,9 +2,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper/modules";
 import { useState } from "react";
 import AddToFavoritesBtn from "./../../../component/carts/AddToFavoritesBtn";
+import CompareBtn from "./../../../component/carts/CompareBtn";
 import CopyLinkBtn from "../CopyLinkBtn/CopyLinkBtn";
 
-export default function ProductImagesSlider({ images, id }) {
+export default function ProductImagesSlider({ product }) {
+  let images = product.images;
+  let id = product.id;
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
@@ -13,6 +17,7 @@ export default function ProductImagesSlider({ images, id }) {
         <div className="absolute top-5 left-2  md:left-4  flex flex-col gap-1 z-2">
           <AddToFavoritesBtn id={id} />
           <CopyLinkBtn />
+          <CompareBtn product={product} />
         </div>
         {images.length > 1 ? (
           <Swiper thumbs={{ swiper: thumbsSwiper }} modules={[Thumbs]} className="max-w-full!  max-h-full" slidesPerView={1}>

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { getLocal, setLocal } from "../../utils/funcs";
 export default function CompareBtn({ product }) {
   let { compareToggle, setCompareToggle, compareMaxLengthMessage, setCompareMaxLengthMessage } = useContext(CompareContext);
+
   function addToCompare(id) {
     let compareList = getLocal("compareProducts") || [];
     let index = compareList.findIndex((item) => item.id == id);

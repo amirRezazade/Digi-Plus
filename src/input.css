@@ -69,6 +69,9 @@ body {
   background: linear-gradient(222.49deg, #dc2f02 23.91%, #ff7b00 76.09%);
   box-shadow: 0px 4px 8px 0px #dc2f0233;
 }
+.list-decration {
+  @apply before:absolute before:size-2.5 before:top-1/2 before:-translate-y-1/2 before:right-0 before:rounded-full before:bg-linear-270 before:from-red before:to-[#ff7b00];
+}
 .title-bg-text {
   @apply absolute bottom-1/2 md:bottom-[60%] left-1/2 -translate-x-1/2 -z-2 text-[26px] xs:text-3xl md:text-4xl lg:text-5xl text-nowrap font-sans tracking-[5px] font-extrabold text-shadow-[0px_-1px_3px_gray] text-white uppercase;
   &&::before {
@@ -148,4 +151,5 @@ footer .swiper-wrapper {
   --color-yel2: #f9cfb4;
   --color-star: #faa307;
 }
+
 @import "tailwindcss";
