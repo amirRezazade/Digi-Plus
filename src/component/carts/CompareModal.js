@@ -1,39 +1,40 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { formatedPrice, getLocal, setLocal } from "../../utils/funcs";
-import { CompareContext } from "../../pages/Home/Home";
 import { Link } from "react-router-dom";
 import AddToShoppingCartLargeBtn from "../btns/AddToShoppingCartLargeBtn";
 import AddToFavoritesBtn from "./AddToFavoritesBtn";
+
+import { useCompare } from "../../contexts/CompareContext";
 export default function CompareModal() {
-  let { compareToggle, setCompareToggle, compareMaxLengthMessage, setCompareMaxLengthMessage } = useContext(CompareContext);
+  let { isOpen, open, close, isMaxLength, setIsMaxLength } = useCompare();
   let [products, setProducts] = useState(getLocal("compareProducts") || []);
-  if (compareToggle) {
+  if (isOpen) {
     document.body.classList.add("body-lock");
   } else document.body.classList.remove("body-lock");
 
   useEffect(() => {
     setProducts(getLocal("compareProducts") || []);
-  }, [compareToggle]);
+  }, [isOpen]);
 
   function removeItem(id) {
     let list = getLocal("compareProducts") || [];
     let index = list.findIndex((item) => item.id == id);
-    if (compareMaxLengthMessage) {
-      list[index] = compareMaxLengthMessage;
-      setCompareMaxLengthMessage(false);
+    if (isMaxLength) {
+      list[index] = isMaxLength;
+      setIsMaxLength(false);
     } else list.splice(index, 1);
     setLocal("compareProducts", list);
     setProducts(list);
-    if (list.length == 0) setCompareToggle(false);
+    if (list.length == 0) close();
   }
 
   return (
-    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && setCompareToggle(false)} className={`modal-bg hidden-scrollbar transition-all duration-500 ${compareToggle ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
-      <div className={`mx-auto min-w-150 min-h-100 md:w-full md:max-w-[750px] md:min-h-120 lg:max-w-[850px] 2xl:max-w-[950px] mt-15 sm:mt-0 bg-white text-gray p-3 rounded-2xl grid grid-cols-13 items-stretch  divide-x divide-light-gray  relative -rotate-y-100 opacity-0  invisible transition-all duration-500 delay-100 ${compareToggle && "rotate-y-0!  opacity-100 visible"} `}>
-        <button onClick={() => setCompareToggle(false)} className="absolute right-2 bottom-[102%] text-2xl border border-light-gray rounded-lg text-light-gray cursor-pointer size-9 ">
+    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && close()} className={`modal-bg hidden-scrollbar transition-all duration-500 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+      <div className={`mx-auto min-w-150 min-h-100 md:w-full md:max-w-[750px] md:min-h-120 lg:max-w-[850px] 2xl:max-w-[950px] mt-15 sm:mt-0 bg-white text-gray p-3 rounded-2xl grid grid-cols-13 items-stretch  divide-x divide-light-gray  relative -rotate-y-100 opacity-0  invisible transition-all duration-500 delay-100 ${isOpen && "rotate-y-0!  opacity-100 visible"} `}>
+        <button onClick={() => close()} className="absolute right-2 bottom-[102%] text-2xl border border-light-gray rounded-lg text-light-gray cursor-pointer size-9 ">
           ×
         </button>
-        {compareMaxLengthMessage && <span className="bg-white px-2 py-1 absolute bottom-1/1 left-1/2 -translate-x-1/2 border-b border-light-gray rounded-t-xl text-sm text-red-600"> ابتدا یک محصول را حذف کنید!</span>}
+        {isMaxLength && <span className="bg-white px-2 py-1 absolute bottom-1/1 left-1/2 -translate-x-1/2 border-b border-light-gray rounded-t-xl text-sm text-red-600"> ابتدا یک محصول را حذف کنید!</span>}
         <div className="col-span-1 flex flex-col text-center text-xs sm:text-sm">
           <span className="grow max-h-50  flex items-center justify-center ">تصویر</span>
           <span className="h-1/9 flex items-center justify-center ">اسم</span>

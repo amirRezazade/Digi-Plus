@@ -19,7 +19,7 @@ export default function FooterSlider() {
     },
     {
       name: "Sun Glasses",
-      id: "55",
+      id: "155",
     },
     {
       name: "Monopod",

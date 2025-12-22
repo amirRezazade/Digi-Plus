@@ -4,36 +4,40 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper/modules";
 import { formatedPrice } from "../../utils/funcs";
 
-export default function ProductQuickViewModal({ productId, onQuickview }) {
+import { useQuickView } from "../../contexts/QuickViewContext";
+
+export default function ProductQuickViewModal() {
+  let { id, setId } = useQuickView();
+
   let [data, setData] = useState(null);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [isReady, setIsReady] = useState(false);
 
-  if (productId) {
+  if (id) {
     document.body.classList.add("body-lock");
   } else document.body.classList.remove("body-lock");
 
   useEffect(() => {
     setData(null);
-    if (productId) {
-      fetch(`https://dummyjson.com/products/${productId}`)
+    if (id) {
+      fetch(`https://dummyjson.com/products/${id}`)
         .then((res) => res.json())
         .then((json) => {
           setData(json);
           setTimeout(() => setIsReady(true), 300);
         });
     }
-  }, [productId]);
+  }, [id]);
   function closeModal() {
     setThumbsSwiper(null);
     setIsReady(false);
     setTimeout(() => {
-      onQuickview(null);
+      setId(null);
     }, 200);
   }
 
   return (
-    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && closeModal()} className={`modal-bg hidden-scrollbar transition-all duration-500 ${productId ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && closeModal()} className={`modal-bg hidden-scrollbar transition-all duration-500 ${id ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
       {data ? (
         <div className={`mx-auto xs:max-w-100 sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] sm:max-h-[500px] mt-15 sm:mt-0 bg-white text-gray p-3 rounded-2xl flex flex-col sm:flex-row justify-center items-stretch gap-1 md:gap-3.5 relative  -rotate-y-100 opacity-0  invisible transition-all duration-500  ${isReady && "rotate-y-0!  opacity-100 visible"}`}>
           <button onClick={closeModal} className="absolute right-2 bottom-[102%] text-2xl border border-light-gray rounded-lg text-light-gray cursor-pointer size-9 ">
@@ -110,7 +114,7 @@ export default function ProductQuickViewModal({ productId, onQuickview }) {
           </div>
         </div>
       ) : (
-        productId && (
+        id && (
           <span className="animate-spin ">
             <svg fill="#ffffff" width="64px" height="64px" viewBox="-1.5 0 19 19" xmlns="http://www.w3.org/2000/svg" className="cf-icon-svg">
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

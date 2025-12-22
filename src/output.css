@@ -2252,13 +2252,6 @@ footer .swiper-wrapper {
       height: calc(var(--spacing) * 1.5);
     }
   }
-  .before\:size-2\.5 {
-    &::before {
-      content: var(--tw-content);
-      width: calc(var(--spacing) * 2.5);
-      height: calc(var(--spacing) * 2.5);
-    }
-  }
   .before\:h-1 {
     &::before {
       content: var(--tw-content);

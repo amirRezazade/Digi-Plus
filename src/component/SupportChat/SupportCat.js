@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import ChatBottom from "./ChatBottom";
 import { getLocal, setLocal } from "../../utils/funcs";
 import wallpaper from "../../assets/images/support-chat-wallpaper.jpg";
-export default function SupportCat({ onShowImg }) {
+import { useImgFullScreen } from "../../contexts/ImgFullScreenContext";
+export default function SupportCat() {
+  let { setImages } = useImgFullScreen();
+
   let [openChat, setOpenChat] = useState(false);
   let [message, setMessage] = useState("");
   let bottomRef = useRef(null);
@@ -108,7 +111,7 @@ export default function SupportCat({ onShowImg }) {
                 </li>
               ) : (
                 <li key={index + mes} className=" me-auto rounded-t-2xl rounded-b-lg max-w-8/10 text-dark bg-light-gray/60 ">
-                  <img onClick={() => onShowImg(mes.img)} className="rounded-t-2xl object-cover cursor-pointer" src={mes.img} alt="img" />
+                  <img onClick={() => setImages([mes.img])} className="rounded-t-2xl object-cover cursor-pointer" src={mes.img} alt="img" />
                   <span className="text-[10px] select-none text-gray text-start px-3">{mes.date}</span>
                 </li>
               )

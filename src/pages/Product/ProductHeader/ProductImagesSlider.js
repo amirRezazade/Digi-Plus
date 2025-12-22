@@ -4,10 +4,13 @@ import { useState } from "react";
 import AddToFavoritesBtn from "./../../../component/carts/AddToFavoritesBtn";
 import CompareBtn from "./../../../component/carts/CompareBtn";
 import CopyLinkBtn from "../CopyLinkBtn/CopyLinkBtn";
+import { useImgFullScreen } from "../../../contexts/ImgFullScreenContext";
 
 export default function ProductImagesSlider({ product }) {
   let images = product.images;
   let id = product.id;
+
+  let { setImages, setIndex } = useImgFullScreen();
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -16,20 +19,28 @@ export default function ProductImagesSlider({ product }) {
       <div className="max-w-full max-h-full lg:mt-0 xl:mt-8 shadow-[0px_0px_15px_0px_#3e3e3e1a] border border-light-gray/80 rounded-3xl relative">
         <div className="absolute top-5 left-2  md:left-4  flex flex-col gap-1 z-2">
           <AddToFavoritesBtn id={id} />
-          <CopyLinkBtn />
           <CompareBtn product={product} />
+          <CopyLinkBtn />
         </div>
         {images.length > 1 ? (
           <Swiper thumbs={{ swiper: thumbsSwiper }} modules={[Thumbs]} className="max-w-full!  max-h-full" slidesPerView={1}>
-            {images.map((img) => (
+            {images.map((img, i) => (
               <SwiperSlide className="">
-                <img className="object-contain mx-auto w-full max-w-125!" src={img} alt="img-slider" />
+                <img
+                  onClick={() => {
+                    setImages(images);
+                    setIndex(i);
+                  }}
+                  className="object-contain mx-auto w-full max-w-125! cursor-pointer"
+                  src={img}
+                  alt="img-slider"
+                />
               </SwiperSlide>
             ))}
           </Swiper>
         ) : (
           <div>
-            <img src={images[0]} alt="" />
+            <img className="cursor-pointer" onClick={() => setImages([images[0]])} src={images[0]} alt="" />
           </div>
         )}
       </div>

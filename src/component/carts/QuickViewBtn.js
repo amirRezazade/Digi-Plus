@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { quickViewContext } from "../../pages/Home/Home";
+import { useQuickView } from "../../contexts/QuickViewContext.js";
 
 export default function QuickViewBtn({ id }) {
-  let { setQuickViewId } = useContext(quickViewContext);
+  let { setId } = useQuickView();
 
   return (
-    <button onClick={() => setQuickViewId(id)} className="p-1 cursor-pointer relative group/item">
+    <button onClick={() => setId(id)} className="p-1 cursor-pointer relative group/item">
       <span className="stroke-gray hover:stroke-org fill-white">
         <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
