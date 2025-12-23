@@ -131,6 +131,10 @@ body {
 footer .swiper-wrapper {
   @apply min-w-[1500px]!  lg:min-w-[800px]!;
 }
+.product-swiper .swiper-wrapper {
+  width: fit-content !important;
+  margin-inline: auto !important ;
+}
 .product-swiper .swiper-slide-thumb-active {
   border-color: var(--dp-org) !important;
   opacity: 100% !important;

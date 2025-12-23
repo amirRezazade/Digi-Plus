@@ -13,6 +13,7 @@ export default function Main() {
   let [response, setResponse] = useState(null);
 
   useEffect(() => {
+    setResponse(null);
     if (id) {
       fetch(`https://dummyjson.com/products/${id}`)
         .then((res) => res.json())
@@ -20,8 +21,9 @@ export default function Main() {
     }
   }, [id]);
 
-  return (
-    response && (
+  if (!response) return <h1>loading...</h1>;
+  else {
+    return (
       <main className="relative custom-container ">
         {/* bread crump */}
         <BreadCrump category={response.category} brand={response.brand} title={response.title} />
@@ -42,6 +44,6 @@ export default function Main() {
           </div>
         </div>
       </main>
-    )
-  );
+    );
+  }
 }
