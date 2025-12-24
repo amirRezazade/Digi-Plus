@@ -84,7 +84,7 @@ export default function AddComment() {
           <textarea maxLength={200} className="border border-light-gray outline-0 rounded-lg block w-full my-3 p-2 min-h-30 max-h-80" id="text"></textarea>
         </div>
         <div className="md:flex justify-between gap-5  mt-7">
-          <div className="grow max-w-1/2 flex justify-between items-start gap-3">
+          <div className="grow md:max-w-1/2 flex justify-between items-center md:items-start gap-3 my-4 md:my-0">
             <span>نکات مثبت:</span>
             <div className="grow border border-light-gray p-3 rounded-lg">
               <ul ref={positiveRef} className="flex flex-col gap-3">
@@ -97,7 +97,7 @@ export default function AddComment() {
               </button>
             </div>
           </div>
-          <div className="grow max-w-1/2 flex justify-between items-start gap-3">
+          <div className="grow md:max-w-1/2 flex justify-between items-center md:items-start gap-3 my-4 md:my-0">
             <span>نکات منفی:</span>
             <div className="grow border border-light-gray p-3 rounded-lg">
               <ul ref={negativeRef} className="flex flex-col gap-3">

@@ -9,7 +9,7 @@ export default function ProductInfo({ data }) {
           <div className="flex items-center gap-3">
             امتیاز:
             <span
-              className="flex gap-1.5 text-transparent text-3xl relative"
+              className="flex gap-1.5 text-transparent text-3xl relative select-none"
               style={{
                 background: `linear-gradient(
           90deg,
