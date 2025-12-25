@@ -4,7 +4,7 @@ export default function Filter({ product, params, onParams }) {
   let [open, setOpen] = useState(null);
   const topBrands = ["Apple", "Samsung", "Nike", "Gucci", "Chanel", "Dior", "Prada", "Rolex", "Dell", "Asus"];
   const categories = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"];
-  let filtersLength = params.brands.length + params.categories.length;
+  let filtersLength = params.brands.length + params.categories.length + (params.minRating ? 1 : 0);
   function toggleBrand(brand) {
     onParams((prev) => {
       const exist = params.brands?.includes(brand);
@@ -30,6 +30,7 @@ export default function Filter({ product, params, onParams }) {
         brands: [],
         categories: [],
         minPrice: null,
+        minRating: null,
       };
     });
   }
@@ -38,6 +39,14 @@ export default function Filter({ product, params, onParams }) {
       return {
         ...prev,
         q: value.trim().toLowerCase(),
+      };
+    });
+  }
+  function setMinRating(value) {
+    onParams((prev) => {
+      return {
+        ...prev,
+        minRating: !value ? null : value,
       };
     });
   }
@@ -167,6 +176,17 @@ export default function Filter({ product, params, onParams }) {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+        <div className="  py-2">
+          <span>
+            کمترین امتیاز: <span className="text-org font-bold">{params.minRating || 0}</span>
+          </span>
+          <div className="flex items-center justify-between gap-2 mt-2">
+            <span>5</span>
+            <input dir="ltr" className="rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={params.minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} />
+
+            <span>0</span>
           </div>
         </div>
       </div>

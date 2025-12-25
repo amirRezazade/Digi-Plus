@@ -44,6 +44,40 @@ body {
   background: var(--color-red);
 }
 
+.test::-webkit-slider-runnable-track {
+  height: 6px;
+  /* background: red; خاکستری */
+  border-radius: 100%;
+}
+.rating-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(264.86deg, #ff7b00 0%, #dc2f02 100%);
+  border-radius: 20px;
+  height: 6px;
+}
+.rating-range-input::-moz-range-track {
+  height: 6px;
+  background: linear-gradient(264.86deg, #ff7b00 0%, #dc2f02 100%);
+  border-radius: 20px;
+}
+.rating-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  background: url("https://www.svgrepo.com/show/396569/glowing-star.svg") center / contain no-repeat;
+  cursor: pointer;
+  margin-top: -5px;
+}
+.rating-range-input::-moz-range-thumb {
+  height: 25px;
+  width: 25px;
+  background: url("https://www.svgrepo.com/show/396569/glowing-star.svg") center / contain no-repeat;
+  margin-top: -5px;
+  border: none;
+  cursor: pointer;
+}
+
 /* custom class */
 .custom-container {
   @apply mx-3 xs:mx-5 sm:mx-7  md:mx-10 lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px];
