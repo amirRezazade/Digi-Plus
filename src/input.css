@@ -31,6 +31,18 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-org);
+  border-radius: 20px;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-red);
+}
 
 /* custom class */
 .custom-container {

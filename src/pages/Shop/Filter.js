@@ -1,9 +1,46 @@
 import { useState } from "react";
 
-export default function Filter({ product }) {
-  const topBrands = ["Apple", "Samsung", "Nike", "Gucci", "Chanel", "Dior", "Prada", "Rolex", "Dell", "Asus"];
-
+export default function Filter({ product, params, onParams }) {
   let [open, setOpen] = useState(null);
+  const topBrands = ["Apple", "Samsung", "Nike", "Gucci", "Chanel", "Dior", "Prada", "Rolex", "Dell", "Asus"];
+  const categories = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"];
+  let filtersLength = params.brands.length + params.categories.length;
+  function toggleBrand(brand) {
+    onParams((prev) => {
+      const exist = params.brands?.includes(brand);
+      return {
+        ...prev,
+        brands: exist ? prev.brands?.filter((b) => b !== brand) : [...prev.brands, brand],
+      };
+    });
+  }
+  function toggleCategory(category) {
+    onParams((prev) => {
+      const exist = params.categories?.includes(category);
+      return {
+        ...prev,
+        categories: exist ? prev.categories?.filter((b) => b !== category) : [...prev.categories, category],
+      };
+    });
+  }
+  function resetFilters() {
+    onParams((prev) => {
+      return {
+        ...prev,
+        brands: [],
+        categories: [],
+        minPrice: null,
+      };
+    });
+  }
+  function toggleQuery(value) {
+    onParams((prev) => {
+      return {
+        ...prev,
+        q: value.trim().toLowerCase(),
+      };
+    });
+  }
 
   return (
     <div className="rounded-2xl border-light-gray border gray-shaddow p-4 text-sm text-gray">
@@ -19,11 +56,74 @@ export default function Filter({ product }) {
           </svg>
         </span>
         <span className="text-dark ">فیلتر ها</span>
+        {filtersLength !== 0 && (
+          <button onClick={() => resetFilters()} className="flex items-center gap-2 rounded-full py-1 px-3.5 border border-org bg-light  ms-auto text-org fill-org text-xs cursor-pointer">
+            <span>
+              <span>{filtersLength}</span> فیلتر
+            </span>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                <path d="M7.16172 8C6.94935 8 6.73699 7.92176 6.56933 7.7541L0.243102 1.42787C-0.0810339 1.10374 -0.0810339 0.567237 0.243102 0.243102C0.567237 -0.0810339 1.10374 -0.0810339 1.42787 0.243102L7.7541 6.56933C8.07824 6.89347 8.07824 7.42997 7.7541 7.7541C7.58645 7.92176 7.37408 8 7.16172 8Z"></path>
+                <path d="M0.835487 8C0.623122 8 0.410758 7.92176 0.243102 7.7541C-0.0810339 7.42997 -0.0810339 6.89347 0.243102 6.56933L6.56933 0.243102C6.89347 -0.0810339 7.42997 -0.0810339 7.7541 0.243102C8.07824 0.567237 8.07824 1.10374 7.7541 1.42787L1.42787 7.7541C1.27139 7.92176 1.04785 8 0.835487 8Z"></path>
+              </svg>
+            </span>
+          </button>
+        )}
       </div>
-
+      {/* search input  */}
+      <div className="mt-2">
+        <input onInput={(e) => toggleQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q} />
+      </div>
       <div className="flex flex-col gap-3 py-5">
-        <div className={`${open == "brand" ? "max-h-100" : "max-h-12.5 "} transition-[max-height] duration-500 overflow-hidden `}>
-          <div onClick={() => setOpen((prev) => (prev == "brand" ? null : "brand"))} className={`flex items-center justify-between gap-3 p-2 rounded-full border border-light-gray ${open == "brand" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
+        <div className={`${open == "category" ? "max-h-100" : "max-h-12.5 "} flex flex-col transition-[max-height] duration-500 overflow-hidden `}>
+          <div onClick={() => setOpen((prev) => (prev == "category" ? null : "category"))} className={`flex items-center justify-between gap-3 p-2 rounded-full cursor-pointer border border-light-gray ${open == "category" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
+            <span className={`${open == "category" ? "bg-white" : "gradient"} size-8 flex justify-center items-center rounded-full `}>
+              <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path opacity="0.4" d="M18.6695 2H16.7695C14.5895 2 13.4395 3.15 13.4395 5.33V7.23C13.4395 9.41 14.5895 10.56 16.7695 10.56H18.6695C20.8495 10.56 21.9995 9.41 21.9995 7.23V5.33C21.9995 3.15 20.8495 2 18.6695 2Z"></path> <path opacity="0.4" d="M7.24 13.4302H5.34C3.15 13.4302 2 14.5802 2 16.7602V18.6602C2 20.8502 3.15 22.0002 5.33 22.0002H7.23C9.41 22.0002 10.56 20.8502 10.56 18.6702V16.7702C10.57 14.5802 9.42 13.4302 7.24 13.4302Z"></path>
+                  <path d="M6.29 10.58C8.6593 10.58 10.58 8.6593 10.58 6.29C10.58 3.9207 8.6593 2 6.29 2C3.9207 2 2 3.9207 2 6.29C2 8.6593 3.9207 10.58 6.29 10.58Z"></path> <path d="M17.7099 21.9999C20.0792 21.9999 21.9999 20.0792 21.9999 17.7099C21.9999 15.3406 20.0792 13.4199 17.7099 13.4199C15.3406 13.4199 13.4199 15.3406 13.4199 17.7099C13.4199 20.0792 15.3406 21.9999 17.7099 21.9999Z"></path>
+                </g>
+              </svg>
+            </span>
+            <span className="me-auto">دسته بندی ها</span>
+            <span className={` transition-transform duration-400 ${open == "category" ? "rotate-90 fill-white" : "-rotate-90 fill-red"}`}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 22 16">
+                <path d="M12.6542 15.0209L6.50534 8.68754C6.2819 8.49587 6.18737 8.24587 6.18737 8.00004C6.18737 7.75421 6.28139 7.50504 6.46933 7.31254L12.6542 0.979206C13.0495 0.577956 13.7026 0.561289 14.1151 0.940039C14.5319 1.32046 14.5448 1.95587 14.1538 2.35421L8.64089 8.00004L14.1581 13.6459C14.5488 14.0443 14.5341 14.6771 14.1178 15.06C13.7026 15.4375 13.0495 15.4209 12.6542 15.0209Z"></path>
+              </svg>
+            </span>
+          </div>
+          <div className={`grow overflow-y-auto  p-2 border border-light-gray rounded-2xl my-2 transition-all duration-300`}>
+            <div className="flex flex-wrap gap-1 text-xs text-org fill-org">
+              {params.categories.map((c) => (
+                <button key={c} onClick={() => toggleCategory(c)} className="flex items-center gap-1 cursor-pointer rounded-full border border-org px-1 py-0.5 hover:bg-light">
+                  {c}
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                      <path d="M7.16172 8C6.94935 8 6.73699 7.92176 6.56933 7.7541L0.243102 1.42787C-0.0810339 1.10374 -0.0810339 0.567237 0.243102 0.243102C0.567237 -0.0810339 1.10374 -0.0810339 1.42787 0.243102L7.7541 6.56933C8.07824 6.89347 8.07824 7.42997 7.7541 7.7541C7.58645 7.92176 7.37408 8 7.16172 8Z"></path>
+                      <path d="M0.835487 8C0.623122 8 0.410758 7.92176 0.243102 7.7541C-0.0810339 7.42997 -0.0810339 6.89347 0.243102 6.56933L6.56933 0.243102C6.89347 -0.0810339 7.42997 -0.0810339 7.7541 0.243102C8.07824 0.567237 8.07824 1.10374 7.7541 1.42787L1.42787 7.7541C1.27139 7.92176 1.04785 8 0.835487 8Z"></path>
+                    </svg>
+                  </span>
+                </button>
+              ))}
+            </div>
+            <span className="py-2 hidden  md:block">دسته بندی ها</span>
+            <div className=" pl-2 overflow-auto">
+              {categories.map((cat) => (
+                <div key={cat} className="py-1">
+                  <label className="flex items-center gap-2 cursor-pointer px-2 py-1.5 rounded-full border border-light-gray has-checked:bg-yel has-checked:border-org/50 has-checked:text-org hover:border-org/50 hover:text-org transition-colors duration-300 " htmlFor={cat}>
+                    <input className="peer" type="checkbox" id={cat} hidden onChange={() => toggleCategory(cat)} checked={params.categories.includes(cat.toLowerCase())} />
+                    <span className="size-6 border border-light-gray rounded-2xl bg-white peer-checked:bg-org peer-checked:border-org bg-no-repeat bg-center peer-checked:bg-[url(https://digiplus.aet-web.ir/wp-content/themes/Digiplus/assets/img/dpshoptick.svg)] transition-colors duration-300"></span>
+                    {cat}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className={`${open == "brand" ? "max-h-100" : "max-h-12.5 "} flex flex-col transition-[max-height] duration-500 overflow-hidden `}>
+          <div onClick={() => setOpen((prev) => (prev == "brand" ? null : "brand"))} className={`flex items-center justify-between gap-3 p-2 rounded-full cursor-pointer border border-light-gray ${open == "brand" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
             <span className={`${open == "brand" ? "bg-white" : "gradient"} size-8 flex justify-center items-center rounded-full `}>
               <svg width="18" height="18" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -41,55 +141,31 @@ export default function Filter({ product }) {
               </svg>
             </span>
           </div>
-          <div className={` p-3 border border-light-gray rounded-2xl my-2 transition-all duration-300`}>
-            <span className="py-2 block">برند ها</span>
-            <div className="max-h-73 py-3  pl-2 overflow-auto">
+          <div className={`grow overflow-y-auto p-2 border border-light-gray rounded-2xl my-2 transition-all duration-300`}>
+            <div className="flex flex-wrap gap-1 text-xs text-org fill-org">
+              {params.brands.map((b) => (
+                <button key={b} onClick={() => toggleBrand(b)} className="flex items-center gap-1 cursor-pointer rounded-full border border-org px-1 py-0.5 hover:bg-light">
+                  {b}
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                      <path d="M7.16172 8C6.94935 8 6.73699 7.92176 6.56933 7.7541L0.243102 1.42787C-0.0810339 1.10374 -0.0810339 0.567237 0.243102 0.243102C0.567237 -0.0810339 1.10374 -0.0810339 1.42787 0.243102L7.7541 6.56933C8.07824 6.89347 8.07824 7.42997 7.7541 7.7541C7.58645 7.92176 7.37408 8 7.16172 8Z"></path>
+                      <path d="M0.835487 8C0.623122 8 0.410758 7.92176 0.243102 7.7541C-0.0810339 7.42997 -0.0810339 6.89347 0.243102 6.56933L6.56933 0.243102C6.89347 -0.0810339 7.42997 -0.0810339 7.7541 0.243102C8.07824 0.567237 8.07824 1.10374 7.7541 1.42787L1.42787 7.7541C1.27139 7.92176 1.04785 8 0.835487 8Z"></path>
+                    </svg>
+                  </span>
+                </button>
+              ))}
+            </div>
+            <span className="py-2 hidden  md:block">برند ها</span>
+            <div className="pl-2 overflow-auto">
               {topBrands.map((b) => (
                 <div key={b} className="py-1">
                   <label className="flex items-center gap-2 cursor-pointer px-2 py-1.5 rounded-full border border-light-gray has-checked:bg-yel has-checked:border-org/50 has-checked:text-org hover:border-org/50 hover:text-org transition-colors duration-300 " htmlFor={b}>
-                    <input className="peer" type="checkbox" id={b} hidden />
+                    <input className="peer" type="checkbox" id={b} hidden onChange={() => toggleBrand(b.toLowerCase())} checked={params.brands?.includes(b.toLowerCase())} />
                     <span className="size-6 border border-light-gray rounded-2xl bg-white peer-checked:bg-org peer-checked:border-org bg-no-repeat bg-center peer-checked:bg-[url(https://digiplus.aet-web.ir/wp-content/themes/Digiplus/assets/img/dpshoptick.svg)] transition-colors duration-300"></span>
                     {b}
                   </label>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-        <div className={`${open == "category" ? "max-h-60" : "max-h-12.5 "} transition-[max-height] duration-500 overflow-hidden`}>
-          <div onClick={() => setOpen((prev) => (prev == "category" ? null : "category"))} className="flex items-center justify-between gap-3 p-2 rounded-full border border-light-gray ">
-            <span className="gradient size-8 flex justify-center items-center rounded-full stroke-white fill-white">
-              <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path opacity="0.34" d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                  <path opacity="0.34" d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                </g>
-              </svg>
-            </span>
-            <span className="me-auto">دسته بندی ها</span>
-            <span className="fill-red -rotate-90">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 22 16">
-                <path d="M12.6542 15.0209L6.50534 8.68754C6.2819 8.49587 6.18737 8.24587 6.18737 8.00004C6.18737 7.75421 6.28139 7.50504 6.46933 7.31254L12.6542 0.979206C13.0495 0.577956 13.7026 0.561289 14.1151 0.940039C14.5319 1.32046 14.5448 1.95587 14.1538 2.35421L8.64089 8.00004L14.1581 13.6459C14.5488 14.0443 14.5341 14.6771 14.1178 15.06C13.7026 15.4375 13.0495 15.4209 12.6542 15.0209Z"></path>
-              </svg>
-            </span>
-          </div>
-          <div className={` p-3 border border-light-gray rounded-2xl my-2 transition-all duration-300`}>
-            <span>برند ها</span>
-            <div className="py-1">
-              <label className="flex items-center gap-2 cursor-pointer px-2 py-1.5 rounded-full border border-light-gray has-checked:bg-yel has-checked:border-org/50 has-checked:text-org hover:border-org/50 hover:text-org transition-colors duration-300 " htmlFor="brand">
-                <input className="peer" type="checkbox" id="brand" hidden />
-                <span className="size-6 border border-light-gray rounded-2xl bg-white peer-checked:bg-org peer-checked:border-org bg-no-repeat bg-center peer-checked:bg-[url(https://digiplus.aet-web.ir/wp-content/themes/Digiplus/assets/img/dpshoptick.svg)] transition-colors duration-300"></span>
-                sd
-              </label>
-            </div>
-            <div className="py-1">
-              <label className="flex items-center gap-2 cursor-pointer px-2 py-1.5 rounded-full border border-light-gray has-checked:bg-yel has-checked:border-org/50 has-checked:text-org hover:border-org/50 hover:text-org transition-colors duration-300 " htmlFor="brand">
-                <input className="peer" type="checkbox" id="brand" hidden />
-                <span className="size-6 border border-light-gray rounded-2xl bg-white peer-checked:bg-org peer-checked:border-org bg-no-repeat bg-center peer-checked:bg-[url(https://digiplus.aet-web.ir/wp-content/themes/Digiplus/assets/img/dpshoptick.svg)] transition-colors duration-300"></span>
-                sd
-              </label>
             </div>
           </div>
         </div>
