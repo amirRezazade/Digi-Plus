@@ -44,11 +44,43 @@ body {
   background: var(--color-red);
 }
 
-.test::-webkit-slider-runnable-track {
+.test {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border-radius: 20px;
   height: 6px;
-  /* background: red; خاکستری */
-  border-radius: 100%;
 }
+.min {
+  background: linear-gradient(264.86deg, #dc2f02 0%, #ff7b00 100%);
+}
+.test::-webkit-slider-thumb {
+  pointer-events: auto;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #f59e0b;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.test::-webkit-slider-runnable-track {
+  height: 100%;
+  /* background: #e5e7eb; */
+  border-radius: 999px;
+}
+.test::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  background: url("https://www.svgrepo.com/show/134144/dollar-symbol.svg") center / contain no-repeat;
+  cursor: pointer;
+  margin-top: -10px;
+}
+/* .range-max::-webkit-slider-runnable-track {
+  background: none;
+} */
 .rating-range-input {
   -webkit-appearance: none;
   appearance: none;

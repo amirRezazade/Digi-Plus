@@ -7,11 +7,12 @@ export default function Search() {
   let [filteredProducts, setFilteredProducts] = useState(null);
   let [searchParams, setSearchParams] = useSearchParams();
   let [params, setParams] = useState({
-    brands: searchParams.get("brand")?.split("-") || [],
-    categories: searchParams.get("categories")?.split("-") || [],
+    brands: searchParams.get("brand")?.toLocaleLowerCase().split("-") || [],
+    categories: searchParams.get("categories")?.toLocaleLowerCase().split("-") || [],
     minPrice: searchParams.get("minPrice"),
-    sort: searchParams.get("sort"),
-    q: searchParams.get("q") || null,
+    maxPrice: searchParams.get("maxPrice"),
+    sort: searchParams.get("sort")?.toLocaleLowerCase(),
+    q: searchParams.get("q")?.toLocaleLowerCase() || null,
     minRating: searchParams.get("minRating") || null,
   });
   console.log(params);
@@ -31,6 +32,7 @@ export default function Search() {
     if (params.brands.length) list = list.filter((p) => params.brands.includes(p.brand?.toLowerCase()));
     if (params.categories.length) list = list.filter((p) => params.categories.includes(p.category?.toLowerCase()));
     if (params.maxPrice) list = list.filter((p) => p.price < params.maxPrice || p.price == params.maxPrice);
+    if (params.minPrice) list = list.filter((p) => p.price > params.minPrice || p.price == params.minPrice);
     if (params.minRating) list = list.filter((p) => Number(p.rating) > Number(params.minRating) || Number(p.rating) == Number(params.minRating));
     if (params.q) {
       list = list.filter((p) => {
@@ -38,6 +40,7 @@ export default function Search() {
         return text.includes(normalize(params.q));
       });
     }
+    console.log(list);
     setFilteredProducts(list);
   }, [params, products]);
 
@@ -57,6 +60,12 @@ export default function Search() {
     }
     if (params.minRating) {
       sp.set("minRating", params.minRating);
+    }
+    if (params.minPrice) {
+      sp.set("minPrice", params.minPrice);
+    }
+    if (params.maxPrice < 30000) {
+      sp.set("maxPrice", params.maxPrice);
     }
 
     setSearchParams(sp, { replace: true });

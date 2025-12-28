@@ -43,9 +43,37 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-red);
 }
-.test::-webkit-slider-runnable-track {
+.test {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border-radius: 20px;
   height: 6px;
-  border-radius: 100%;
+}
+.min {
+  background: linear-gradient(264.86deg, #dc2f02 0%, #ff7b00 100%);
+}
+.test::-webkit-slider-thumb {
+  pointer-events: auto;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #f59e0b;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+}
+.test::-webkit-slider-runnable-track {
+  height: 100%;
+  border-radius: 999px;
+}
+.test::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  background: url("https://www.svgrepo.com/show/134144/dollar-symbol.svg") center / contain no-repeat;
+  cursor: pointer;
+  margin-top: -10px;
 }
 .rating-range-input {
   -webkit-appearance: none;
@@ -457,6 +485,7 @@ footer .swiper-wrapper {
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
   --color-red-600: oklch(57.7% 0.245 27.325);
+  --color-amber-700: oklch(55.5% 0.163 48.998);
   --color-yellow-400: oklch(85.2% 0.199 91.936);
   --color-lime-400: oklch(84.1% 0.238 128.85);
   --color-neutral-400: oklch(70.8% 0 0);
@@ -1027,6 +1056,9 @@ footer .swiper-wrapper {
   .h-1 {
     height: calc(var(--spacing) * 1);
   }
+  .h-1\.5 {
+    height: calc(var(--spacing) * 1.5);
+  }
   .h-1\/9 {
     height: calc(1/9 * 100%);
   }
@@ -1237,6 +1269,12 @@ footer .swiper-wrapper {
   .w-screen {
     width: 100vw;
   }
+  .max-w-1 {
+    max-width: calc(var(--spacing) * 1);
+  }
+  .max-w-1\/4 {
+    max-width: calc(1/4 * 100%);
+  }
   .max-w-7 {
     max-width: calc(var(--spacing) * 7);
   }
@@ -1279,11 +1317,20 @@ footer .swiper-wrapper {
   .max-w-\[45\%\] {
     max-width: 45%;
   }
+  .max-w-fit {
+    max-width: fit-content;
+  }
   .max-w-full {
     max-width: 100%;
   }
   .max-w-full\! {
     max-width: 100% !important;
+  }
+  .min-w-1 {
+    min-width: calc(var(--spacing) * 1);
+  }
+  .min-w-1\/4 {
+    min-width: calc(1/4 * 100%);
   }
   .min-w-53 {
     min-width: calc(var(--spacing) * 53);
@@ -1402,6 +1449,9 @@ footer .swiper-wrapper {
   }
   .resize {
     resize: both;
+  }
+  .appearance-none {
+    appearance: none;
   }
   .columns-4 {
     columns: 4;
@@ -1651,6 +1701,12 @@ footer .swiper-wrapper {
     --tw-border-style: dashed;
     border-style: dashed;
   }
+  .border-gray {
+    border-color: var(--color-gray);
+  }
+  .border-light {
+    border-color: var(--color-light);
+  }
   .border-light-gray {
     border-color: var(--color-light-gray);
   }
@@ -1773,6 +1829,9 @@ footer .swiper-wrapper {
   }
   .bg-\[url\(\.\.\/src\/assets\/images\/bg-images\/bg-line-vertical\.png\)\] {
     background-image: url(../src/assets/images/bg-images/bg-line-vertical.png);
+  }
+  .bg-none {
+    background-image: none;
   }
   .from-\[\#DC2F02\] {
     --tw-gradient-from: #DC2F02;
@@ -2148,6 +2207,9 @@ footer .swiper-wrapper {
   }
   .underline {
     text-decoration-line: underline;
+  }
+  .accent-amber-700 {
+    accent-color: var(--color-amber-700);
   }
   .opacity-0 {
     opacity: 0%;

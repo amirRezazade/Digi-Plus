@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function Filter({ product, params, onParams }) {
   let [open, setOpen] = useState(null);
+  let [price, setPrice] = useState({ min: params.minPrice || 0, max: params.maxPrice || 30000 });
   const topBrands = ["Apple", "Samsung", "Nike", "Gucci", "Chanel", "Dior", "Prada", "Rolex", "Dell", "Asus"];
   const categories = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"];
   let filtersLength = params.brands.length + params.categories.length + (params.minRating ? 1 : 0);
@@ -47,6 +48,29 @@ export default function Filter({ product, params, onParams }) {
       return {
         ...prev,
         minRating: !value ? null : value,
+      };
+    });
+  }
+
+  const handleMinChange = (value) => {
+    setPrice((p) => ({
+      max: p.max < p.min + 1000 ? p.min + 1000 : p.max,
+      min: value > 29000 ? 29000 : value,
+    }));
+  };
+
+  const handleMaxChange = (value) => {
+    setPrice((p) => ({
+      min: p.min > p.max - 1000 ? p.max - 1000 : p.min,
+      max: value < 1000 ? 1000 : value,
+    }));
+  };
+  function filterPrice() {
+    onParams((prev) => {
+      return {
+        ...prev,
+        minPrice: price.min < 0 ? 0 : price.min,
+        maxPrice: price.max > 30000 ? 30000 : price.max,
       };
     });
   }
@@ -185,6 +209,24 @@ export default function Filter({ product, params, onParams }) {
           <div className="flex items-center justify-between gap-2 mt-2">
             <span>5</span>
             <input dir="ltr" className="rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={params.minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} />
+
+            <span>0</span>
+          </div>
+        </div>
+        <div className="  py-2">
+          <span>قیمت:</span>
+          <div className="flex items-center justify-between gap-3 mt-2">
+            <span>از</span>
+            <input className="grow min-w-1/4 px-2 py-1.5 rounded-full border border-gray outline-0 appearance-none" type="number" value={price.min} onChange={(e) => handleMinChange(e.target.value || 0)} />
+            <span>تا</span>
+            <input className="grow min-w-1/4 px-2 py-1.5 rounded-full border border-gray outline-0 appearance-none" type="number" value={price.max} onChange={(e) => handleMaxChange(e.target.value)} />
+          </div>
+          <div className="flex items-center justify-between gap-2 mt-3">
+            <span>30000</span>
+            <div className="grow relative h-1.5 ">
+              <input dir="ltr" className="test min absolute h-full w-full pointer-events-none appearance-none bg-none " type="range" min={0} step={1} max={30000} value={price.min} onChange={(e) => handleMinChange(+e.target.value)} onPointerUp={filterPrice} />
+              <input dir="ltr" className="test range-max absolute h-full w-full pointer-events-none appearance-none bg-none " type="range" min={0} step={1} max={30000} value={price.max} onChange={(e) => handleMaxChange(+e.target.value)} onPointerUp={filterPrice} />
+            </div>
 
             <span>0</span>
           </div>
