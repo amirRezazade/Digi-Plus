@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-export default function Filter({ product, params, onParams }) {
+export default function FilteringForm({ product, params, onParams }) {
+  const maxProductPrice = 40000;
+
   let [open, setOpen] = useState(null);
-  let [price, setPrice] = useState({ min: params.minPrice || 0, max: params.maxPrice || 30000 });
+  let [price, setPrice] = useState({ min: params.minPrice || 0, max: params.maxPrice || maxProductPrice });
   const topBrands = ["Apple", "Samsung", "Nike", "Gucci", "Chanel", "Dior", "Prada", "Rolex", "Dell", "Asus"];
   const categories = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"];
-  let filtersLength = params.brands.length + params.categories.length + (params.minRating ? 1 : 0);
+  let filtersLength = params.brands.length + params.categories.length + (params.minDiscount ? 1 : 0) + (params.minRating ? 1 : 0) + (params.minPrice > 0 ? 1 : 0) + (params.maxPrice && params.maxPrice < maxProductPrice ? 1 : 0) + (params.q?.length ? 1 : 0);
   function toggleBrand(brand) {
     onParams((prev) => {
       const exist = params.brands?.includes(brand);
@@ -24,22 +26,20 @@ export default function Filter({ product, params, onParams }) {
       };
     });
   }
-  function resetFilters() {
-    onParams((prev) => {
-      return {
-        ...prev,
-        brands: [],
-        categories: [],
-        minPrice: null,
-        minRating: null,
-      };
-    });
-  }
+
   function toggleQuery(value) {
     onParams((prev) => {
       return {
         ...prev,
         q: value.trim().toLowerCase(),
+      };
+    });
+  }
+  function setMinDiscount(value) {
+    onParams((prev) => {
+      return {
+        ...prev,
+        minDiscount: !value ? null : value,
       };
     });
   }
@@ -52,16 +52,16 @@ export default function Filter({ product, params, onParams }) {
     });
   }
 
-  const handleMinChange = (value) => {
+  const handleMinPrice = (value) => {
     setPrice((p) => ({
-      max: p.max < p.min + 1000 ? p.min + 1000 : p.max,
-      min: value > 29000 ? 29000 : value,
+      max: p.max < value + 1000 ? (value + 1000 > maxProductPrice ? maxProductPrice : value + 1000) : p.max,
+      min: value > maxProductPrice - 1000 ? maxProductPrice - 1000 : value,
     }));
   };
 
-  const handleMaxChange = (value) => {
+  const handleMaxPrice = (value) => {
     setPrice((p) => ({
-      min: p.min > p.max - 1000 ? p.max - 1000 : p.min,
+      min: p.min > value - 1000 ? (value - 1000 < 0 ? 0 : value - 1000) : p.min,
       max: value < 1000 ? 1000 : value,
     }));
   };
@@ -70,7 +70,25 @@ export default function Filter({ product, params, onParams }) {
       return {
         ...prev,
         minPrice: price.min < 0 ? 0 : price.min,
-        maxPrice: price.max > 30000 ? 30000 : price.max,
+        maxPrice: price.max > maxProductPrice ? maxProductPrice : price.max,
+      };
+    });
+  }
+  function resetFilters() {
+    onParams((prev) => {
+      setPrice({
+        min: 0,
+        max: maxProductPrice,
+      });
+      return {
+        ...prev,
+        brands: [],
+        categories: [],
+        minRating: null,
+        minPrice: 0,
+        maxPrice: maxProductPrice,
+        minDiscount: 0,
+        q: "",
       };
     });
   }
@@ -107,7 +125,7 @@ export default function Filter({ product, params, onParams }) {
       <div className="mt-2">
         <input onInput={(e) => toggleQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q} />
       </div>
-      <div className="flex flex-col gap-3 py-5">
+      <div className="flex flex-col gap-3 pt-5">
         <div className={`${open == "category" ? "max-h-100" : "max-h-12.5 "} flex flex-col transition-[max-height] duration-500 overflow-hidden `}>
           <div onClick={() => setOpen((prev) => (prev == "category" ? null : "category"))} className={`flex items-center justify-between gap-3 p-2 rounded-full cursor-pointer border border-light-gray ${open == "category" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
             <span className={`${open == "category" ? "bg-white" : "gradient"} size-8 flex justify-center items-center rounded-full `}>
@@ -202,31 +220,62 @@ export default function Filter({ product, params, onParams }) {
             </div>
           </div>
         </div>
+        <div className={`${open == "price" ? "max-h-100" : "max-h-12.5 "} flex flex-col transition-[max-height] duration-500 overflow-hidden `}>
+          <div onClick={() => setOpen((prev) => (prev == "price" ? null : "price"))} className={`flex items-center justify-between gap-3 p-2 rounded-full cursor-pointer border border-light-gray ${open == "price" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
+            <span className={`${open == "price" ? "bg-white" : "gradient"} size-8 flex justify-center items-center rounded-full `}>
+              <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="M8,16a1,1,0,0,0-2,0,5.006,5.006,0,0,0,5,5v1a1,1,0,0,0,2,0V21a5,5,0,0,0,0-10V5a3,3,0,0,1,3,3,1,1,0,0,0,2,0,5.006,5.006,0,0,0-5-5V2a1,1,0,0,0-2,0V3a5,5,0,0,0,0,10v6A3,3,0,0,1,8,16Zm5-3a3,3,0,0,1,0,6ZM8,8a3,3,0,0,1,3-3v6A3,3,0,0,1,8,8Z"></path>
+                </g>
+              </svg>
+            </span>
+            <span className="me-auto">قیمت</span>
+            <span className={` transition-transform duration-400 ${open == "price" ? "rotate-90 fill-white" : "-rotate-90 fill-red"}`}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 22 16">
+                <path d="M12.6542 15.0209L6.50534 8.68754C6.2819 8.49587 6.18737 8.24587 6.18737 8.00004C6.18737 7.75421 6.28139 7.50504 6.46933 7.31254L12.6542 0.979206C13.0495 0.577956 13.7026 0.561289 14.1151 0.940039C14.5319 1.32046 14.5448 1.95587 14.1538 2.35421L8.64089 8.00004L14.1581 13.6459C14.5488 14.0443 14.5341 14.6771 14.1178 15.06C13.7026 15.4375 13.0495 15.4209 12.6542 15.0209Z"></path>
+              </svg>
+            </span>
+          </div>
+          <div className={`grow  p-2 border border-light-gray rounded-2xl my-2 transition-all duration-300`}>
+            <div className="  py-2">
+              <span>قیمت:</span>
+              <div className="flex items-center justify-evenly gap-3 mt-2">
+                <span>از</span>
+                <span className="min-w-13 text-red font-bold text-center">{price.min.toLocaleString("en-US", {})} $</span>
+                <span>تا</span>
+                <span className="min-w-13 text-green-500 font-bold text-center">{price.max.toLocaleString("en-US", {})} $</span>
+              </div>
+              <div className=" relative h-1.5 my-6">
+                <input dir="ltr" className="range-input price-min absolute h-full w-full pointer-events-none appearance-none bg-none " type="range" min={0} step={5} max={maxProductPrice} value={price.min} onChange={(e) => handleMinPrice(+e.target.value)} onPointerUp={filterPrice} />
+                <input dir="ltr" className="range-input price-max absolute h-full w-full pointer-events-none appearance-none bg-none " type="range" min={0} step={5} max={maxProductPrice} value={price.max} onChange={(e) => handleMaxPrice(+e.target.value)} onPointerUp={filterPrice} />
+              </div>
+              <div className="flex justify-between  px-2">
+                <span>{maxProductPrice.toLocaleString("en-US", {})}</span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="  py-2">
           <span>
             کمترین امتیاز: <span className="text-org font-bold">{params.minRating || 0}</span>
           </span>
           <div className="flex items-center justify-between gap-2 mt-2">
             <span>5</span>
-            <input dir="ltr" className="rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={params.minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} />
+            <input dir="ltr" className="range-input rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={params.minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} />
 
             <span>0</span>
           </div>
         </div>
         <div className="  py-2">
-          <span>قیمت:</span>
-          <div className="flex items-center justify-between gap-3 mt-2">
-            <span>از</span>
-            <input className="grow min-w-1/4 px-2 py-1.5 rounded-full border border-gray outline-0 appearance-none" type="number" value={price.min} onChange={(e) => handleMinChange(e.target.value || 0)} />
-            <span>تا</span>
-            <input className="grow min-w-1/4 px-2 py-1.5 rounded-full border border-gray outline-0 appearance-none" type="number" value={price.max} onChange={(e) => handleMaxChange(e.target.value)} />
-          </div>
-          <div className="flex items-center justify-between gap-2 mt-3">
-            <span>30000</span>
-            <div className="grow relative h-1.5 ">
-              <input dir="ltr" className="test min absolute h-full w-full pointer-events-none appearance-none bg-none " type="range" min={0} step={1} max={30000} value={price.min} onChange={(e) => handleMinChange(+e.target.value)} onPointerUp={filterPrice} />
-              <input dir="ltr" className="test range-max absolute h-full w-full pointer-events-none appearance-none bg-none " type="range" min={0} step={1} max={30000} value={price.max} onChange={(e) => handleMaxChange(+e.target.value)} onPointerUp={filterPrice} />
-            </div>
+          <span>
+            کمترین تخفیف: <span className="text-org font-bold">{params.minDiscount || 0} %</span>
+          </span>
+          <div className="flex items-center justify-between gap-2 mt-2">
+            <span>100</span>
+            <input dir="ltr" className="range-input discount-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={1} max={100} value={params.minDiscount || 0} onChange={(e) => setMinDiscount(Number(e.target.value))} />
 
             <span>0</span>
           </div>

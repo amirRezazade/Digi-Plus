@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import emptyImg from "../../assets/images/empty-shopping-cart.png";
-import { getLocal, setLocal, cartTotalPrice } from "../../utils/funcs";
+import { getLocal, setLocal, cartTotalPrice, formatedPrice, calcRealPrice } from "../../utils/funcs";
 export default function NavbarShoppingCart() {
   let [products, setProduct] = useState(getLocal("cart") || []);
   let [openMenu, setOpenMenu] = useState(false);
@@ -61,7 +61,7 @@ export default function NavbarShoppingCart() {
             ></path>
           </svg>
         </span>
-        <span className="grow text-white px-3 hidden sm:inline-block font-bold">{cartTotalPrice()} $</span>
+        <span className="grow text-white px-3 hidden sm:inline-block font-bold text-nowrap">{cartTotalPrice()} $</span>
         <span className="size-4 text-org bg-white rounded-full text-xs absolute top-0 left-0 flex justify-center items-center sm-shaddow">{products.length}</span>
       </button>
 
@@ -138,10 +138,10 @@ export default function NavbarShoppingCart() {
                     {product.discountPercentage && (
                       <div>
                         <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.discountPercentage}</span>
-                        <span className="text-gray/80 line-through  mx-2 text-xs">${(product.price / (1 - product.discountPercentage / 100)).toFixed(2)}</span>
+                        <span className="text-gray/80 line-through  mx-2 text-xs">${calcRealPrice(product.price, product.discountPercentage)}</span>
                       </div>
                     )}
-                    <p className="text-base  text-red font-bold mt-0.5 text-end">{product.price} $</p>
+                    <p className="text-base  text-red font-bold mt-0.5 text-end">{formatedPrice(product.price)} $</p>
                   </div>
                 </div>
               </li>

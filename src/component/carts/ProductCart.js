@@ -7,7 +7,7 @@ import CompareBtn from "./CompareBtn";
 
 export default function ProductCart({ product }) {
   return (
-    <div className=" group min-w-53 aspect-[4/6.8] flex flex-col justify-between relative text-sm rounded-2xl border border-light-gray text-gray bg-white p-3 gray-shaddow overflow-hidden">
+    <div className=" group min-w-53 max-w-65 aspect-[4/6.8] mx-auto flex flex-col justify-between relative text-sm rounded-2xl border border-light-gray text-gray bg-white p-3 gray-shaddow overflow-hidden">
       <Link to={`/product/${product.id}`} className="grow flex flex-col justify-between overflow-hidden   ">
         <img className="mx-auto " src={product.thumbnail} alt={product.title} />
         <h4 className=" text-center pb-2">{product.title}</h4>
