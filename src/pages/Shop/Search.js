@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import ProductCart from "./../../component/carts/ProductCart";
 import FilteringForm from "./FilteringForm";
 import { FilterAndSortProduct, setUrl } from "./FilterAndSortProduct";
+import SortAndShowProduct from "./SortAndShowProduct";
 export default function Search() {
   let [products, setProducts] = useState(null);
   let [filteredProducts, setFilteredProducts] = useState(null);
@@ -13,9 +14,10 @@ export default function Search() {
     minPrice: searchParams.get("minPrice"),
     maxPrice: searchParams.get("maxPrice"),
     minDiscount: searchParams.get("minDiscount"),
-    sort: searchParams.get("sort")?.toLocaleLowerCase(),
     q: searchParams.get("q")?.toLocaleLowerCase() || null,
     minRating: searchParams.get("minRating") || null,
+    sortBy: searchParams.get("sortBy")?.toLocaleLowerCase(),
+    desc: searchParams.get("desc")?.toLocaleLowerCase(),
   });
   console.log(params);
 
@@ -40,7 +42,7 @@ export default function Search() {
         <div className="mx-auto w-full max-w-100 md:max-w-120 lg:max-w-65 xl:max-w-75 xl:min-w-75 lg:sticky top-10">
           <FilteringForm product={products} params={params} onParams={setParams} />
         </div>
-        <div className="w-full grow grid items-center justify-center xs:grid-cols-2 md:grid-cols-3 xl:grid xl:grid-cols-3 2xl:grid-cols-4 gap-4 gap-y-6">{filteredProducts && [...filteredProducts].splice(0, 10).map((p) => <ProductCart key={p.id} product={p} />)}</div>
+        <SortAndShowProduct filteredProducts={filteredProducts} params={params} onParams={setParams} />
       </main>
     )
   );

@@ -45,6 +45,12 @@ function setUrl(params) {
   if (params.minDiscount) {
     sp.set("minDiscount", params.minDiscount);
   }
+  if (params.sortBy) {
+    sp.set("sortBy", params.sortBy);
+  }
+  if (params.desc) {
+    sp.set("desc", params.desc);
+  }
   return sp;
 }
 
