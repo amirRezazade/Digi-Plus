@@ -1,6 +1,8 @@
 const normalize = (v = "") => v.toString().toLowerCase().trim();
 
-function FilterAndSortProduct(params, products) {
+function FilterProducts(params, products) {
+  console.log("fi");
+
   if (!products) return null;
 
   let list = [...products];
@@ -20,6 +22,8 @@ function FilterAndSortProduct(params, products) {
 }
 
 function setUrl(params) {
+  console.log(3);
+
   const sp = new URLSearchParams();
   if (params.brands.length) {
     sp.set("brand", params.brands.join("-"));
@@ -51,7 +55,37 @@ function setUrl(params) {
   if (params.desc) {
     sp.set("desc", params.desc);
   }
+  if (params.page > 1) {
+    sp.set("page", params.page);
+  }
   return sp;
 }
+function sortProducts(filteredProducts, sort, isDesc) {
+  console.log("sort");
 
-export { FilterAndSortProduct, setUrl };
+  let list = [...filteredProducts];
+  if (!isDesc) {
+    if (sort === "name")
+      list.sort((a, b) => {
+        let A = a.title.replace(/^\d+\s*/, "").toLowerCase();
+        let B = b.title.replace(/^\d+\s*/, "").toLowerCase();
+        return A.localeCompare(B, "en", { numeric: true });
+      });
+    else {
+      list.sort((a, b) => b[sort] - a[sort]);
+    }
+  } else {
+    if (sort === "name")
+      list.sort((a, b) => {
+        let A = a.title.replace(/^\d+\s*/, "").toLowerCase();
+        let B = b.title.replace(/^\d+\s*/, "").toLowerCase();
+        return B.localeCompare(A, "en", { numeric: true });
+      });
+    else {
+      list.sort((a, b) => a[sort] - b[sort]);
+    }
+  }
+  return list;
+}
+
+export { FilterProducts, setUrl, sortProducts };

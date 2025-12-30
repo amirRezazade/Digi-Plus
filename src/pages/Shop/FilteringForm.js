@@ -8,6 +8,7 @@ export default function FilteringForm({ product, params, onParams }) {
   const topBrands = ["Apple", "Samsung", "Nike", "Gucci", "Chanel", "Dior", "Prada", "Rolex", "Dell", "Asus"];
   const categories = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"];
   let filtersLength = params.brands.length + params.categories.length + (params.minDiscount ? 1 : 0) + (params.minRating ? 1 : 0) + (params.minPrice > 0 ? 1 : 0) + (params.maxPrice && params.maxPrice < maxProductPrice ? 1 : 0) + (params.q?.length ? 1 : 0);
+  let [minDiscount, setMinDiscount] = useState(params.minDiscount || 0);
   function toggleBrand(brand) {
     onParams((prev) => {
       const exist = params.brands?.includes(brand);
@@ -35,11 +36,11 @@ export default function FilteringForm({ product, params, onParams }) {
       };
     });
   }
-  function setMinDiscount(value) {
+  function setMinDiscountInParam(value) {
     onParams((prev) => {
       return {
         ...prev,
-        minDiscount: !value ? null : value,
+        minDiscount: value,
       };
     });
   }
@@ -123,15 +124,15 @@ export default function FilteringForm({ product, params, onParams }) {
       </div>
       {/* search input  */}
       <div className="mt-2">
-        <input onInput={(e) => toggleQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q} />
+        <input onInput={(e) => toggleQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q || ""} />
       </div>
       <div className="flex flex-col gap-3 pt-5">
         <div className={`${open == "category" ? "max-h-100" : "max-h-12.5 "} flex flex-col transition-[max-height] duration-500 overflow-hidden `}>
           <div onClick={() => setOpen((prev) => (prev == "category" ? null : "category"))} className={`flex items-center justify-between gap-3 p-2 rounded-full cursor-pointer border border-light-gray ${open == "category" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
             <span className={`${open == "category" ? "bg-white" : "gradient"} size-8 flex justify-center items-center rounded-full `}>
               <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
                   <path opacity="0.4" d="M18.6695 2H16.7695C14.5895 2 13.4395 3.15 13.4395 5.33V7.23C13.4395 9.41 14.5895 10.56 16.7695 10.56H18.6695C20.8495 10.56 21.9995 9.41 21.9995 7.23V5.33C21.9995 3.15 20.8495 2 18.6695 2Z"></path> <path opacity="0.4" d="M7.24 13.4302H5.34C3.15 13.4302 2 14.5802 2 16.7602V18.6602C2 20.8502 3.15 22.0002 5.33 22.0002H7.23C9.41 22.0002 10.56 20.8502 10.56 18.6702V16.7702C10.57 14.5802 9.42 13.4302 7.24 13.4302Z"></path>
                   <path d="M6.29 10.58C8.6593 10.58 10.58 8.6593 10.58 6.29C10.58 3.9207 8.6593 2 6.29 2C3.9207 2 2 3.9207 2 6.29C2 8.6593 3.9207 10.58 6.29 10.58Z"></path> <path d="M17.7099 21.9999C20.0792 21.9999 21.9999 20.0792 21.9999 17.7099C21.9999 15.3406 20.0792 13.4199 17.7099 13.4199C15.3406 13.4199 13.4199 15.3406 13.4199 17.7099C13.4199 20.0792 15.3406 21.9999 17.7099 21.9999Z"></path>
@@ -177,8 +178,8 @@ export default function FilteringForm({ product, params, onParams }) {
           <div onClick={() => setOpen((prev) => (prev == "brand" ? null : "brand"))} className={`flex items-center justify-between gap-3 p-2 rounded-full cursor-pointer border border-light-gray ${open == "brand" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
             <span className={`${open == "brand" ? "bg-white" : "gradient"} size-8 flex justify-center items-center rounded-full `}>
               <svg width="18" height="18" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
                   <title>tags</title>
                   <path d="M25.994 16.144l-12.225-12.225-11.769 0.045 0.018 10.831 12.662 12.662c0.794 0.795 2.072 0.806 2.854 0.024l8.484-8.485c0.781-0.781 0.771-2.058-0.024-2.852zM7.081 10.952c-1.104 0-2-0.896-2-2s0.896-2 2-2c1.105 0 2 0.896 2 2s-0.895 2-2 2zM28.846 16.168l-12.225-12.225-1.471 0.005 12.27 12.207c0.795 0.795 0.805 2.071 0.023 2.853l-8.484 8.485c-0.207 0.207-0.451 0.354-0.709 0.451 0.721 0.277 1.561 0.135 2.135-0.438l8.486-8.485c0.781-0.782 0.77-2.059-0.025-2.853z"></path>
@@ -224,8 +225,8 @@ export default function FilteringForm({ product, params, onParams }) {
           <div onClick={() => setOpen((prev) => (prev == "price" ? null : "price"))} className={`flex items-center justify-between gap-3 p-2 rounded-full cursor-pointer border border-light-gray ${open == "price" ? "gradient border-transparent text-white fill-org" : "fill-white"}`}>
             <span className={`${open == "price" ? "bg-white" : "gradient"} size-8 flex justify-center items-center rounded-full `}>
               <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
                   <path d="M8,16a1,1,0,0,0-2,0,5.006,5.006,0,0,0,5,5v1a1,1,0,0,0,2,0V21a5,5,0,0,0,0-10V5a3,3,0,0,1,3,3,1,1,0,0,0,2,0,5.006,5.006,0,0,0-5-5V2a1,1,0,0,0-2,0V3a5,5,0,0,0,0,10v6A3,3,0,0,1,8,16Zm5-3a3,3,0,0,1,0,6ZM8,8a3,3,0,0,1,3-3v6A3,3,0,0,1,8,8Z"></path>
                 </g>
@@ -271,11 +272,11 @@ export default function FilteringForm({ product, params, onParams }) {
         </div>
         <div className="  py-2">
           <span>
-            کمترین تخفیف: <span className="text-org font-bold">{params.minDiscount || 0} %</span>
+            کمترین تخفیف: <span className="text-org font-bold">{minDiscount} %</span>
           </span>
           <div className="flex items-center justify-between gap-2 mt-2">
             <span>100</span>
-            <input dir="ltr" className="range-input discount-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={1} max={100} value={params.minDiscount || 0} onChange={(e) => setMinDiscount(Number(e.target.value))} />
+            <input dir="ltr" className="range-input discount-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={1} max={100} value={minDiscount} onChange={(e) => setMinDiscount(Number(e.target.value))} onMouseUp={(e) => setMinDiscountInParam(Number(e.target.value))} />
 
             <span>0</span>
           </div>

@@ -1,12 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import ProductCart from "./../../component/carts/ProductCart";
+import { useSearchParams } from "react-router-dom";
 import FilteringForm from "./FilteringForm";
-import { FilterAndSortProduct, setUrl } from "./FilterAndSortProduct";
-import SortAndShowProduct from "./SortAndShowProduct";
+import { FilterProducts, setUrl } from "./FilterAndSortProduct";
+import ShowProducts from "./products";
 export default function Search() {
   let [products, setProducts] = useState(null);
-  let [filteredProducts, setFilteredProducts] = useState(null);
   let [searchParams, setSearchParams] = useSearchParams();
   let [params, setParams] = useState({
     brands: searchParams.get("brand")?.toLocaleLowerCase().split("-") || [],
@@ -18,6 +16,7 @@ export default function Search() {
     minRating: searchParams.get("minRating") || null,
     sortBy: searchParams.get("sortBy")?.toLocaleLowerCase(),
     desc: searchParams.get("desc")?.toLocaleLowerCase(),
+    page: searchParams.get("page"),
   });
   console.log(params);
 
@@ -27,9 +26,7 @@ export default function Search() {
       .then((data) => setProducts(data.products));
   }, []);
 
-  useMemo(() => {
-    setFilteredProducts(FilterAndSortProduct(params, products));
-  }, [params, products]);
+  const filteredProducts = useMemo(() => FilterProducts(params, products), [params, products]);
 
   useEffect(() => {
     let sp = setUrl(params);
@@ -38,11 +35,11 @@ export default function Search() {
 
   return (
     products && (
-      <main className="relative custom-container flex flex-col items-start lg:flex-row gap-8 lg:gap-6 py-10 min-h-screen">
+      <main className="relative custom-container flex flex-col items-start lg:flex-row gap-8 lg:gap-6 py-10 ">
         <div className="mx-auto w-full max-w-100 md:max-w-120 lg:max-w-65 xl:max-w-75 xl:min-w-75 lg:sticky top-10">
           <FilteringForm product={products} params={params} onParams={setParams} />
         </div>
-        <SortAndShowProduct filteredProducts={filteredProducts} params={params} onParams={setParams} />
+        <ShowProducts filteredProducts={filteredProducts} params={params} onParams={setParams} />
       </main>
     )
   );
