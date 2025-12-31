@@ -2,22 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import ProductCart from "../../component/carts/ProductCart";
 import { sortProducts } from "./FilterAndSortProduct";
 
-export default function ShowProducts({ filteredProducts, params, onParams }) {
-  let [sort, setSort] = useState(params.sortBy || "name");
-  let [isDesc, setIsDesc] = useState(params.desc || false);
-  let [sortedProducts, setSortedProducts] = useState(null);
-  let [page, setPage] = useState(params.page || 1);
-  let totalPage = Math.ceil(filteredProducts.length / 12);
+export default function ShowProducts({ filteredProducts, sorting, onSorting, params }) {
+  let [sort, setSort] = useState(sorting.sortBy || "name");
+  let [isDesc, setIsDesc] = useState(sorting.desc || false);
+  let [sortedProducts, setSortedProducts] = useState([]);
+  let [page, setPage] = useState(sorting.page || 1);
+
+  let totalPage = Math.ceil(filteredProducts?.length / 12) || 1;
   let listRef = useRef(null);
   // sorting
   useEffect(() => {
     let list = sortProducts(filteredProducts, sort, isDesc);
     setSortedProducts(list);
-  }, [sort, isDesc, filteredProducts]);
+  }, [sort, isDesc, params]);
 
   // set sort in URL
   useEffect(() => {
-    onParams((prev) => {
+    onSorting((prev) => {
+      setPage(1);
       return {
         ...prev,
         sortBy: sort,
@@ -28,9 +30,7 @@ export default function ShowProducts({ filteredProducts, params, onParams }) {
 
   // set Page in URL
   useEffect(() => {
-    console.log("page");
-
-    onParams((prev) => {
+    onSorting((prev) => {
       return {
         ...prev,
         page: page,
@@ -46,7 +46,7 @@ export default function ShowProducts({ filteredProducts, params, onParams }) {
   if (page > totalPage || page < 1) setPage(1);
   useEffect(() => {
     setPage(1);
-  }, [params.brands, params.categories, params.minPrice, params.maxPrice, params.minDiscount, params.minRating, params.sortBy, params.desc, params.q]);
+  }, [params]);
 
   function handleSortChange(key) {
     if (key == sort) {

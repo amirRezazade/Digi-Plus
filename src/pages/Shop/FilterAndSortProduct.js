@@ -1,29 +1,25 @@
 const normalize = (v = "") => v.toString().toLowerCase().trim();
 
 function FilterProducts(params, products) {
-  console.log("fi");
-
-  if (!products) return null;
+  if (!products) return [];
 
   let list = [...products];
   if (params.brands.length) list = list.filter((p) => params.brands.includes(p.brand?.toLowerCase()));
   if (params.categories.length) list = list.filter((p) => params.categories.includes(p.category?.toLowerCase()));
-  if (params.maxPrice) list = list.filter((p) => p.price < params.maxPrice || p.price == params.maxPrice);
-  if (params.minPrice) list = list.filter((p) => p.price > params.minPrice || p.price == params.minPrice);
-  if (params.minRating) list = list.filter((p) => Number(p.rating) > Number(params.minRating) || Number(p.rating) == Number(params.minRating));
-  if (params.minDiscount) list = list.filter((p) => Number(p.discountPercentage) > Number(params.minDiscount) || Number(p.discountPercentage) == Number(params.minDiscount));
+  if (params.maxPrice != null) list = list.filter((p) => p.price < params.maxPrice || p.price == params.maxPrice);
+  if (params.minPrice != null) list = list.filter((p) => p.price > params.minPrice || p.price == params.minPrice);
+  if (params.minRating != null) list = list.filter((p) => Number(p.rating) > Number(params.minRating) || Number(p.rating) == Number(params.minRating));
+  if (params.minDiscount != null) list = list.filter((p) => Number(p.discountPercentage) > Number(params.minDiscount) || Number(p.discountPercentage) == Number(params.minDiscount));
   if (params.q) {
     list = list.filter((p) => {
       const text = normalize([p.title, p.brand, ...(p.tags || [])].join(" "));
       return text.includes(normalize(params.q));
     });
   }
-  return list;
+  return list || [];
 }
 
 function setUrl(params) {
-  console.log(3);
-
   const sp = new URLSearchParams();
   if (params.brands.length) {
     sp.set("brand", params.brands.join("-"));
@@ -49,20 +45,24 @@ function setUrl(params) {
   if (params.minDiscount) {
     sp.set("minDiscount", params.minDiscount);
   }
-  if (params.sortBy) {
-    sp.set("sortBy", params.sortBy);
+
+  return sp;
+}
+function setSortingUrl(sorting) {
+  const sp = new URLSearchParams();
+
+  if (sorting.sortBy) {
+    sp.set("sortBy", sorting.sortBy);
   }
-  if (params.desc) {
-    sp.set("desc", params.desc);
+  if (sorting.desc) {
+    sp.set("desc", sorting.desc);
   }
-  if (params.page > 1) {
-    sp.set("page", params.page);
+  if (sorting.page > 1) {
+    sp.set("page", sorting.page);
   }
   return sp;
 }
 function sortProducts(filteredProducts, sort, isDesc) {
-  console.log("sort");
-
   let list = [...filteredProducts];
   if (!isDesc) {
     if (sort === "name")
@@ -72,7 +72,7 @@ function sortProducts(filteredProducts, sort, isDesc) {
         return A.localeCompare(B, "en", { numeric: true });
       });
     else {
-      list.sort((a, b) => b[sort] - a[sort]);
+      return list.sort((a, b) => b[sort] - a[sort]);
     }
   } else {
     if (sort === "name")
@@ -82,10 +82,10 @@ function sortProducts(filteredProducts, sort, isDesc) {
         return B.localeCompare(A, "en", { numeric: true });
       });
     else {
-      list.sort((a, b) => a[sort] - b[sort]);
+      return list.sort((a, b) => a[sort] - b[sort]);
     }
   }
   return list;
 }
 
-export { FilterProducts, setUrl, sortProducts };
+export { FilterProducts, setUrl, sortProducts, setSortingUrl };

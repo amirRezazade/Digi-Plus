@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function FilteringForm({ product, params, onParams }) {
+export default function FilteringForm({ params, onParams }) {
   const maxProductPrice = 40000;
-
   let [open, setOpen] = useState(null);
   let [price, setPrice] = useState({ min: params.minPrice || 0, max: params.maxPrice || maxProductPrice });
+  let [minDiscount, setMinDiscount] = useState(params.minDiscount || 0);
+  let [minRating, setMinRating] = useState(params.minRating || 0);
   const topBrands = ["Apple", "Samsung", "Nike", "Gucci", "Chanel", "Dior", "Prada", "Rolex", "Dell", "Asus"];
   const categories = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"];
+
   let filtersLength = params.brands.length + params.categories.length + (params.minDiscount ? 1 : 0) + (params.minRating ? 1 : 0) + (params.minPrice > 0 ? 1 : 0) + (params.maxPrice && params.maxPrice < maxProductPrice ? 1 : 0) + (params.q?.length ? 1 : 0);
-  let [minDiscount, setMinDiscount] = useState(params.minDiscount || 0);
+
   function toggleBrand(brand) {
     onParams((prev) => {
       const exist = params.brands?.includes(brand);
@@ -28,7 +30,7 @@ export default function FilteringForm({ product, params, onParams }) {
     });
   }
 
-  function toggleQuery(value) {
+  function setQuery(value) {
     onParams((prev) => {
       return {
         ...prev,
@@ -36,23 +38,23 @@ export default function FilteringForm({ product, params, onParams }) {
       };
     });
   }
-  function setMinDiscountInParam(value) {
-    onParams((prev) => {
-      return {
-        ...prev,
-        minDiscount: value,
-      };
-    });
-  }
-  function setMinRating(value) {
-    onParams((prev) => {
-      return {
-        ...prev,
-        minRating: !value ? null : value,
-      };
-    });
-  }
 
+  function setMinDiscountInParam() {
+    onParams((prev) => {
+      return {
+        ...prev,
+        minDiscount: minDiscount,
+      };
+    });
+  }
+  function setMinRatingInUrl() {
+    onParams((prev) => {
+      return {
+        ...prev,
+        minRating: minRating,
+      };
+    });
+  }
   const handleMinPrice = (value) => {
     setPrice((p) => ({
       max: p.max < value + 1000 ? (value + 1000 > maxProductPrice ? maxProductPrice : value + 1000) : p.max,
@@ -81,6 +83,8 @@ export default function FilteringForm({ product, params, onParams }) {
         min: 0,
         max: maxProductPrice,
       });
+      setMinDiscount(0);
+      setMinRating(0);
       return {
         ...prev,
         brands: [],
@@ -124,7 +128,7 @@ export default function FilteringForm({ product, params, onParams }) {
       </div>
       {/* search input  */}
       <div className="mt-2">
-        <input onInput={(e) => toggleQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q || ""} />
+        <input onInput={(e) => setQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q} />
       </div>
       <div className="flex flex-col gap-3 pt-5">
         <div className={`${open == "category" ? "max-h-100" : "max-h-12.5 "} flex flex-col transition-[max-height] duration-500 overflow-hidden `}>
@@ -261,11 +265,11 @@ export default function FilteringForm({ product, params, onParams }) {
         </div>
         <div className="  py-2">
           <span>
-            کمترین امتیاز: <span className="text-org font-bold">{params.minRating || 0}</span>
+            کمترین امتیاز: <span className="text-org font-bold">{minRating || 0}</span>
           </span>
           <div className="flex items-center justify-between gap-2 mt-2">
             <span>5</span>
-            <input dir="ltr" className="range-input rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={params.minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} />
+            <input dir="ltr" className="range-input rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} onMouseUp={setMinRatingInUrl} />
 
             <span>0</span>
           </div>
@@ -276,7 +280,7 @@ export default function FilteringForm({ product, params, onParams }) {
           </span>
           <div className="flex items-center justify-between gap-2 mt-2">
             <span>100</span>
-            <input dir="ltr" className="range-input discount-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={1} max={100} value={minDiscount} onChange={(e) => setMinDiscount(Number(e.target.value))} onMouseUp={(e) => setMinDiscountInParam(Number(e.target.value))} />
+            <input dir="ltr" className="range-input discount-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={1} max={100} value={minDiscount} onChange={(e) => setMinDiscount(Number(e.target.value))} onMouseUp={setMinDiscountInParam} />
 
             <span>0</span>
           </div>
