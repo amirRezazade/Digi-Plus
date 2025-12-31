@@ -81,7 +81,7 @@ export default function HomeCategorySlider() {
     return (
       <div className="max-w-full grid grid-cols-3 xs:grid-cols-4  gap-3 justify-center">
         {categories.map((cat) => (
-          <Link key={cat.id} to={`/shop/${cat.id}`} className="mx-auto hover:text-red group">
+          <Link key={cat.id} to={`/shop?categories=${cat.id}`} className="mx-auto hover:text-red group">
             <div className="gray-shaddow size-24 xs:size-25 rounded-2xl border border-light-gray group-hover:border-red transition-colors duration-300 flex items-center justify-center">
               <img src={cat.img} alt={cat.id} />
             </div>
@@ -95,7 +95,7 @@ export default function HomeCategorySlider() {
       <Swiper className="max-w-full" modules={[]} spaceBetween={20} speed={700} slidesPerView={"auto"}>
         {categories.map((cat) => (
           <SwiperSlide key={cat.id} className="w-24! hover:text-red group">
-            <Link to={`/shop/${cat.id}`}>
+            <Link to={`/shop?categories=${cat.id}`}>
               <div className="gray-shaddow size-24 rounded-2xl border border-light-gray group-hover:border-red transition-colors duration-300 flex items-center justify-center">
                 <img className="" src={cat.img} alt={cat.id} />
               </div>

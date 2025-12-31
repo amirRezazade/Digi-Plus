@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import FilteringForm from "./FilteringForm";
-import { FilterProducts, setUrl, setSortingUrl } from "./FilterAndSortProduct";
+import { FilterProducts, setUrl } from "./FilterAndSortProduct";
 import ShowProducts from "./products";
 export default function Search() {
   let [products, setProducts] = useState(null);
@@ -24,19 +24,19 @@ export default function Search() {
   useEffect(() => {
     setParams((prev) => ({
       ...prev,
-      brands: searchParams.get("brand")?.toLowerCase().split("-") || [],
-      categories: searchParams.get("categories")?.toLowerCase().split("-") || [],
+      brands: searchParams.get("brand")?.toLowerCase().split(",") || [],
+      categories: searchParams.get("categories")?.toLowerCase().split(",") || [],
       minPrice: searchParams.get("minPrice"),
       maxPrice: searchParams.get("maxPrice"),
       minDiscount: searchParams.get("minDiscount"),
-      q: searchParams.get("q")?.toLowerCase() || null,
       minRating: searchParams.get("minRating"),
+      q: searchParams.get("q")?.toLowerCase() || null,
     }));
 
     setSorting((prev) => ({
       ...prev,
       sortBy: searchParams.get("sortBy")?.toLowerCase() || "name",
-      desc: searchParams.get("desc") === "true",
+      desc: searchParams.get("desc") || false,
       page: Number(searchParams.get("page")) || 1,
     }));
   }, []);
@@ -48,20 +48,13 @@ export default function Search() {
   }, []);
 
   const filteredProducts = useMemo(() => {
-    console.count("filter run");
-    console.log(FilterProducts(params, products));
-
     return FilterProducts(params, products);
   }, [products, params.q, params.minPrice, params.maxPrice, params.minDiscount, params.minRating, params.brands.join(","), params.categories.join(",")]);
 
   useEffect(() => {
-    let sp = setUrl(params);
+    let sp = setUrl(params, sorting);
     setSearchParams(sp, { replace: true });
-  }, [params]);
-  useEffect(() => {
-    let sp = setSortingUrl(sorting);
-    setSearchParams(sp, { replace: true });
-  }, [sorting]);
+  }, [params, sorting]);
 
   return (
     products && (

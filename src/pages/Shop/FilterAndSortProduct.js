@@ -19,16 +19,13 @@ function FilterProducts(params, products) {
   return list || [];
 }
 
-function setUrl(params) {
+function setUrl(params, sorting) {
   const sp = new URLSearchParams();
-  if (params.brands.length) {
-    sp.set("brand", params.brands.join("-"));
+  if (params.brands?.length) {
+    sp.set("brand", params.brands.join(","));
   }
-  if (params.categories.length) {
-    sp.set("categories", params.categories.join("-"));
-  }
-  if (params.sort) {
-    sp.set("sort", params.sort);
+  if (params.categories?.length) {
+    sp.set("categories", params.categories.join(","));
   }
   if (params.q) {
     sp.set("q", params.q);
@@ -45,23 +42,19 @@ function setUrl(params) {
   if (params.minDiscount) {
     sp.set("minDiscount", params.minDiscount);
   }
-
-  return sp;
-}
-function setSortingUrl(sorting) {
-  const sp = new URLSearchParams();
-
   if (sorting.sortBy) {
     sp.set("sortBy", sorting.sortBy);
   }
   if (sorting.desc) {
     sp.set("desc", sorting.desc);
   }
-  if (sorting.page > 1) {
+  if (sorting.page) {
     sp.set("page", sorting.page);
   }
+
   return sp;
 }
+
 function sortProducts(filteredProducts, sort, isDesc) {
   let list = [...filteredProducts];
   if (!isDesc) {
@@ -88,4 +81,4 @@ function sortProducts(filteredProducts, sort, isDesc) {
   return list;
 }
 
-export { FilterProducts, setUrl, sortProducts, setSortingUrl };
+export { FilterProducts, setUrl, sortProducts };

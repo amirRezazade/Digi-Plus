@@ -28,7 +28,7 @@ export default function BreadCrump({ response, category, brand, title }) {
       </span>
       {category && (
         <>
-          <Link to={`/shop/category=${category}`} className="hover:text-org">
+          <Link to={`/shop?categories=${category}`} className="hover:text-org">
             {category}
           </Link>
           <span>
@@ -40,7 +40,7 @@ export default function BreadCrump({ response, category, brand, title }) {
       )}
       {brand && (
         <>
-          <Link to={`/shop/brand=${brand}`} className="hover:text-org">
+          <Link to={`/shop?brand=${brand}`} className="hover:text-org">
             {brand}
           </Link>
           <span>

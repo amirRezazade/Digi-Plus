@@ -94,7 +94,7 @@ export default function NavbarSearchBox() {
                   getLocal("recentSearchs")
                     .splice(0, 6)
                     .map((word) => (
-                      <Link key={word} to={`/shop/q=${word}`} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
+                      <Link key={word} to={`/shop?q=${word}`} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
                         <span>{word}</span>
                         <span className="bg-light-gray/70 rounded-full size-4 flex justify-center items-center">
                           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 22 16">
@@ -120,7 +120,7 @@ export default function NavbarSearchBox() {
                 </h5>
               </div>
               <div className="flex items-center flex-wrap gap-2 text-gray text-sm mt-4">
-                <Link to={"/shop/q=laptop"} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
+                <Link to={"/shop?q=laptop"} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
                   <span>laptop</span>
                   <span className="bg-light-gray/70 rounded-full size-4 flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 22 16">
@@ -128,7 +128,7 @@ export default function NavbarSearchBox() {
                     </svg>
                   </span>
                 </Link>
-                <Link to={"/shop/q=watch"} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
+                <Link to={"/shop?q=watch"} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
                   <span>watch</span>
                   <span className="bg-light-gray/70 rounded-full size-4 flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 22 16">
@@ -136,7 +136,7 @@ export default function NavbarSearchBox() {
                     </svg>
                   </span>
                 </Link>
-                <Link to={"/shop/q=phone"} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
+                <Link to={"/shop?q=phone"} className="border border-light-gray fill-dark transition-colors duration-300 hover:border-org hover:text-org  rounded-full py-1 px-2 flex items-center gap-2">
                   <span>phone</span>
                   <span className="bg-light-gray/70 rounded-full size-4 flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 22 16">
@@ -165,7 +165,7 @@ export default function NavbarSearchBox() {
                   جستجوهای مرتبط با <span className="text-red "> {searchParam} </span>
                 </h5>
               </div>
-              <Link to={`/shop/q=${searchParam}`}>
+              <Link to={`/shop?q=${searchParam}`}>
                 <div className="bg-light-gray/70 rounded-full  px-1.5 py-1 flex justify-center items-center gap-1 text-gray hover:fill-org hover:text-org">
                   <span className="text-xs "> {response.length}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 22 16">
@@ -191,7 +191,10 @@ export default function NavbarSearchBox() {
                       <span>{product.title}</span>
                     </Link>
                     <p className="ps-8">
-                      در دسته بندی: <span className="text-red">{product.category}</span>
+                      در دسته بندی:{" "}
+                      <Link to={`./shop?categories=${product.category}`} className="text-red">
+                        {product.category}
+                      </Link>
                     </p>
                   </div>
                 ))

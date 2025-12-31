@@ -141,7 +141,7 @@ export default function TopCategories() {
           </Swiper>
           {products.length > 12 && (
             <div className="text-center py-3 lg:py-4">
-              <Link to={`/shop/${category}`} className="py-2 px-10 rounded-full gradient text-white transition-[scale_box-shaddow] duration-300 inline-block hover:scale-110 hover:shadow-[-2px_0px_8px_#ff3b00b5]">
+              <Link to={`/shop?categories=${category}`} className="py-2 px-10 rounded-full gradient text-white transition-[scale_box-shaddow] duration-300 inline-block hover:scale-110 hover:shadow-[-2px_0px_8px_#ff3b00b5]">
                 مشاهده همه
               </Link>
             </div>

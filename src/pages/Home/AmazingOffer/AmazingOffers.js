@@ -46,14 +46,14 @@ export default function AmazingOffers() {
             </div>
           </div>
         </div>
-        <Link to="/shop" className="hidden sm:inline-block text-red bg-white px-4 py-1.5 rounded-2xl text-center text-sm">
+        <Link to="/shop?minDiscount=19&sortBy=discountpercentage" className="hidden sm:inline-block text-red bg-white px-4 py-1.5 rounded-2xl text-center text-sm">
           مشاهده محصولات
         </Link>
       </div>
       <AmazingOfferSlider />
       <div className="text-center py-5 sm:hidden">
         <Link
-          to="/shop"
+          to="/shop?minDiscount=19&sortBy=discountpercentage"
           className=" text-red bg-white px-4 py-1.5 rounded-2xl text-center text-sm
         "
         >

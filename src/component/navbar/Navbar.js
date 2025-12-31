@@ -162,13 +162,13 @@ export default function Navbar() {
               </NavLink>
               <div className="navbar-hidden-item text-dark text-base w-95">
                 <ul>
-                  <NavLink to={"/"} className="flex items-center justify-between border border-org rounded-xl overflow-hidden p-3 group/item">
+                  <NavLink to={"/product/79"} className="flex items-center justify-between border border-org rounded-xl overflow-hidden p-3 group/item">
                     <div className="">
-                      <img className="max-w-20" src="https://digiplus.aet-web.ir/wp-content/uploads/2025/01/dplaptop.svg" alt="product" />
+                      <img className="max-w-20" src="https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/thumbnail.webp" alt="product" />
                     </div>
                     <div className="text-end text-gray text-xs">
-                      <p>لپ تاپ 15.6 اینچی اچ‌پی مدل Victus 15</p>
-                      <span className="text-sm font-bold mt-1 inline-block group-hover/item:text-org">3,555 $ </span>
+                      <p>Asus Zenbook Pro Dual Screen Laptop</p>
+                      <span className="text-sm font-bold mt-1 inline-block group-hover/item:text-org">1,799.99 $ </span>
                     </div>
                   </NavLink>
                 </ul>

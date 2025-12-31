@@ -128,7 +128,7 @@ export default function FilteringForm({ params, onParams }) {
       </div>
       {/* search input  */}
       <div className="mt-2">
-        <input onInput={(e) => setQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q} />
+        <input onInput={(e) => setQuery(e.target.value)} className="w-full outline-0 px-3 p-2 rounded-full border border-light-gray focus:border-org text-red placeholder:text-gray/60 focus:placeholder:text-org " placeholder="جستجو..." type="text" value={params.q || ""} />
       </div>
       <div className="flex flex-col gap-3 pt-5">
         <div className={`${open == "category" ? "max-h-100" : "max-h-12.5 "} flex flex-col transition-[max-height] duration-500 overflow-hidden `}>

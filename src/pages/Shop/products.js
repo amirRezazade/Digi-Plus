@@ -10,6 +10,8 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
 
   let totalPage = Math.ceil(filteredProducts?.length / 12) || 1;
   let listRef = useRef(null);
+  const isFirstRender = useRef(true);
+
   // sorting
   useEffect(() => {
     let list = sortProducts(filteredProducts, sort, isDesc);
@@ -19,7 +21,6 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
   // set sort in URL
   useEffect(() => {
     onSorting((prev) => {
-      setPage(1);
       return {
         ...prev,
         sortBy: sort,
@@ -30,6 +31,7 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
 
   // set Page in URL
   useEffect(() => {
+    if (page > totalPage || page < 1) setPage(1);
     onSorting((prev) => {
       return {
         ...prev,
@@ -43,10 +45,14 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
   }, [page]);
 
   // reset page
-  if (page > totalPage || page < 1) setPage(1);
+
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false; // اولین رندر رد شود
+      return;
+    }
     setPage(1);
-  }, [params]);
+  }, [params, sort, isDesc]);
 
   function handleSortChange(key) {
     if (key == sort) {
@@ -57,7 +63,7 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
     }
   }
 
-  return (
+  return filteredProducts.length ? (
     <div ref={listRef} className="w-full grow text-gray text-sm">
       <div className="pb-5 flex flex-wrap xs:flex-nowrap items-center gap-1.5 sm:gap-4 ">
         <span className="shrink-0 fill-gray flex items-center gap-1">
@@ -109,9 +115,9 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
               </svg>
             </span>
           </button>
-          <button onClick={() => handleSortChange("discountPercentage")} className={`border rounded-full border-light-gray py-1 px-3 cursor-pointer flex items-start gap-2 ${sort == "discountPercentage" ? "fill-org text-org bg-light border-org" : "fill-gray"}`}>
+          <button onClick={() => handleSortChange("discountpercentage")} className={`border rounded-full border-light-gray py-1 px-3 cursor-pointer flex items-start gap-2 ${sort == "discountpercentage" ? "fill-org text-org bg-light border-org" : "fill-gray"}`}>
             <span>تخفیف</span>
-            <span className={sort == "discountPercentage" && isDesc ? "rotate-180 translate-y-1/3" : ""}>
+            <span className={sort == "discountpercentage" && isDesc ? "rotate-180 translate-y-1/3" : ""}>
               <svg width="15" height="15" viewBox="-96 0 512 512" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -179,6 +185,10 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
           </button>
         </div>
       )}
+    </div>
+  ) : (
+    <div>
+      <img src="https://flowera.in/uploads/no-product-found.png" alt="" />
     </div>
   );
 }
