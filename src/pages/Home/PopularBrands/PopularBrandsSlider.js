@@ -63,7 +63,7 @@ export default function PopularBrandsSlider() {
     },
   ];
   return (
-    <div className="flex items-center justify-center px-7 md:px-10 py-1 h-24 relative">
+    <div className="flex items-center justify-center px-7 md:px-10 py-1 lg:mt-5 h-24 relative">
       <img className="absolute top-0 left-0 w-full h-full -z-10" src={bgImg} alt="" />
       <button className="brands-prev  fill-white absolute top-1/2 right-0 md:right-2 -translate-y-1/2 cursor-pointer py-5 px-1 z-1 -rotate-180">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 22 16">
@@ -99,7 +99,7 @@ export default function PopularBrandsSlider() {
         >
           {brands.map((brand) => (
             <SwiperSlide className="lg:hover:scale-105 ">
-              <Link to={`shop/brand=${brand.name}`}>
+              <Link to={`/shop?brand=${brand.name}`}>
                 <img className="w-full h-full object-contain" src={brand.img} alt={brand.name} />
               </Link>
             </SwiperSlide>

@@ -28,7 +28,7 @@ export default function ProductInfo({ data }) {
           <p>
             برند:
             {data.brand ? (
-              <Link to={`/shop/brand=${data.brand}`} className="text-red px-2">
+              <Link to={`/shop?brand=${data.brand}`} className="text-red px-2">
                 {data.brand}
               </Link>
             ) : (
@@ -38,7 +38,7 @@ export default function ProductInfo({ data }) {
           <p>
             دسته بندی:
             {data.category ? (
-              <Link to={`/shop/category=${data.category}`} className="text-red px-2">
+              <Link to={`/shop?categories=${data.category}`} className="text-red px-2">
                 {data.category}
               </Link>
             ) : (

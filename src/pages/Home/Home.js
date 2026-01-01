@@ -12,11 +12,8 @@ import SpecialOffer from "./SpecialOffer/SpecialOffer";
 import Banners from "./Banners/Banners";
 import Footer from "../../component/footer/Footer";
 import SupportCat from "../../component/SupportChat/SupportCat";
-import ImgFullScreen from "../../component/SupportChat/ImgFullScreenModal";
 
 export default function Home() {
-  let [imgFullScreen, setImgFullScreen] = useState(null);
-
   return (
     <>
       <Navbar />
@@ -75,8 +72,7 @@ export default function Home() {
         <Footer />
       </footer>
       {/* start support chat  */}
-      <SupportCat onShowImg={(src) => setImgFullScreen(src)} />
-      <ImgFullScreen src={imgFullScreen} onclose={() => setImgFullScreen(null)} />
+      <SupportCat />
       {/* finish support chat  */}
     </>
   );
