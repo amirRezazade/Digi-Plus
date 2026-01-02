@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLocal, setLocal } from "../../utils/funcs.js";
+import { formatedPrice, getLocal, setLocal } from "../../utils/funcs.js";
 import "./addToShoppingCartLargeBtn.css";
 export default function AddToShoppingCartLargeBtn({ product, quantity = 1 }) {
   let [inCart, setInCart] = useState(false);
@@ -26,7 +26,8 @@ export default function AddToShoppingCartLargeBtn({ product, quantity = 1 }) {
     let cartList = getLocal("cart") || [];
     let isInTheCart = cartList.findIndex((item) => item.id == product.id);
     if (isInTheCart === -1) {
-      let newProduct = { ...product, quantity: quantity };
+      let TP = product.price * (quantity || 1);
+      let newProduct = { ...product, quantity: quantity, totalPrice: TP };
       cartList.push(newProduct);
       setInCart(true);
       setLocal("cart", cartList);

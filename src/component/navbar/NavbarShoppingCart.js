@@ -46,7 +46,10 @@ export default function NavbarShoppingCart() {
   function QuantityControl(id, text) {
     let cartList = getLocal("cart");
     let index = cartList.findIndex((item) => item.id == id);
-    text == "plus" ? cartList[index].quantity++ : cartList[index].quantity--;
+    if (text == "plus" && cartList[index].quantity < cartList[index].stock) cartList[index].quantity++;
+    if (text == "minus" && cartList[index].quantity > 1) cartList[index].quantity--;
+    cartList[index].totalPrice = cartList[index].price * cartList[index].quantity;
+
     setLocal("cart", cartList);
     setProduct(getLocal("cart") || []);
   }
@@ -107,14 +110,14 @@ export default function NavbarShoppingCart() {
                     <span className="text-xs ">مانده در انبار: {product.stock}</span>
 
                     <div className="w-21 flex border border-light-gray rounded-md mt-1 ">
-                      <button onClick={() => QuantityControl(product.id, "plus")} disabled={product.quantity == product.stock} className="cursor-pointer fill-red px-1 py-1">
+                      <button onClick={() => QuantityControl(product.id, "plus")} disabled={product.quantity > product.stock - 1} className="cursor-pointer fill-red px-1 py-1 disabled:fill-gray">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                           <rect x="2" y="7" width="12" height="2" rx="1"></rect>
                           <rect x="7" y="14" width="12" height="2" rx="1" transform="rotate(-90 7 14)"></rect>
                         </svg>
                       </button>
                       <span className="grow text-center px-2 py-1">{product.quantity}</span>
-                      <button onClick={() => QuantityControl(product.id, "minus")} disabled={product.quantity == 1} className="cursor-pointer fill-red px-1 py-1">
+                      <button onClick={() => QuantityControl(product.id, "minus")} disabled={product.quantity < 2} className="cursor-pointer fill-red px-1 py-1 disabled:fill-gray">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                           <rect x="2" y="7" width="12" height="2" rx="1"></rect>
                         </svg>
