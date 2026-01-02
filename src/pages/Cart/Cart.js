@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Footer from "../../component/footer/Footer";
 import Navbar from "../../component/navbar/Navbar";
-import { formatedPrice, getLocal, setLocal } from "../../utils/funcs";
+import { cartTotalPrice, formatedPrice, getLocal, setLocal } from "../../utils/funcs";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
   let [products, setProducts] = useState(getLocal("cart") || []);
+  let [totalDiscount, setTotalDiscount] = useState(0);
+  let [totalOriginalPrice, setTotalOriginalPrice] = useState(0);
   let [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -26,10 +28,7 @@ export default function Cart() {
     let index = cartList.findIndex((item) => item.id == id);
     cartList.splice(index, 1);
     setIsLoading(false);
-    // setTimeout(() => {
     setLocal("cart", cartList);
-    //   setProducts(getLocal("cart") || []);
-    // }, 400);
   }
   function QuantityControl(id, text) {
     let cartList = getLocal("cart");
@@ -38,12 +37,49 @@ export default function Cart() {
     setLocal("cart", cartList);
     setProducts(getLocal("cart") || []);
   }
+
+  // calc cart total discount
+  useEffect(() => {
+    const totalDiscount = products.reduce((total, item) => {
+      const discountedPrice = item.price || 0; // قیمت با تخفیف
+      const discountPercentage = item.discountPercentage || 0;
+      const quantity = item.quantity || 1;
+      // ابتدا قیمت اصلی را پیدا کن
+      let originalPrice = discountedPrice;
+      if (discountPercentage > 0 && discountPercentage < 100) {
+        originalPrice = discountedPrice / (1 - discountPercentage / 100);
+      }
+      const discountAmount = originalPrice - discountedPrice;
+      return total + discountAmount * quantity;
+    }, 0);
+
+    setTotalDiscount(totalDiscount);
+  }, [products]);
+
+  // calc cart real price (without discount)
+  useEffect(() => {
+    let total = 0;
+    products.forEach((item) => {
+      const discountedPrice = item.price || 0;
+      const discountPercentage = item.discountPercentage || 0;
+      const quantity = item.quantity || 1;
+      // محاسبه قیمت اصلی قبل از تخفیف
+      let originalPrice = discountedPrice;
+      if (discountPercentage > 0 && discountPercentage < 100) {
+        originalPrice = discountedPrice / (1 - discountPercentage / 100);
+      }
+      total += originalPrice * quantity;
+    });
+
+    setTotalOriginalPrice(total);
+  }, [products]);
+
   return (
     <>
       <Navbar />
       <div className="custom-container text-gray text-sm">
         <div class="flex items-center gap-3 text-gray text-sm text-nowrap overflow-auto hidden-scrollbar my-5 lg:my-9 px-4">
-          <a class="stroke-gray hover:stroke-org fill-white" href="/">
+          <Link class="stroke-gray hover:stroke-org fill-white" to="/">
             <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -60,16 +96,16 @@ export default function Cart() {
                 </defs>
               </g>
             </svg>
-          </a>
+          </Link>
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentcolor">
               <path d="M9.99953 13.78C9.87286 13.78 9.7462 13.7333 9.6462 13.6333L5.29953 9.28668C4.59286 8.58001 4.59286 7.42001 5.29953 6.71335L9.6462 2.36668C9.83953 2.17335 10.1595 2.17335 10.3529 2.36668C10.5462 2.56001 10.5462 2.88001 10.3529 3.07335L6.0062 7.42001C5.6862 7.74001 5.6862 8.26001 6.0062 8.58001L10.3529 12.9267C10.5462 13.12 10.5462 13.44 10.3529 13.6333C10.2529 13.7267 10.1262 13.78 9.99953 13.78Z"></path>
             </svg>
           </span>
-          <span class="hover:text-org">سبد خرید</span>
+          <span class="text-dark">سبد خرید</span>
         </div>
-        <div className="flex items-start justify-between gap-4">
-          <div className="grow p-6 rounded-2xl  gray-shaddow border border-light-gray/50">
+        <div className=" relative flex flex-col lg:flex-row items-start justify-between gap-6">
+          <div className="w-full lg:w-auto lg:grow p-3.5 sm:p-6 rounded-2xl  gray-shaddow border border-light-gray/50">
             <div className="flex justify-between items-center">
               <h2 className="text-lg font-bold text-dark relative ps-2.5 title-style">
                 سبد خرید<span className="text-red"> من</span>
@@ -79,19 +115,19 @@ export default function Cart() {
             <ul>
               {products.length && !isLoading ? (
                 products.map((product) => (
-                  <li key={product.id} className="flex justify-between items-center  gap-2.5 my-5 p-5 border border-light-gray rounded-xl  transition-opacity duration-400">
-                    <Link to={`/product/${product.id}`} className="inline-flex items-center gap-3 w-75">
-                      <div className="size-18 shrink-0 rounded-lg overflow-hidden bg-white gray-shaddow p-1 box-border border border-light-gray/40">
+                  <li key={product.id} className="flex flex-wrap md:flex-nowrap justify-between items-center  gap-2.5 my-5 p-3 xs:p-5 border border-light-gray rounded-xl  transition-opacity duration-400">
+                    <Link to={`/product/${product.id}`} className="inline-flex items-center gap-3 w-full xs:w-4/5 sm:w-[89%] md:w-1/3  text-dark hover:text-org">
+                      <div className="size-16 xs:size-18 sm:shrink-0 rounded-lg overflow-hidden bg-white gray-shaddow p-1 box-border border border-light-gray/40">
                         <img src={product.thumbnail} alt="" />
                       </div>
-                      <h4 className="text-base text-dark">{product.title}</h4>
+                      <h4 className="xs:text-base lg:text-sm xl:text-base transition-colors duration-300">{product.title}</h4>
                     </Link>
-                    <div>
-                      <span className="block text-center">قیمت</span>
-                      <h4 className="text-dark text-base">{formatedPrice(product.price)}</h4>
+                    <div className=" text-start sm:text-center order-1  xs:order-3 xl:order-2">
+                      <span className="block ">قیمت</span>
+                      <h4 className="text-dark xs:text-base">{formatedPrice(product.price)} $</h4>
                     </div>
-                    <div>
-                      <span className="block text-center">مانده: {product.stock}</span>
+                    <div className="xs:order-4 text-center">
+                      <span className="block ">مانده: {product.stock}</span>
                       <div className="w-21 flex border border-light-gray rounded-md mt-1 ">
                         <button onClick={() => QuantityControl(product.id, "plus")} disabled={product.quantity == product.stock} className="cursor-pointer fill-red px-1 py-1">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -107,11 +143,11 @@ export default function Cart() {
                         </button>
                       </div>
                     </div>
-                    <div>
-                      <span className="block text-center">قیمت کل</span>
-                      <h4 className="text-dark text-base">{formatedPrice(product.price * product.quantity)}</h4>
+                    <div className="w-2/3 xs:w-auto xs:text-center order-3 xs:order-5">
+                      <span className="block ">قیمت کل</span>
+                      <h4 className="text-dark text-base xs:font-bold">{formatedPrice(product.price * product.quantity)} $</h4>
                     </div>
-                    <button onClick={(e) => deletItem(product.id, e.target)} className="cursor-pointer bg-yel rounded-lg size-10 flex justify-center items-center border border-org/40 transition-colors duration-300 hover:fill-white hover:bg-red fill-red ">
+                    <button onClick={(e) => deletItem(product.id, e.target)} className="order-5 xs:order-1 md:order-last cursor-pointer bg-yel rounded-lg size-8 xl:size-10 flex justify-center items-center border border-org/40 transition-colors duration-300 hover:fill-white hover:bg-red fill-red ">
                       <svg width="17" height="17" viewBox="0 0 16 16" id="trash-16px" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -131,6 +167,37 @@ export default function Cart() {
                 <h1>no product</h1>
               )}
             </ul>
+          </div>
+
+          <div className="sticky top-10 w-full grow lg:max-w-75 xl:max-w-80 lg:min-w-72 mb-10">
+            <div className="p-4 rounded-2xl  gray-shaddow border border-light-gray/50">
+              <h3 className="text-base  text-dark border-b border-light-gray pb-3">
+                قیمت <span className="text-red"> کالاها</span>
+              </h3>
+              <div>
+                <div className="flex flex-wrap xs:flex-nowrap lg:flex-wrap justify-between items-center gap-2 pt-3">
+                  <span className="text-nowrap">کد تخفیف: </span>
+                  <form onSubmit={(e) => e.preventDefault()} className="flex items-center gap-0 w-full max-w-100">
+                    <input className="grow border border-l-0 rounded-l-none border-light-gray rounded-md outline-0 px-2 py-2 " type="text" placeholder="کد تخفیف خود را وارد کنید..." required />
+                    <button className="px-3 rounded bg-org text-white h-full py-2 cursor-pointer">اعمال</button>
+                  </form>
+                </div>
+                <div className="flex justify-between items-center mt-5 ">
+                  <span>قیمت کل بدون تخفیف</span>
+                  <span className="">{formatedPrice(totalOriginalPrice)} $</span>
+                </div>
+                <div className="flex justify-between items-center mt-5 ">
+                  <span>تخفیف شما از خرید</span>
+                  <span className="font-bold text-red">{formatedPrice(totalDiscount)} $</span>
+                </div>
+                <div className="flex justify-between items-center mt-5 ">
+                  <span>قیمت نهایی</span>
+                  <span className="font-bold text-dark text-base">{cartTotalPrice()} $</span>
+                </div>
+                <button className="py-4 w-full max-w-150 mx-auto block rounded-lg gradient text-white mt-5 cursor-pointer transition-transform duration-300 hover:scale-105 hover:sm-shaddow">تایید و تکمیل سفارش</button>
+              </div>
+            </div>
+            <span className="text-xs text-center block mt-4">قیمت حمل و نقل در هنگام پرداخت به‌روز میشود.</span>
           </div>
         </div>
       </div>
