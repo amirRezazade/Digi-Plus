@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { cartTotalPrice, formatedPrice, getLocal, setLocal } from "../../utils/funcs";
+import { useEffect, useMemo, useState } from "react";
+import { cartRealPrice, cartTotalDiscount, cartTotalPrice, formatedPrice, getLocal, setLocal } from "../../utils/funcs";
 import { Link } from "react-router-dom";
 import { sortProducts } from "../Shop/FilterAndSortProduct";
 
-export default function CartList(params) {
+export default function CartList() {
   let [products, setProducts] = useState(getLocal("cart") || []);
   let [totalDiscount, setTotalDiscount] = useState(0);
   let [totalOriginalPrice, setTotalOriginalPrice] = useState(0);
@@ -39,47 +39,15 @@ export default function CartList(params) {
 
   // calc cart total discount
   useEffect(() => {
-    let test = 0;
-    products.forEach((item) => {
-      test += item.totalPrice;
-    });
-    console.log(test);
+    let total = cartTotalDiscount();
 
-    const totalDiscount = products.reduce((total, item) => {
-      const discountedPrice = item.price || 0; // قیمت با تخفیف
-      const discountPercentage = item.discountPercentage || 0;
-      const quantity = item.quantity || 1;
-      // ابتدا قیمت اصلی را پیدا کن
-      let originalPrice = discountedPrice;
-      if (discountPercentage > 0 && discountPercentage < 100) {
-        originalPrice = discountedPrice / (1 - discountPercentage / 100);
-      }
-      const discountAmount = originalPrice - discountedPrice;
-      //   console.log(total + item.totalPrice);
-
-      console.log(total + discountAmount * quantity);
-      return total + discountAmount * quantity;
-    }, 0);
-
-    setTotalDiscount(totalDiscount);
+    setTotalDiscount(total);
   }, [products]);
 
   // calc cart real price (without discount)
   useEffect(() => {
-    let total = 0;
-    products.forEach((item) => {
-      const discountedPrice = item.price || 0;
-      const discountPercentage = item.discountPercentage || 0;
-      const quantity = item.quantity || 1;
-      // محاسبه قیمت اصلی قبل از تخفیف
-      let originalPrice = discountedPrice;
-      if (discountPercentage > 0 && discountPercentage < 100) {
-        originalPrice = discountedPrice / (1 - discountPercentage / 100);
-      }
-      total += originalPrice * quantity;
-    });
-
-    setTotalOriginalPrice(total);
+    let realPrice = cartRealPrice();
+    setTotalOriginalPrice(realPrice);
   }, [products]);
 
   let filteredProducts = useMemo(() => {
@@ -307,7 +275,9 @@ export default function CartList(params) {
                 <span>قیمت نهایی</span>
                 <span className="font-bold text-dark text-base">{cartTotalPrice()} $</span>
               </div>
-              <button className="py-4 w-full max-w-150 mx-auto block rounded-lg gradient text-white mt-5 cursor-pointer transition-transform duration-300 hover:scale-105 hover:sm-shaddow">تایید و تکمیل سفارش</button>
+              <Link to="/checkout" className="py-4 w-full max-w-150 mx-auto text-center block rounded-lg gradient text-white mt-5 cursor-pointer transition-transform duration-300 hover:scale-105 sm-shaddow">
+                تایید و تکمیل سفارش
+              </Link>
             </div>
           </div>
           <span className="text-xs text-center block mt-4">قیمت حمل و نقل در هنگام پرداخت به‌روز میشود.</span>

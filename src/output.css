@@ -733,9 +733,6 @@ footer .swiper-wrapper {
   .top-15 {
     top: calc(var(--spacing) * 15);
   }
-  .top-20 {
-    top: calc(var(--spacing) * 20);
-  }
   .top-\[50\%\] {
     top: 50%;
   }
@@ -892,6 +889,9 @@ footer .swiper-wrapper {
   .my-10 {
     margin-block: calc(var(--spacing) * 10);
   }
+  .my-15 {
+    margin-block: calc(var(--spacing) * 15);
+  }
   .my-25 {
     margin-block: calc(var(--spacing) * 25);
   }
@@ -930,6 +930,9 @@ footer .swiper-wrapper {
   }
   .mt-5 {
     margin-top: calc(var(--spacing) * 5);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
   }
   .mt-7 {
     margin-top: calc(var(--spacing) * 7);
@@ -1346,6 +1349,9 @@ footer .swiper-wrapper {
   .max-w-125\! {
     max-width: calc(var(--spacing) * 125) !important;
   }
+  .max-w-140 {
+    max-width: calc(var(--spacing) * 140);
+  }
   .max-w-150 {
     max-width: calc(var(--spacing) * 150);
   }
@@ -1586,8 +1592,14 @@ footer .swiper-wrapper {
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
+  .gap-x-7 {
+    column-gap: calc(var(--spacing) * 7);
+  }
   .gap-y-2 {
     row-gap: calc(var(--spacing) * 2);
+  }
+  .gap-y-4 {
+    row-gap: calc(var(--spacing) * 4);
   }
   .gap-y-6 {
     row-gap: calc(var(--spacing) * 6);
@@ -1875,6 +1887,9 @@ footer .swiper-wrapper {
   .bg-\[url\(\.\.\/src\/assets\/images\/bg-images\/bg-line-vertical\.png\)\] {
     background-image: url(../src/assets/images/bg-images/bg-line-vertical.png);
   }
+  .bg-\[url\(data\:image\/svg\+xml\;charset\=utf-8\;base64\,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgMTAgOCIgZmlsbD0iI2ZmZmZmZiI\+DQogICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zLjU3NzUgNy4xNjc1QzMuMzc3NSA3LjE2NzUgMy4xODc1IDcuMDg3NSAzLjA0NzUgNi45NDc1TDAuMjE3NSA0LjExNzVDLTAuMDcyNSAzLjgyNzUgLTAuMDcyNSAzLjM0NzUgMC4yMTc1IDMuMDU3NUMwLjUwNzUgMi43Njc1IDAuOTg3NSAyLjc2NzUgMS4yNzc1IDMuMDU3NUwzLjU3NzUgNS4zNTc1TDguNzE3NSAwLjIxNzVDOS4wMDc1IC0wLjA3MjUgOS40ODc1IC0wLjA3MjUgOS43Nzc1IDAuMjE3NUMxMC4wNjc1IDAuNTA3NSAxMC4wNjc1IDAuOTg3NDk5IDkuNzc3NSAxLjI3NzVMNC4xMDc1IDYuOTQ3NUMzLjk2NzUgNy4wODc1IDMuNzc3NSA3LjE2NzUgMy41Nzc1IDcuMTY3NVoiPjwvcGF0aD4NCiAgICAgICAgICAgICAgICA8L3N2Zz4\=\)\] {
+    background-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgMTAgOCIgZmlsbD0iI2ZmZmZmZiI+DQogICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zLjU3NzUgNy4xNjc1QzMuMzc3NSA3LjE2NzUgMy4xODc1IDcuMDg3NSAzLjA0NzUgNi45NDc1TDAuMjE3NSA0LjExNzVDLTAuMDcyNSAzLjgyNzUgLTAuMDcyNSAzLjM0NzUgMC4yMTc1IDMuMDU3NUMwLjUwNzUgMi43Njc1IDAuOTg3NSAyLjc2NzUgMS4yNzc1IDMuMDU3NUwzLjU3NzUgNS4zNTc1TDguNzE3NSAwLjIxNzVDOS4wMDc1IC0wLjA3MjUgOS40ODc1IC0wLjA3MjUgOS43Nzc1IDAuMjE3NUMxMC4wNjc1IDAuNTA3NSAxMC4wNjc1IDAuOTg3NDk5IDkuNzc3NSAxLjI3NzVMNC4xMDc1IDYuOTQ3NUMzLjk2NzUgNy4wODc1IDMuNzc3NSA3LjE2NzUgMy41Nzc1IDcuMTY3NVoiPjwvcGF0aD4NCiAgICAgICAgICAgICAgICA8L3N2Zz4=);
+  }
   .bg-none {
     background-image: none;
   }
@@ -1933,6 +1948,9 @@ footer .swiper-wrapper {
   }
   .stroke-red {
     stroke: var(--color-red);
+  }
+  .stroke-white {
+    stroke: var(--color-white);
   }
   .object-contain {
     object-fit: contain;
@@ -2268,6 +2286,9 @@ footer .swiper-wrapper {
   .underline {
     text-decoration-line: underline;
   }
+  .accent-red {
+    accent-color: var(--color-red);
+  }
   .opacity-0 {
     opacity: 0%;
   }
@@ -2524,14 +2545,29 @@ footer .swiper-wrapper {
       border-color: var(--color-org);
     }
   }
+  .peer-checked\:border-red {
+    &:is(:where(.peer):checked ~ *) {
+      border-color: var(--color-red);
+    }
+  }
   .peer-checked\:bg-org {
     &:is(:where(.peer):checked ~ *) {
       background-color: var(--color-org);
     }
   }
+  .peer-checked\:bg-red {
+    &:is(:where(.peer):checked ~ *) {
+      background-color: var(--color-red);
+    }
+  }
   .peer-checked\:bg-\[url\(https\:\/\/digiplus\.aet-web\.ir\/wp-content\/themes\/Digiplus\/assets\/img\/dpshoptick\.svg\)\] {
     &:is(:where(.peer):checked ~ *) {
       background-image: url(https://digiplus.aet-web.ir/wp-content/themes/Digiplus/assets/img/dpshoptick.svg);
+    }
+  }
+  .peer-checked\:text-dark {
+    &:is(:where(.peer):checked ~ *) {
+      color: var(--color-dark);
     }
   }
   .placeholder\:text-sm {
@@ -2832,6 +2868,13 @@ footer .swiper-wrapper {
       }
     }
   }
+  .hover\:bg-red\! {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-red) !important;
+      }
+    }
+  }
   .hover\:bg-linear-270 {
     &:hover {
       @media (hover: hover) {
@@ -2924,6 +2967,27 @@ footer .swiper-wrapper {
     &:hover {
       @media (hover: hover) {
         text-decoration-line: underline;
+      }
+    }
+  }
+  .hover\:accent-dark {
+    &:hover {
+      @media (hover: hover) {
+        accent-color: var(--color-dark);
+      }
+    }
+  }
+  .hover\:accent-red {
+    &:hover {
+      @media (hover: hover) {
+        accent-color: var(--color-red);
+      }
+    }
+  }
+  .hover\:accent-red\! {
+    &:hover {
+      @media (hover: hover) {
+        accent-color: var(--color-red) !important;
       }
     }
   }
@@ -3120,11 +3184,6 @@ footer .swiper-wrapper {
       width: auto;
     }
   }
-  .xs\:max-w-4\/5 {
-    @media (width >= 450px) {
-      max-width: calc(4/5 * 100%);
-    }
-  }
   .xs\:max-w-100 {
     @media (width >= 450px) {
       max-width: calc(var(--spacing) * 100);
@@ -3283,11 +3342,6 @@ footer .swiper-wrapper {
   .sm\:max-w-110 {
     @media (width >= 40rem) {
       max-width: calc(var(--spacing) * 110);
-    }
-  }
-  .sm\:max-w-\[89\%\] {
-    @media (width >= 40rem) {
-      max-width: 89%;
     }
   }
   .sm\:max-w-\[600px\] {
@@ -3633,11 +3687,6 @@ footer .swiper-wrapper {
       max-width: calc(1/2 * 100%);
     }
   }
-  .md\:max-w-1\/3 {
-    @media (width >= 48rem) {
-      max-width: calc(1/3 * 100%);
-    }
-  }
   .md\:max-w-100 {
     @media (width >= 48rem) {
       max-width: calc(var(--spacing) * 100);
@@ -3666,6 +3715,11 @@ footer .swiper-wrapper {
   .md\:grid-cols-1 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   .md\:grid-cols-3 {
@@ -4167,6 +4221,11 @@ footer .swiper-wrapper {
   .lg\:grid-cols-9 {
     @media (width >= 64rem) {
       grid-template-columns: repeat(9, minmax(0, 1fr));
+    }
+  }
+  .lg\:flex-col {
+    @media (width >= 64rem) {
+      flex-direction: column;
     }
   }
   .lg\:flex-row {

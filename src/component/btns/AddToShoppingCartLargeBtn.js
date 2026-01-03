@@ -26,8 +26,9 @@ export default function AddToShoppingCartLargeBtn({ product, quantity = 1 }) {
     let cartList = getLocal("cart") || [];
     let isInTheCart = cartList.findIndex((item) => item.id == product.id);
     if (isInTheCart === -1) {
-      let TP = product.price * (quantity || 1);
-      let newProduct = { ...product, quantity: quantity, totalPrice: TP };
+      const { price, title, discountPercentage, id, rating, stock, thumbnail } = product;
+      const TP = product.price * (quantity || 1);
+      let newProduct = { price, title, discountPercentage, id, rating, stock, thumbnail, quantity: quantity, totalPrice: TP };
       cartList.push(newProduct);
       setInCart(true);
       setLocal("cart", cartList);
