@@ -1,12 +1,12 @@
 import Footer from "../../component/footer/Footer";
 import Navbar from "../../component/navbar/Navbar";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutMain from "./CheckoutMain";
 
 export default function checkout() {
   return (
     <>
       <Navbar />
-      <CheckoutForm />
+      <CheckoutMain />
       <Footer />
     </>
   );
