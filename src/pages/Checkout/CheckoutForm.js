@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import persianDate from "persian-date";
 
 export default function CheckoutForm({ checkingForm }) {
@@ -18,7 +18,7 @@ export default function CheckoutForm({ checkingForm }) {
     street: null,
     address: null,
   });
-
+  let formRef = useRef(null);
   useEffect(() => {
     const dateList = [];
     const today = new persianDate();
@@ -34,13 +34,20 @@ export default function CheckoutForm({ checkingForm }) {
     }
     setDeliveryDays(dateList);
   }, []);
-
   useEffect(() => {
     console.log(formData);
-  }, [formData]);
+
+    if (formData.name && formData.lastName && formData.email && formData.postalCode && formData.phone && formData.country && formData.Province && formData.city && formData.street && formData.address && selectedDeliveryDay) {
+      window.location.href = "/payment";
+    } else
+      formRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }, [checkingForm]);
 
   return (
-    <form className="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-7 my-5" action="">
+    <form ref={formRef} className="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-7 my-5" action="">
       <div>
         <label className={`cursor-pointer ${checkingForm && !formData.name ? "text-red" : ""}`} htmlFor="name">
           نام<span className="text-red"> * </span>

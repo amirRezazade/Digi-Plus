@@ -31,6 +31,9 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+label {
+  cursor: pointer;
+}
 ::-webkit-scrollbar {
   background-color: transparent;
   width: 7px;
@@ -104,6 +107,17 @@ body {
 }
 .discount-range-input::-moz-range-thumb {
   background: url("./assets/images/range-input-thumbs/discount.svg") center / contain no-repeat;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* custom class */

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { cartRealPrice, cartTotalDiscount, cartTotalPrice, formatedPrice, getLocal } from "../../utils/funcs";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import CheckoutForm from "./CheckoutForm";
 
@@ -8,7 +8,7 @@ export default function CheckoutMain() {
   let [products, setProducts] = useState(getLocal("cart") || []);
   let [shippingPrice, setShippingPrice] = useState(10);
   let [paymentMethod, setPaymentMethod] = useState("Pay-upon-receipt");
-  let [checking, setChecking] = useState(false);
+  let [checking, setChecking] = useState(0);
 
   useEffect(() => {
     function localChanged() {
@@ -82,8 +82,8 @@ export default function CheckoutMain() {
 
       <section className="flex flex-col lg:flex-row items-start justify-between gap-5 mt-8">
         <div className="w-full lg:w-auto lg:grow p-3.5 sm:p-6 rounded-2xl  gray-shaddow border border-light-gray/50">
-          <h2 class="text-lg font-bold text-dark relative ps-2.5 title-style">
-            ثبت<span class="text-red"> سفارش</span>
+          <h2 className="text-lg font-bold text-dark relative ps-2.5 title-style">
+            ثبت<span className="text-red"> سفارش</span>
           </h2>
           <CheckoutForm checkingForm={checking} />
         </div>
@@ -131,7 +131,7 @@ export default function CheckoutMain() {
                   <input className="peer hidden" type="checkbox" id="shipping-normal" checked={shippingPrice === 10} onChange={(e) => setShippingPrice(10)} />
                   <label htmlFor="shipping-normal" className="flex justify-center items-center size-6 border border-light-gray cursor-pointer rounded-md peer-checked:bg-red peer-checked:border-red  transition-colors duration-300">
                     <svg className="size-4 text-white " viewBox="0 0 24 24" fill="none">
-                      <path class="check-path" d="M4 12L10 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path className="check-path" d="M4 12L10 18L20 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                   </label>
                 </div>
@@ -155,7 +155,7 @@ export default function CheckoutMain() {
                   <input className="peer hidden" type="checkbox" id="shipping-fast" checked={shippingPrice === 20} onChange={(e) => setShippingPrice(20)} />
                   <label htmlFor="shipping-fast" className="flex justify-center items-center size-6 border border-light-gray cursor-pointer rounded-md peer-checked:bg-red peer-checked:border-red  transition-colors duration-300">
                     <svg className="size-4 text-white " viewBox="0 0 24 24" fill="none">
-                      <path class="check-path" d="M4 12L10 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path className="check-path" d="M4 12L10 18L20 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                   </label>
                 </div>
@@ -182,7 +182,7 @@ export default function CheckoutMain() {
                   <input className="peer hidden" type="checkbox" id="Pay-upon-receipt" checked={paymentMethod === "Pay-upon-receipt"} onChange={() => setPaymentMethod("Pay-upon-receipt")} />
                   <label htmlFor="Pay-upon-receipt" className="flex justify-center items-center size-6 border border-light-gray cursor-pointer rounded-md peer-checked:bg-red peer-checked:border-red  transition-colors duration-300">
                     <svg className="size-4 text-white " viewBox="0 0 24 24" fill="none">
-                      <path class="check-path" d="M4 12L10 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path className="check-path" d="M4 12L10 18L20 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                   </label>
                 </div>
@@ -201,7 +201,7 @@ export default function CheckoutMain() {
                   <input className="peer hidden" type="checkbox" id="Bank-payment" checked={paymentMethod === "Bank-payment"} onChange={() => setPaymentMethod("Bank-payment")} />
                   <label htmlFor="Bank-payment" className="flex justify-center items-center size-6 border border-light-gray cursor-pointer rounded-md peer-checked:bg-red peer-checked:border-red  transition-colors duration-300">
                     <svg className="size-4 text-white " viewBox="0 0 24 24" fill="none">
-                      <path class="check-path" d="M4 12L10 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path className="check-path" d="M4 12L10 18L20 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                   </label>
                 </div>
@@ -217,7 +217,7 @@ export default function CheckoutMain() {
                 <span className="text-base ">جمع کل:</span>
                 <span className="text-lg text-dark font-bold">{formatedPrice(totalPrice)} $</span>
               </div>
-              <button type="button" className="block w-full max-w-140 mx-auto py-3 text-lg rounded-lg sm-shaddow mt-6 gradient text-white cursor-pointer transition-transform duration-300 hover:scale-105" onClick={() => setChecking(true)}>
+              <button type="button" className="block w-full max-w-140 mx-auto py-3 text-lg rounded-lg sm-shaddow mt-6 gradient text-white cursor-pointer transition-transform duration-300 hover:scale-105" onClick={() => setChecking((prev) => ++prev)}>
                 ثبت سفارش
               </button>
             </div>
