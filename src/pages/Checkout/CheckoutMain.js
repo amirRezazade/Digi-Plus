@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { cartRealPrice, cartTotalDiscount, cartTotalPrice, formatedPrice, getLocal } from "../../utils/funcs";
+import { cartRealPrice, cartTotalDiscount, cartTotalPrice, formatedPrice, getLocal, setLocal } from "../../utils/funcs";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import CheckoutForm from "./CheckoutForm";
@@ -85,7 +85,7 @@ export default function CheckoutMain() {
           <h2 className="text-lg font-bold text-dark relative ps-2.5 title-style">
             ثبت<span className="text-red"> سفارش</span>
           </h2>
-          <CheckoutForm checkingForm={checking} />
+          <CheckoutForm checkingForm={checking} totalPrice={totalPrice} />
         </div>
 
         <div className="w-full grow lg:max-w-75 xl:max-w-80 lg:min-w-72 mb-10 lg:mb-0 text-sm">
@@ -217,7 +217,13 @@ export default function CheckoutMain() {
                 <span className="text-base ">جمع کل:</span>
                 <span className="text-lg text-dark font-bold">{formatedPrice(totalPrice)} $</span>
               </div>
-              <button type="button" className="block w-full max-w-140 mx-auto py-3 text-lg rounded-lg sm-shaddow mt-6 gradient text-white cursor-pointer transition-transform duration-300 hover:scale-105" onClick={() => setChecking((prev) => ++prev)}>
+              <button
+                type="button"
+                className="block w-full max-w-140 mx-auto py-3 text-lg rounded-lg sm-shaddow mt-6 gradient text-white cursor-pointer transition-transform duration-300 hover:scale-105"
+                onClick={() => {
+                  setChecking((prev) => ++prev);
+                }}
+              >
                 ثبت سفارش
               </button>
             </div>

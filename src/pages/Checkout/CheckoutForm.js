@@ -2,8 +2,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { useEffect, useRef, useState } from "react";
 import persianDate from "persian-date";
+import { formatedPrice, setLocal } from "../../utils/funcs";
+import { useNavigate } from "react-router-dom";
 
-export default function CheckoutForm({ checkingForm }) {
+export default function CheckoutForm({ checkingForm, totalPrice }) {
+  const navigate = useNavigate();
+
   let [deliveryDays, setDeliveryDays] = useState([]);
   let [selectedDeliveryDay, setSelectedDeliveryDay] = useState(null);
   let [formData, setFormData] = useState({
@@ -35,10 +39,9 @@ export default function CheckoutForm({ checkingForm }) {
     setDeliveryDays(dateList);
   }, []);
   useEffect(() => {
-    console.log(formData);
-
     if (formData.name && formData.lastName && formData.email && formData.postalCode && formData.phone && formData.country && formData.Province && formData.city && formData.street && formData.address && selectedDeliveryDay) {
-      window.location.href = "/payment";
+      setLocal("checkoutPrice", formatedPrice(totalPrice));
+      navigate("/payment", { replace: true });
     } else
       formRef.current?.scrollIntoView({
         behavior: "smooth",

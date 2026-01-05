@@ -6,6 +6,9 @@ function getLocal(key) {
   let value = localStorage.getItem(key);
   return value ? JSON.parse(value) : null;
 }
+function removeLocal(key) {
+  localStorage.removeItem(key);
+}
 function formatedPrice(num) {
   let formatted = num.toLocaleString("en-US", {
     minimumFractionDigits: 2,
@@ -24,7 +27,7 @@ function cartTotalPrice() {
   return formatted ? formatted : 0;
 }
 function cartTotalDiscount() {
-  const products = getLocal("cart");
+  const products = getLocal("cart") || [];
   let total = products.reduce((total, item) => {
     const discountedPrice = item.price || 0;
     const discountPercentage = item.discountPercentage || 0;
@@ -39,7 +42,7 @@ function cartTotalDiscount() {
   return formatedPrice(total);
 }
 function cartRealPrice() {
-  const products = getLocal("cart");
+  const products = getLocal("cart") || [];
   let total = 0;
   products.forEach((item) => {
     const discountedPrice = item.price || 0;
@@ -57,4 +60,4 @@ function calcRealPrice(price, discount) {
   return formatedPrice(price / (1 - discount / 100));
 }
 
-export { setLocal, getLocal, cartTotalPrice, formatedPrice, calcRealPrice, cartTotalDiscount, cartRealPrice };
+export { setLocal, getLocal, removeLocal, cartTotalPrice, formatedPrice, calcRealPrice, cartTotalDiscount, cartRealPrice };
