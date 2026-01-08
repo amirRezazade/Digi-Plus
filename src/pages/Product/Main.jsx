@@ -1,0 +1,61 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ProductImagesSlider from "./ProductHeader/ProductImagesSlider";
+import BreadCrump from "./ProductHeader/BreadCrump";
+import ProductInfo from "./ProductHeader/ProductInfo";
+import ProductBuyCart from "./ProductBuyCart";
+import Tags from "./Tags";
+import Reviews from "./Reviews";
+import AddComment from "./AddComment";
+
+export default function Main() {
+  let { id } = useParams();
+  let [response, setResponse] = useState(null);
+
+  useEffect(() => {
+    setResponse(null);
+    if (id) {
+      fetch(`https://dummyjson.com/products/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          data.message ? setResponse("notFound") : setResponse(data);
+        });
+    }
+  }, [id]);
+
+  if (!response)
+    return (
+      <div className="py-30 text-center">
+        <span className="block mx-auto size-15 border-8 border-light-gray border-t-org rounded-full animate-spin"> </span>
+      </div>
+    );
+  else {
+    return response !== "notFound" ? (
+      <main className="relative custom-container ">
+        {/* bread crump */}
+        <BreadCrump category={response.category} brand={response.brand} title={response.title} />
+        <div className=" relative grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 justify-between gap-5 xl:gap-8 lg:gap-y-0 xl:items-start">
+          <div className="md:col-span-4 lg:col-span-3 xl:col-span-3">
+            <ProductImagesSlider product={response} />
+          </div>
+          <div className="md:col-span-2 lg:col-span-3 xl:col-span-2">
+            <ProductInfo data={response} />
+          </div>
+          <div className="md:col-span-2 lg:col-span-2 lg:order-4 xl:order-0 xl:col-span-2 lg:sticky lg:top-10 xl:top-15 md:mt-16 lg:mt-0 xl:mt-16 h-fit">
+            <ProductBuyCart data={response} />
+          </div>
+          <div className="col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5  mt-10">
+            <Tags tags={response.tags} />
+            <Reviews reviews={response.reviews} />
+            <AddComment />
+          </div>
+        </div>
+      </main>
+    ) : (
+      <div className="py-10">
+        <img className="mx-auto" src="https://cdni.iconscout.com/illustration/premium/thumb/sorry-item-not-found-illustration-svg-download-png-2809510.png" alt="product-not-found" />
+        <h4 className="text-center text-lg text-red">محصول پیدا نشد!</h4>
+      </div>
+    );
+  }
+}
