@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --dp-white: #ffffff;
   --dp-gray: #666666;
@@ -244,5 +246,3 @@ footer .swiper-wrapper {
   --color-yel2: #f9cfb4;
   --color-star: #faa307;
 }
-
-@import "tailwindcss";
