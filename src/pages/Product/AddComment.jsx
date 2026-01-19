@@ -9,7 +9,7 @@ export default function AddComment() {
     let ul = ref.current;
     if (ul.childElementCount < 5) {
       let li = document.createElement("li");
-      li.className = "relative flex items-center justify-between gap-4 ps-5 pe-2  list-decration";
+      li.className = "relative flex items-center justify-between gap-4 ps-5 pe-2  list-decoration";
       li.innerHTML = `
       <input class="border-0 outline-0 w-full" type="text" />  <button type="button" class=" bg-light rounded border border-red size-5 text-red cursor-pointer hover:bg-red hover:text-white">
                 x
@@ -88,7 +88,7 @@ export default function AddComment() {
             <span>نکات مثبت:</span>
             <div className="grow border border-light-gray p-3 rounded-lg">
               <ul ref={positiveRef} className="flex flex-col gap-3">
-                <li className="relative ps-5 pe-2 list-decration ">
+                <li className="relative ps-5 pe-2 list-decoration ">
                   <input className="border-0 outline-0 w-full" type="text" />
                 </li>
               </ul>
@@ -101,7 +101,7 @@ export default function AddComment() {
             <span>نکات منفی:</span>
             <div className="grow border border-light-gray p-3 rounded-lg">
               <ul ref={negativeRef} className="flex flex-col gap-3">
-                <li className="relative ps-5 pe-2 list-decration">
+                <li className="relative ps-5 pe-2 list-decoration">
                   <input className="border-0 outline-0 w-full" type="text" />
                 </li>
               </ul>

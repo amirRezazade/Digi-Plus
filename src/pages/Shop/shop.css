@@ -1,0 +1,61 @@
+/* range inputs custom styles  */
+.range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(264.86deg, #ff7b00 0%, #dc2f02 100%);
+  border-radius: 20px;
+  height: 6px;
+}
+.range-input::-moz-range-track {
+  height: 6px;
+  background: linear-gradient(264.86deg, #ff7b00 0%, #dc2f02 100%);
+  border-radius: 20px;
+}
+.range-input::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  margin-top: -5px;
+}
+.range-input::-moz-range-thumb {
+  pointer-events: auto;
+  height: 25px;
+  width: 25px;
+  margin-top: -5px;
+  border: none;
+  cursor: pointer;
+}
+.price-min::-webkit-slider-thumb {
+  background: url("./assets/images/range-input-thumbs/min-price.png") center / contain no-repeat;
+  z-index: 5;
+}
+.price-min::-moz-range-thumb {
+  background: url("./assets/images/range-input-thumbs/min-price.png") center / contain no-repeat;
+  z-index: 5;
+}
+.price-max::-moz-range-thumb {
+  background: url("./assets/images/range-input-thumbs/max-price.png") center / contain no-repeat;
+}
+.price-max::-webkit-slider-thumb {
+  background: url("./assets/images/range-input-thumbs/max-price.png") center / contain no-repeat;
+}
+.price-max {
+  background: none;
+}
+.price-max::-moz-range-track {
+  background: none;
+}
+.rating-range-input::-webkit-slider-thumb {
+  background: url("./assets/images/range-input-thumbs/rating.svg") center / contain no-repeat;
+}
+.rating-range-input::-moz-range-thumb {
+  background: url("./assets/images/range-input-thumbs/rating.svg") center / contain no-repeat;
+}
+.discount-range-input::-webkit-slider-thumb {
+  background: url("./assets/images/range-input-thumbs/discount.svg") center / contain no-repeat;
+}
+.discount-range-input::-moz-range-thumb {
+  background: url("./assets/images/range-input-thumbs/discount.svg") center / contain no-repeat;
+}

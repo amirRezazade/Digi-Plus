@@ -1,0 +1,11 @@
+.dashboard-sidebar li a.active::before {
+  content: "";
+  transform: translateX(-8px) !important;
+  opacity: 100;
+}
+.dashboard-sidebar li a.active:hover::before {
+  transform: translateX(-0px) !important;
+}
+.dashboard-sidebar li a.active {
+  fill: var(--dp-red) !important;
+}

@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-
+import "./dashboard.css";
 export default function SideBar({ open, onOpen }) {
   return (
-    <aside onClick={(e) => e.target.nodeName === "ASIDE" && onOpen(false)} className={`side-bar grow lg:max-w-80 fixed lg:sticky! lg:top-10! w-screen h-screen lg:w-auto! lg:h-auto! bg-black/50 lg:bg-transparent! top-0 right-0 z-10 transition-transform duration-400 ${open ? "translate-x-0" : "translate-x-1/1"} lg:translate-x-0`}>
-      <ul className="overflow-y-auto hidden-scrollbar max-w-60 xs:max-w-70 lg:max-w-80 h-full bg-white flex flex-col gap-0 p-3 lg:rounded-2xl gray-shaddow divide-y divide-light-gray border border-light-gray/60">
+    <aside onClick={(e) => e.target.nodeName === "ASIDE" && onOpen(false)} className={`side-bar grow lg:max-w-80 lg:min-w-80 fixed lg:sticky! lg:top-10! w-screen h-screen lg:w-auto! lg:h-auto! bg-black/50 lg:bg-transparent! top-0 right-0 z-5 transition-transform duration-400 ${open ? "translate-x-0" : "translate-x-1/1"} lg:translate-x-0`}>
+      <ul className="dashboard-sidebar overflow-y-auto hidden-scrollbar max-w-60 xs:max-w-70 lg:max-w-80 h-full bg-white flex flex-col gap-0 p-3 lg:rounded-2xl gray-shaddow divide-y divide-light-gray border border-light-gray/60">
         <div className="sticky top-0 z-1 bg-white lg:hidden flex justify-center items-center py-5 border-b border-light-gray ">
           <button className="me-auto cursor-pointer p-1.5 " onClick={() => onOpen(false)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24" fill="none">
@@ -18,7 +17,7 @@ export default function SideBar({ open, onOpen }) {
           <img className="max-w-40 me-auto" src={logo} alt="" />
         </div>
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/dashboard"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
@@ -28,10 +27,10 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span>پیشخوان</span>
-          </Link>
+          </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/orders"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M5.19086 6.37994C5.00086 6.37994 4.80086 6.29994 4.66086 6.15994C4.37086 5.86994 4.37086 5.38994 4.66086 5.09994L8.29086 1.46994C8.58086 1.17994 9.06086 1.17994 9.35086 1.46994C9.64086 1.75994 9.64086 2.23994 9.35086 2.52994L5.72086 6.15994C5.57086 6.29994 5.38086 6.37994 5.19086 6.37994Z"></path>
@@ -43,22 +42,11 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span>سفارش ها</span>
-          </Link>
+          </NavLink>
         </li>
+
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
-                <path d="M12 15.25C11.59 15.25 11.25 14.91 11.25 14.5V8.5C11.25 8.09 11.59 7.75 12 7.75C12.41 7.75 12.75 8.09 12.75 8.5V14.5C12.75 14.91 12.41 15.25 12 15.25Z"></path>
-                <path d="M11.9995 16.2499C11.8095 16.2499 11.6195 16.1799 11.4695 16.0299L8.46945 13.0299C8.17945 12.7399 8.17945 12.2599 8.46945 11.9699C8.75945 11.6799 9.23945 11.6799 9.52945 11.9699L11.9995 14.4399L14.4695 11.9699C14.7595 11.6799 15.2395 11.6799 15.5295 11.9699C15.8195 12.2599 15.8195 12.7399 15.5295 13.0299L12.5295 16.0299C12.3795 16.1799 12.1895 16.2499 11.9995 16.2499Z"></path>
-              </svg>
-            </span>
-            <span>دانلود ها</span>
-          </Link>
-        </li>
-        <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/address"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M20.3795 21.13C20.1795 21.13 19.9895 21.05 19.8495 20.91L13.4695 14.53C13.1795 14.24 13.1795 13.76 13.4695 13.47L21.1995 5.74001C21.3895 5.55001 21.6795 5.48001 21.9395 5.55001C22.1995 5.63001 22.3994 5.84001 22.4594 6.10001C22.6494 6.95001 22.7495 7.90001 22.7495 9.00001V15C22.7495 17.77 22.1695 19.64 20.9095 20.91C20.7695 21.05 20.5595 21.08 20.3795 21.13ZM15.0594 14L20.3195 19.26C20.9495 18.29 21.2495 16.91 21.2495 15V9.00001C21.2495 8.59001 21.2394 8.21001 21.2094 7.85001L15.0594 14Z"></path>
@@ -69,10 +57,10 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span>آدرس</span>
-          </Link>
+          </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/profile"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"></path>
@@ -80,36 +68,21 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span>اطلاعات حساب كاربری</span>
-          </Link>
+          </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/favorites"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M12 21.65C11.69 21.65 11.39 21.61 11.14 21.52C7.32 20.21 1.25 15.56 1.25 8.68998C1.25 5.18998 4.08 2.34998 7.56 2.34998C9.25 2.34998 10.83 3.00998 12 4.18998C13.17 3.00998 14.75 2.34998 16.44 2.34998C19.92 2.34998 22.75 5.19998 22.75 8.68998C22.75 15.57 16.68 20.21 12.86 21.52C12.61 21.61 12.31 21.65 12 21.65ZM7.56 3.84998C4.91 3.84998 2.75 6.01998 2.75 8.68998C2.75 15.52 9.32 19.32 11.63 20.11C11.81 20.17 12.2 20.17 12.38 20.11C14.68 19.32 21.26 15.53 21.26 8.68998C21.26 6.01998 19.1 3.84998 16.45 3.84998C14.93 3.84998 13.52 4.55998 12.61 5.78998C12.33 6.16998 11.69 6.16998 11.41 5.78998C10.48 4.54998 9.08 3.84998 7.56 3.84998Z"></path>
               </svg>
             </span>
             <span> علاقمندی‌ها</span>
-          </Link>
+          </NavLink>
         </li>
+
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M15.5 19.15H6.5C3.16 19.15 1.25 17.24 1.25 13.9V8.5C1.25 5.16 3.16 3.25 6.5 3.25H9.2C9.44 3.25 9.67 3.37006 9.81 3.56006C9.95 3.75006 9.99 4.00999 9.91 4.23999C9.8 4.54999 9.75 4.89 9.75 5.25V9.15002C9.75 9.91002 9.98 10.54 10.42 10.98C10.86 11.42 11.49 11.65 12.25 11.65C12.66 11.65 13 11.99 13 12.4V13.6L15.73 11.77C15.85 11.69 16 11.64 16.15 11.64H18.75C19.11 11.64 19.45 11.59 19.76 11.48C19.99 11.4 20.24 11.44 20.44 11.58C20.64 11.72 20.75 11.9499 20.75 12.1899V13.89C20.75 17.24 18.84 19.15 15.5 19.15ZM6.5 4.75C3.98 4.75 2.75 5.98 2.75 8.5V13.9C2.75 16.42 3.98 17.65 6.5 17.65H15.5C18.02 17.65 19.25 16.42 19.25 13.9V13.12C19.09 13.14 18.92 13.15 18.75 13.15H16.38L13.68 14.95C13.24 15.23 12.69 15.26 12.24 15.01C11.79 14.77 11.51 14.3 11.51 13.79V13.09C10.67 12.96 9.93 12.59 9.37 12.04C8.66 11.33 8.26 10.3 8.26 9.15002V5.25C8.26 5.08 8.27 4.91 8.28 4.75H6.5Z"></path>
-                <path d="M12.9 15.1801C12.67 15.1801 12.44 15.12 12.23 15.01C11.78 14.77 11.5 14.3 11.5 13.79V13.09C10.66 12.96 9.92 12.59 9.36 12.04C8.65 11.33 8.25 10.3 8.25 9.15002V5.25C8.25 4.72 8.33 4.22001 8.49 3.76001C9.05 2.19001 10.45 1.25 12.25 1.25H18.75C21.1 1.25 22.75 2.89 22.75 5.25V9.15002C22.75 10.95 21.82 12.35 20.25 12.91C19.77 13.07 19.27 13.15 18.75 13.15H16.38L13.68 14.95C13.44 15.11 13.17 15.1801 12.9 15.1801ZM12.25 2.75C11.1 2.75 10.25 3.3 9.91 4.25C9.81 4.55 9.75 4.89 9.75 5.25V9.15002C9.75 9.91002 9.98 10.54 10.42 10.98C10.86 11.42 11.49 11.65 12.25 11.65C12.66 11.65 13 11.99 13 12.4V13.6L15.73 11.77C15.85 11.69 16 11.64 16.15 11.64H18.75C19.11 11.64 19.45 11.59 19.76 11.48C20.71 11.14 21.25 10.29 21.25 9.14001V5.23999C21.25 3.69999 20.29 2.73999 18.75 2.73999H12.25V2.75Z"></path>
-                <path d="M14.6004 22.75H7.40039C6.99039 22.75 6.65039 22.41 6.65039 22C6.65039 21.59 6.99039 21.25 7.40039 21.25H14.6004C15.0104 21.25 15.3504 21.59 15.3504 22C15.3504 22.41 15.0104 22.75 14.6004 22.75Z"></path>
-                <path d="M11 22.7499C10.59 22.7499 10.25 22.4099 10.25 21.9999V18.3999C10.25 17.9899 10.59 17.6499 11 17.6499C11.41 17.6499 11.75 17.9899 11.75 18.3999V21.9999C11.75 22.4099 11.41 22.7499 11 22.7499Z"></path>
-                <path d="M15.4395 8C15.0195 8 14.6895 7.66 14.6895 7.25C14.6895 6.84 15.0295 6.5 15.4395 6.5C15.8495 6.5 16.1895 6.84 16.1895 7.25C16.1895 7.66 15.8495 8 15.4395 8Z"></path>
-                <path d="M18.25 8C17.83 8 17.5 7.66 17.5 7.25C17.5 6.84 17.84 6.5 18.25 6.5C18.66 6.5 19 6.84 19 7.25C19 7.66 18.66 8 18.25 8Z"></path>
-                <path d="M12.6211 8C12.2011 8 11.8711 7.66 11.8711 7.25C11.8711 6.84 12.2111 6.5 12.6211 6.5C13.0311 6.5 13.3711 6.84 13.3711 7.25C13.3711 7.66 13.0411 8 12.6211 8Z"></path>
-              </svg>
-            </span>
-            <span>تیکت ها </span>
-          </Link>
-        </li>
-        <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/comments"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M15.5 11.25H8.5C8.09 11.25 7.75 10.91 7.75 10.5C7.75 10.09 8.09 9.75 8.5 9.75H15.5C15.91 9.75 16.25 10.09 16.25 10.5C16.25 10.91 15.91 11.25 15.5 11.25Z"></path>
@@ -117,10 +90,10 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span> دیدگاه‌ها</span>
-          </Link>
+          </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/news"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M15.5 11.25H8.5C8.09 11.25 7.75 10.91 7.75 10.5C7.75 10.09 8.09 9.75 8.5 9.75H15.5C15.91 9.75 16.25 10.09 16.25 10.5C16.25 10.91 15.91 11.25 15.5 11.25Z"></path>
@@ -128,10 +101,10 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span> اخبار و اطلاعیه‌ها</span>
-          </Link>
+          </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <Link to={"my-account"} className=" flex items-center gap-3 fill-gray hover:fill-red hover:text-red p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/exit"} className=" flex items-center gap-3 fill-gray hover:fill-red hover:text-red p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M17.4409 15.3699C17.2509 15.3699 17.0609 15.2999 16.9109 15.1499C16.6209 14.8599 16.6209 14.3799 16.9109 14.0899L18.9409 12.0599L16.9109 10.0299C16.6209 9.73994 16.6209 9.25994 16.9109 8.96994C17.2009 8.67994 17.6809 8.67994 17.9709 8.96994L20.5309 11.5299C20.8209 11.8199 20.8209 12.2999 20.5309 12.5899L17.9709 15.1499C17.8209 15.2999 17.6309 15.3699 17.4409 15.3699Z"></path>
@@ -140,7 +113,7 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span className="transition-colors duration-300"> خروج </span>
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </aside>

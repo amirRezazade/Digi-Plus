@@ -51,10 +51,10 @@ export default function ProductInfo({ data }) {
               <span className="text-dark">ویژگی های محصول</span>
               <div className="flex items-baseline gap-8 mt-4">
                 <ul className="flex flex-col gap-1.5">
-                  <li className="relative pr-4  list-decration">وزن</li>
-                  <li className="relative pr-4  list-decration">طول</li>
-                  <li className="relative pr-4  list-decration">ارتفاع</li>
-                  <li className="relative pr-4  list-decration">عمق</li>
+                  <li className="relative pr-4  list-decoration">وزن</li>
+                  <li className="relative pr-4  list-decoration">طول</li>
+                  <li className="relative pr-4  list-decoration">ارتفاع</li>
+                  <li className="relative pr-4  list-decoration">عمق</li>
                 </ul>
                 <ul className="flex flex-col gap-1.5 text-dark">
                   <li>{data.weight}</li>

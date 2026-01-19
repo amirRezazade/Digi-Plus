@@ -217,7 +217,7 @@ input[type="number"] {
   background: linear-gradient(222.49deg, #dc2f02 23.91%, #ff7b00 76.09%);
   box-shadow: 0px 4px 8px 0px #dc2f0233;
 }
-.list-decration {
+.list-decoration {
   &::before {
     content: var(--tw-content);
     position: absolute;
