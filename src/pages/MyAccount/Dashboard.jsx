@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import NewsCart from "./NewsCart";
+import { getLocal } from "../../utils/funcs";
 
 export default function Dashboard() {
   return (
@@ -15,56 +17,108 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4! gap-7 pb-3">
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
-              <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
-                <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <defs>
+                  <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                </defs>
               </svg>
             </span>
-            <span>0 سفارش</span>
+            <span className="text-dark">{getLocal("orderList")?.length || 0} سفارش</span>
             <span className="text-green-500">تکمیل شده</span>
           </div>
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
-              <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
-                <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <defs>
+                  <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                </defs>
               </svg>
             </span>
-            <span>0 سفارش</span>
-            <span className="text-green-500">تکمیل شده</span>
+            <span className="text-dark">0 سفارش</span>
+            <span className="text-red">جاری</span>
           </div>
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
-              <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
-                <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <defs>
+                  <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                </defs>
               </svg>
             </span>
-            <span>0 سفارش</span>
-            <span className="text-green-500">تکمیل شده</span>
+            <span className="text-dark">0 سفارش</span>
+            <span className="text-amber-500">مرجوعی</span>
           </div>
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
-              <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
-                <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <defs>
+                  <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DC2F02"></stop>
+                    <stop offset="1" stop-color="#FF7B00"></stop>
+                  </linearGradient>
+                </defs>
               </svg>
             </span>
-            <span>0 سفارش</span>
-            <span className="text-green-500">تکمیل شده</span>
+            <span className="text-dark">0 سفارش</span>
+            <span className="text-red-700">لغو شده</span>
           </div>
         </div>
       </div>
       <div className="py-3 px-2 sm:px-5! rounded-xl border border-light-gray/60 mt-6">
-        <div className="flex justify-between items-center pt-3 pb-4">
+        <div className="flex justify-between items-center py-3">
           <h3 className="relative px-3  title-style text-dark text-base sm:text-lg md:text-xl ">
             اخبار و<span className="text-red"> اطلاعیه ها</span>
           </h3>
@@ -72,76 +126,8 @@ export default function Dashboard() {
             مشاهده همه
           </Link>
         </div>
-        <div className="flex justify-between p-3 border border-light-gray/50 rounded-xl  ">
-          <div className="">
-            <div className="flex items-center ">
-              <div className="flex items-center gap-3 pe-3">
-                <span className="size-9 flex items-center justify-center rounded-full gradient fill-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                    <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                    <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                    <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
-                  </svg>
-                </span>
-                <span className="text-dark text-base">نگاهی به محصولات 2025 اپل</span>
-              </div>
-              <span className="text-gray ps-3 border-r border-light-gray flex items-center gap-2">
-                <span className="fill-gray">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                    <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                    <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                    <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                    <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
-                  </svg>
-                </span>
-                1هفته پیش
-              </span>
-            </div>
-            <div className="flex items-center mt-4 mb-2 text-xs sm:text-sm ps-2 ">
-              <p className="pe-2">از یکم آذر تا یکم دی ماه45% تخفیف ویژه برای باشگاه مشتریان</p>
-              <span className="ps-2 border-r border-light-gray">کد تخفیف: qwer123</span>
-            </div>
-          </div>
-          <Link className="text-red" to={""}>
-            مشاهده محصولات
-          </Link>
-        </div>
-        <div className="flex justify-between p-3 border border-light-gray/50 rounded-xl mt-3 mb-1">
-          <div className="">
-            <div className="flex items-center ">
-              <div className="flex items-center gap-3 pe-3">
-                <span className="size-9 flex items-center justify-center rounded-full gradient fill-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                    <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                    <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                    <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
-                  </svg>
-                </span>
-                <span className="text-dark text-base">نگاهی به محصولات 2025 اپل</span>
-              </div>
-              <span className="text-gray ps-3 border-r border-light-gray flex items-center gap-2">
-                <span className="fill-gray">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                    <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z"></path>
-                    <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z"></path>
-                    <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z"></path>
-                    <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z"></path>
-                  </svg>
-                </span>
-                1هفته پیش
-              </span>
-            </div>
-            <div className="flex items-center mt-4 mb-2 text-xs sm:text-sm ps-2 ">
-              <p className="pe-2">از یکم آذر تا یکم دی ماه 35% تخفیف ویژه</p>
-              <span className="ps-2 border-r border-light-gray">کد تخفیف: digi7575</span>
-            </div>
-          </div>
-          <Link className="text-red" to={""}>
-            مشاهده مقاله
-          </Link>
-        </div>
+        <NewsCart title={"نگاهی به محصولات ۲۰۲۴ اپل"} date={"1هفته پیش"} link={""} linkText={"مشاهده‌ی محصولات"} message={"از یکم آذر تا یکم دی ماه 45٪ درصد تخفیف ویژه برای باشگاه مشتریان"} code={" qwer123"} />
+        <NewsCart title={"جمعه‌ی سیاه"} date={"10 روز پیش"} link={""} linkText={"مشاهده‌ی مقاله"} message={"از یکم آذر تا یکم دی ماه ۳۵٪ درصد تخفیف ویژه"} code={"digi7575"} />
       </div>
     </>
   );

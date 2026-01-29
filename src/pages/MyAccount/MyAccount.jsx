@@ -5,14 +5,18 @@ import SideBar from "./SideBar";
 import { useState } from "react";
 import Dashboard from "./Dashboard";
 import Favorite from "./Favorite";
+import { useLocation } from "react-router-dom";
+import Orders from "./Orders";
+import Address from "./Address";
 
 export default function MyAccount() {
   let [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <>
       <Navbar />
-      <section className="custom-container text-gray text-sm">
+      <section className="custom-container text-gray text-sm mb-5">
         <div className="flex items-center gap-3 text-gray text-sm text-nowrap overflow-auto hidden-scrollbar my-5 lg:my-9 px-4">
           <Link className="stroke-gray hover:stroke-org fill-white" to="/">
             <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -56,8 +60,10 @@ export default function MyAccount() {
           </button>
           <SideBar open={isOpen} onOpen={setIsOpen} />
           <div className="w-full p-3 rounded-2xl border border-light-gray/40 gray-shaddow">
-            {/* <Dashboard /> */}
-            <Favorite />
+            {location.pathname === "/my-account/dashboard" && <Dashboard />}
+            {location.pathname === "/my-account/orders" && <Orders />}
+            {location.pathname === "/my-account/favorites" && <Favorite />}
+            {location.pathname === "/my-account/address" && <Address />}
           </div>
         </div>
       </section>
