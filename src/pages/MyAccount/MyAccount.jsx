@@ -11,6 +11,7 @@ import Address from "./Address";
 import Comments from "./Comments";
 import Notifications from "./Notifications";
 import EditAccount from "./EditAccount";
+import SupportCat from "../../component/SupportChat/SupportCat";
 
 export default function MyAccount() {
   let [isOpen, setIsOpen] = useState(false);
@@ -55,7 +56,15 @@ export default function MyAccount() {
               <path d="M9.99953 13.78C9.87286 13.78 9.7462 13.7333 9.6462 13.6333L5.29953 9.28668C4.59286 8.58001 4.59286 7.42001 5.29953 6.71335L9.6462 2.36668C9.83953 2.17335 10.1595 2.17335 10.3529 2.36668C10.5462 2.56001 10.5462 2.88001 10.3529 3.07335L6.0062 7.42001C5.6862 7.74001 5.6862 8.26001 6.0062 8.58001L10.3529 12.9267C10.5462 13.12 10.5462 13.44 10.3529 13.6333C10.2529 13.7267 10.1262 13.78 9.99953 13.78Z"></path>
             </svg>
           </span>
-          <span className="text-dark">داشبورد</span>
+          <span className="text-dark">
+            {location.pathname === "/my-account/dashboard" && "داشبورد"}
+            {location.pathname === "/my-account/orders" && "سفارش ها"}
+            {location.pathname === "/my-account/favorites" && "موردعلاقه ها"}
+            {location.pathname === "/my-account/address" && "آدرس ها"}
+            {location.pathname === "/my-account/comments" && "دیدگاه ها"}
+            {location.pathname === "/my-account/notifications" && "اخبار و اطلاعیه ها"}
+            {location.pathname === "/my-account/edit-account" && "حساب کاربری"}
+          </span>
         </div>
         <div className="relative flex flex-col lg:flex-row justify-between items-start gap-6">
           <button className="lg:hidden gradient py-2 px-6 rounded-2xl cursor-pointer text-white" onClick={() => setIsOpen(true)}>
@@ -73,6 +82,8 @@ export default function MyAccount() {
           </div>
         </div>
       </section>
+      <SupportCat />
+
       <Footer />
     </>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getLocal, setLocal } from "../../utils/funcs";
 
 export default function EditAccount() {
@@ -32,11 +32,16 @@ export default function EditAccount() {
   function typeControl(e) {
     e.target.previousElementSibling.type === "password" ? (e.target.previousElementSibling.type = "text") : (e.target.previousElementSibling.type = "password");
   }
+  const navigate = useNavigate();
+  function logout() {
+    removeLocal("user");
+    navigate("/login", { replace: true });
+  }
   useEffect(() => {
-    nameRef.current.value = user.name;
-    lastNameRef.current.value = user.lastName;
-    userNameRef.current.value = user.userName;
-    phoneRef.current.value = user.phone;
+    nameRef.current.value = user.name || "";
+    lastNameRef.current.value = user.lastName || "";
+    userNameRef.current.value = user.userName || "";
+    phoneRef.current.value = user.phone || "";
   }, []);
   return (
     <>
@@ -60,7 +65,9 @@ export default function EditAccount() {
             <path d="M19.9317 12.8101H9.76172C9.35172 12.8101 9.01172 12.4701 9.01172 12.0601C9.01172 11.6501 9.35172 11.3101 9.76172 11.3101H19.9317C20.3417 11.3101 20.6817 11.6501 20.6817 12.0601C20.6817 12.4701 20.3417 12.8101 19.9317 12.8101Z"></path>
             <path d="M11.7617 20.75C6.61172 20.75 3.01172 17.15 3.01172 12C3.01172 6.85 6.61172 3.25 11.7617 3.25C12.1717 3.25 12.5117 3.59 12.5117 4C12.5117 4.41 12.1717 4.75 11.7617 4.75C7.49172 4.75 4.51172 7.73 4.51172 12C4.51172 16.27 7.49172 19.25 11.7617 19.25C12.1717 19.25 12.5117 19.59 12.5117 20C12.5117 20.41 12.1717 20.75 11.7617 20.75Z"></path>
           </svg>
-          <span>خروج از حساب کاربری</span>
+          <button className="cursor-pointer" onClick={logout}>
+            خروج از حساب کاربری
+          </button>
         </Link>
       </div>
       <form className="grid! grid-cols-1 sm:grid-cols-2! gap-1 sm:gap-3! pt-5" onSubmit={(e) => submit(e)}>

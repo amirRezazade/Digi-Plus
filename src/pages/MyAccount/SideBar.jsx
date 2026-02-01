@@ -1,7 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import "./dashboard.css";
+import { removeLocal } from "../../utils/funcs";
 export default function SideBar({ open, onOpen }) {
+  const navigate = useNavigate();
+  function logout() {
+    removeLocal("user");
+    navigate("/login", { replace: true });
+  }
   return (
     <aside onClick={(e) => e.target.nodeName === "ASIDE" && onOpen(false)} className={`side-bar grow lg:max-w-80 lg:min-w-80 fixed lg:sticky! lg:top-10! w-screen h-screen lg:w-auto! lg:h-auto! bg-black/50 lg:bg-transparent! top-0 right-0 z-5 transition-transform duration-400 ${open ? "translate-x-0" : "translate-x-1/1"} lg:translate-x-0`}>
       <ul className="dashboard-sidebar overflow-y-auto hidden-scrollbar max-w-60 xs:max-w-70 lg:max-w-80 h-full bg-white flex flex-col gap-0 p-3 lg:rounded-2xl gray-shaddow divide-y divide-light-gray border border-light-gray/60">
@@ -104,7 +110,7 @@ export default function SideBar({ open, onOpen }) {
           </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <NavLink to={"/my-account/exit"} className=" flex items-center gap-3 fill-gray hover:fill-red hover:text-red p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <button onClick={logout} className="w-full flex items-center gap-3 cursor-pointer fill-gray hover:fill-red hover:text-red p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M17.4409 15.3699C17.2509 15.3699 17.0609 15.2999 16.9109 15.1499C16.6209 14.8599 16.6209 14.3799 16.9109 14.0899L18.9409 12.0599L16.9109 10.0299C16.6209 9.73994 16.6209 9.25994 16.9109 8.96994C17.2009 8.67994 17.6809 8.67994 17.9709 8.96994L20.5309 11.5299C20.8209 11.8199 20.8209 12.2999 20.5309 12.5899L17.9709 15.1499C17.8209 15.2999 17.6309 15.3699 17.4409 15.3699Z"></path>
@@ -113,7 +119,7 @@ export default function SideBar({ open, onOpen }) {
               </svg>
             </span>
             <span className="transition-colors duration-300"> خروج </span>
-          </NavLink>
+          </button>
         </li>
       </ul>
     </aside>
