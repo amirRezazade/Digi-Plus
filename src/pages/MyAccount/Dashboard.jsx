@@ -18,21 +18,21 @@ export default function Dashboard() {
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
               <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
-                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                 <defs>
                   <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                 </defs>
               </svg>
@@ -43,21 +43,21 @@ export default function Dashboard() {
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
               <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
-                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                 <defs>
                   <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                 </defs>
               </svg>
@@ -68,21 +68,21 @@ export default function Dashboard() {
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
               <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
-                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                 <defs>
                   <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                 </defs>
               </svg>
@@ -93,21 +93,21 @@ export default function Dashboard() {
           <div className=" py-5 gray-shaddow border border-light-gray/40 flex flex-col gap-3 justify-center items-center rounded-xl">
             <span className="fill-org">
               <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
-                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M36.4001 28.1666H67.6002C82.3335 28.1666 83.8068 35.0566 84.8035 43.4633L88.7035 75.9633C89.9601 86.6233 86.6668 95.3333 71.5001 95.3333H32.5434C17.3334 95.3333 14.0401 86.6233 15.3401 75.9633L19.2401 43.4633C20.1935 35.0566 21.6668 28.1666 36.4001 28.1666Z" stroke="url(#paint0_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M34.666 34.6666V19.5C34.666 13 38.9993 8.66663 45.4993 8.66663H58.4993C64.9994 8.66663 69.3327 13 69.3327 19.5V34.6666" stroke="url(#paint1_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                <path d="M88.4427 73.7966H34.666" stroke="url(#paint2_linear_2106_7207)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                 <defs>
                   <linearGradient id="paint0_linear_2106_7207" x1="88.9471" y1="28.1666" x2="9.21524" y2="36.0581" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint1_linear_2106_7207" x1="69.3327" y1="8.66663" x2="32.0824" y2="13.1367" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                   <linearGradient id="paint2_linear_2106_7207" x1="88.4427" y1="73.7966" x2="86.0428" y2="85.4119" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DC2F02"></stop>
-                    <stop offset="1" stop-color="#FF7B00"></stop>
+                    <stop stopColor="#DC2F02"></stop>
+                    <stop offset="1" stopColor="#FF7B00"></stop>
                   </linearGradient>
                 </defs>
               </svg>

@@ -8,6 +8,9 @@ import Favorite from "./Favorite";
 import { useLocation } from "react-router-dom";
 import Orders from "./Orders";
 import Address from "./Address";
+import Comments from "./Comments";
+import Notifications from "./Notifications";
+import EditAccount from "./EditAccount";
 
 export default function MyAccount() {
   let [isOpen, setIsOpen] = useState(false);
@@ -64,6 +67,9 @@ export default function MyAccount() {
             {location.pathname === "/my-account/orders" && <Orders />}
             {location.pathname === "/my-account/favorites" && <Favorite />}
             {location.pathname === "/my-account/address" && <Address />}
+            {location.pathname === "/my-account/comments" && <Comments />}
+            {location.pathname === "/my-account/notifications" && <Notifications />}
+            {location.pathname === "/my-account/edit-account" && <EditAccount />}
           </div>
         </div>
       </section>

@@ -60,7 +60,7 @@ export default function SideBar({ open, onOpen }) {
           </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <NavLink to={"/my-account/profile"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/edit-account"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"></path>
@@ -93,7 +93,7 @@ export default function SideBar({ open, onOpen }) {
           </NavLink>
         </li>
         <li className="py-0.5 sm:py-1.5!">
-          <NavLink to={"/my-account/news"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
+          <NavLink to={"/my-account/notifications"} className=" flex items-center gap-3 fill-gray hover:fill-red  p-2 relative before:absolute before:w-0.5 before:h-6 before:rounded-2xl before:right-0 before:top-1/2 before:-translate-y-1/2 before:bg-red before:opacity-0 before:translate-x-2 before:transition-[opacity_transform] before:duration-400 hover:before:opacity-100 hover:before:translate-x-0 ">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M15.5 11.25H8.5C8.09 11.25 7.75 10.91 7.75 10.5C7.75 10.09 8.09 9.75 8.5 9.75H15.5C15.91 9.75 16.25 10.09 16.25 10.5C16.25 10.91 15.91 11.25 15.5 11.25Z"></path>

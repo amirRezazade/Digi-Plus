@@ -6,8 +6,8 @@ export default function Address() {
 
   return !editing ? (
     <div>
-      <h3 class="relative  pt-3 pb-4 px-3 title-style text-dark text-base xs:text-lg md:text-xl">
-        اطلاعات ‌<span class="text-red">حساب کاربری</span>
+      <h3 className="relative  pt-3 pb-4 px-3 title-style text-dark text-base xs:text-lg md:text-xl">
+        اطلاعات ‌<span className="text-red">حساب کاربری</span>
       </h3>
       <p className="text-sm ">آدرس‌های زیر برای ارسال فاکتور و صورت حساب استفاده خواهند شد.</p>
       <div className="rounded-2xl p-3 border border-light-gray mt-4">
@@ -45,9 +45,9 @@ export default function Address() {
     </div>
   ) : (
     <div>
-      <div class="flex justify-between items-center pt-3 pb-4">
-        <h3 class="relative px-3 title-style text-dark text-base xs:text-lg md:text-xl">
-          افزودن <span class="text-red"> آدرس</span>
+      <div className="flex justify-between items-center pt-3 pb-4">
+        <h3 className="relative px-3 title-style text-dark text-base xs:text-lg md:text-xl">
+          افزودن <span className="text-red"> آدرس</span>
         </h3>
         <button onClick={() => setEditing(false)} className="text-org text-xs px-1 xs:px-3! py-2 flex items-center gap-1 bg-yel border border-org/30 rounded-lg cursor-pointer hover:text-red">
           <span>بازگشت به صفحه‌ی قبل</span>
