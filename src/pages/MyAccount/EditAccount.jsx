@@ -16,7 +16,7 @@ export default function EditAccount() {
   function submit(e) {
     e.preventDefault();
     alertRef.current.style.color = "#dc2f02";
-    // if (passwordRef.current.value.trim() !== user.password) return (alertRef.current.textContent = "رمز عبور اشتباه است!");
+    if (passwordRef.current.value.trim() !== user.password) return (alertRef.current.textContent = "رمز عبور اشتباه است!");
     if (newPasswordRef.current.value.trim().length && newPasswordRef.current.value.trim() !== repeatNewPasswordRef.current.value.trim()) return (alertRef.current.textContent = "رمز عبور جدید با تکرار رمز عبور جدید یکسان نیست!");
     let obj = {
       name: nameRef.current.value.trim(),
