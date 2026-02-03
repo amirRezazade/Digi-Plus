@@ -3,6 +3,8 @@ import Footer from "../../component/footer/Footer";
 import Navbar from "../../component/navbar/Navbar";
 import SupportChat from "../../component/SupportChat/SupportCat";
 import ContactForm from "./ContactForm";
+import Infos from "./Infos";
+import FAQ from "./FAQ";
 export default function ContactUs(params) {
   return (
     <>
@@ -34,9 +36,11 @@ export default function ContactUs(params) {
           </span>
           <span className="text-dark">تماس با ما</span>
         </div>
-        <div className="flex flex-wrap lg:flex-nowrap justify-between gap-5">
+        <div className="flex flex-wrap-reverse lg:flex-nowrap justify-between items-start gap-8">
           <ContactForm />
+          <Infos />
         </div>
+        <FAQ />
       </main>
       <SupportChat />
       <Footer />
