@@ -8,6 +8,7 @@ import Payment from "./pages/Checkout/Payment";
 import MyAccount from "./pages/MyAccount/MyAccount";
 import PrivateRoute from "./component/PrivateRoute";
 import Auth from "./pages/Auth/Auth";
+import ContactUs from "./pages/Contact-Us/ContactUs";
 
 export default function AppRoutes() {
   return (
@@ -40,6 +41,7 @@ export default function AppRoutes() {
           </PrivateRoute>
         }
       />
+      <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/auth" element={<Auth />} />
     </Routes>
   );

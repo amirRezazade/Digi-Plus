@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { formatedPrice, getLocal, setLocal } from "../../utils/funcs.js";
+import { getLocal, setLocal } from "../../utils/funcs.js";
 import "./addToShoppingCartLargeBtn.css";
 export default function AddToShoppingCartLargeBtn({ product, quantity = 1 }) {
   let [inCart, setInCart] = useState(false);

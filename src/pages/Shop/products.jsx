@@ -115,9 +115,9 @@ export default function ShowProducts({ filteredProducts, sorting, onSorting, par
               </svg>
             </span>
           </button>
-          <button onClick={() => handleSortChange("discountpercentage")} className={`border rounded-full border-light-gray py-1 px-3 cursor-pointer flex items-start gap-2 ${sort == "discountpercentage" ? "fill-org text-org bg-light border-org" : "fill-gray"}`}>
+          <button onClick={() => handleSortChange("discountPercentage")} className={`border rounded-full border-light-gray py-1 px-3 cursor-pointer flex items-start gap-2 ${sort == "discountPercentage" ? "fill-org text-org bg-light border-org" : "fill-gray"}`}>
             <span>تخفیف</span>
-            <span className={sort == "discountpercentage" && isDesc ? "rotate-180 translate-y-1/3" : ""}>
+            <span className={sort == "discountPercentage" && isDesc ? "rotate-180 translate-y-1/3" : ""}>
               <svg width="15" height="15" viewBox="-96 0 512 512" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>

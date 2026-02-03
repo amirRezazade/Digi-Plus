@@ -23,12 +23,11 @@ export default function SignupForm({ onForm, form }) {
         password: passwordRef.current.value.trim(),
       };
       setLocal("user", user);
-      console.log(user);
       navigate("/", { replace: true });
     }
   }
   return (
-    <div className={`  px-3 xs:px-10! md:px-3! lg:px-10! py-3 ${form !== "signup" ? "scale-30 opacity-0 pointer-events-none" : ""} transition-transform duration-500`}>
+    <div className={`  px-3 xs:px-10! md:px-3! lg:px-10! py-3 ${form !== "signup" ? "scale-30 opacity-0 pointer-events-none" : ""} transition-[scale_opacity] duration-500`}>
       <h1 className="font-bold text-xl xs:text-2xl sm:text-3xl! md:text-2xl! lg:text-4xl! text-dark py-3 text-center">
         ثبت نام در <span className="text-red"> فروشگاه دیجی پلاس</span>
       </h1>
@@ -44,7 +43,7 @@ export default function SignupForm({ onForm, form }) {
           <label htmlFor="phone" className="text-dark">
             شماره تلفن <span className="text-red">*</span>
           </label>
-          <input ref={phoneRef} type="tel" id="phone" className="block w-full my-1 xs:my-3! p-3 outline-0 gray-shaddow border border-light-gray/50 focus:border-org rounded-lg" required minLength={8} />
+          <input ref={phoneRef} type="number" id="phone" className="block w-full my-1 xs:my-3! p-3 outline-0 gray-shaddow border border-light-gray/50 focus:border-org rounded-lg" required minLength={8} />
         </div>
         <div className="mt-2 xs:my-4!">
           <label htmlFor="password" className="text-dark">
@@ -82,14 +81,16 @@ export default function SignupForm({ onForm, form }) {
             ورود
           </button>
         </div>
-        <Link to={"/"} className="flex items-center justify-center gap-1 group text-red fill-red mt-3.5">
-          <span>رفتن به صفحه اصلی</span>
-          <span className="group-hover:-translate-x-1 transition-transform duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22 16">
-              <path d="M12.6542 15.0209L6.50534 8.68754C6.2819 8.49587 6.18737 8.24587 6.18737 8.00004C6.18737 7.75421 6.28139 7.50504 6.46933 7.31254L12.6542 0.979206C13.0495 0.577956 13.7026 0.561289 14.1151 0.940039C14.5319 1.32046 14.5448 1.95587 14.1538 2.35421L8.64089 8.00004L14.1581 13.6459C14.5488 14.0443 14.5341 14.6771 14.1178 15.06C13.7026 15.4375 13.0495 15.4209 12.6542 15.0209Z"></path>
-            </svg>
-          </span>
-        </Link>
+        <div className="flex justify-center">
+          <Link to={"/"} className=" inline-flex items-center justify-center gap-1 group text-red fill-red mt-3.5">
+            <span>رفتن به صفحه اصلی</span>
+            <span className="group-hover:-translate-x-1 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22 16">
+                <path d="M12.6542 15.0209L6.50534 8.68754C6.2819 8.49587 6.18737 8.24587 6.18737 8.00004C6.18737 7.75421 6.28139 7.50504 6.46933 7.31254L12.6542 0.979206C13.0495 0.577956 13.7026 0.561289 14.1151 0.940039C14.5319 1.32046 14.5448 1.95587 14.1538 2.35421L8.64089 8.00004L14.1581 13.6459C14.5488 14.0443 14.5341 14.6771 14.1178 15.06C13.7026 15.4375 13.0495 15.4209 12.6542 15.0209Z"></path>
+              </svg>
+            </span>
+          </Link>
+        </div>
       </form>
     </div>
   );

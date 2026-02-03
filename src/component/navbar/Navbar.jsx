@@ -141,12 +141,12 @@ export default function Navbar() {
                   <NavbarLink text={"اوپن باکس"} to={"/shop"} />
                   <NavbarLink text={"بدون گارانتی"} to={"/shop"} />
                 </ul>
-                <NavLink to={"/product/id"} className="border border-org rounded-xl p-2 ps-7 relative group/item w-94 flex items-center text-xs text-end text-gray overflow-hidden">
+                <NavLink to={"/product/128"} className="border border-org rounded-xl p-2 ps-7 relative group/item w-94 flex items-center text-xs text-end text-gray overflow-hidden">
                   <span className="absolute top-2.5 -right-5 gradient text-white rotate-45 px-5">استوک</span>
-                  <img src="https://digiplus.aet-web.ir/wp-content/uploads/2025/01/mob2.svg" alt="" />
+                  <img className="max-w-20" src="https://cdn.dummyjson.com/product-images/smartphones/realme-c35/1.webp" alt="realme" />
                   <div>
-                    <p>گوشی موبایل شیائومی مدل Redmi Note 13 4G دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت</p>
-                    <span className="text-sm font-bold mt-3 inline-block group-hover/item:text-org ">3,555 $ </span>
+                    <p>گوشی موبایل شیائومی مدل Realme C35 دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت</p>
+                    <span className="text-sm font-bold mt-3 inline-block group-hover/item:text-org ">149.99 $ </span>
                   </div>
                 </NavLink>
               </div>
@@ -186,7 +186,7 @@ export default function Navbar() {
               <div className="navbar-hidden-item text-dark text-base">
                 <ul>
                   <NavbarLink text={"فروشگاه"} to={"/shop"} />
-                  <NavbarLink text={"سبد خرید"} to={"/shopping-cart"} />
+                  <NavbarLink text={"سبد خرید"} to={"/cart"} />
                   <NavbarLink text={"صفحه محصول"} to={"/product"} />
                   <NavbarLink text={"صفحه پرداخت"} to={"/checkout"} />
                 </ul>

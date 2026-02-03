@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getLocal, setLocal } from "../../utils/funcs";
+import { getLocal, removeLocal, setLocal } from "../../utils/funcs";
 
 export default function EditAccount() {
   let [user, setUser] = useState(getLocal("user") || []);
@@ -35,7 +35,7 @@ export default function EditAccount() {
   const navigate = useNavigate();
   function logout() {
     removeLocal("user");
-    navigate("/login", { replace: true });
+    navigate("/auth", { replace: true });
   }
   useEffect(() => {
     nameRef.current.value = user.name || "";
@@ -59,16 +59,14 @@ export default function EditAccount() {
             </svg>
           </span>
         </label>
-        <Link to={"/login"} className="hidden text-red fill-red xs:flex items-center gap-1">
+        <button onClick={logout} className="hidden text-red fill-red xs:flex items-center gap-1 cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M17.4389 15.3699C17.2489 15.3699 17.0589 15.2999 16.9089 15.1499C16.6189 14.8599 16.6189 14.3799 16.9089 14.0899L18.9389 12.0599L16.9089 10.0299C16.6189 9.73994 16.6189 9.25994 16.9089 8.96994C17.1989 8.67994 17.6789 8.67994 17.9689 8.96994L20.5289 11.5299C20.8189 11.8199 20.8189 12.2999 20.5289 12.5899L17.9689 15.1499C17.8189 15.2999 17.6289 15.3699 17.4389 15.3699Z"></path>
             <path d="M19.9317 12.8101H9.76172C9.35172 12.8101 9.01172 12.4701 9.01172 12.0601C9.01172 11.6501 9.35172 11.3101 9.76172 11.3101H19.9317C20.3417 11.3101 20.6817 11.6501 20.6817 12.0601C20.6817 12.4701 20.3417 12.8101 19.9317 12.8101Z"></path>
             <path d="M11.7617 20.75C6.61172 20.75 3.01172 17.15 3.01172 12C3.01172 6.85 6.61172 3.25 11.7617 3.25C12.1717 3.25 12.5117 3.59 12.5117 4C12.5117 4.41 12.1717 4.75 11.7617 4.75C7.49172 4.75 4.51172 7.73 4.51172 12C4.51172 16.27 7.49172 19.25 11.7617 19.25C12.1717 19.25 12.5117 19.59 12.5117 20C12.5117 20.41 12.1717 20.75 11.7617 20.75Z"></path>
           </svg>
-          <button className="cursor-pointer" onClick={logout}>
-            خروج از حساب کاربری
-          </button>
-        </Link>
+          <span>خروج از حساب کاربری</span>
+        </button>
       </div>
       <form className="grid! grid-cols-1 sm:grid-cols-2! gap-1 sm:gap-3! pt-5" onSubmit={(e) => submit(e)}>
         <div className="">
@@ -85,9 +83,9 @@ export default function EditAccount() {
         </div>
         <div className="">
           <label htmlFor="user-name" className="text-dark">
-            نام کاربری <span className="text-red">*</span>
+            نام کاربری <span className="text-red"></span>
           </label>
-          <input ref={userNameRef} type="text" id="user-name" className="block w-full my-2 py-2 px-3 outline-0 border border-light-gray focus:border-org rounded-lg" required minLength={8} pattern="[a-zA-Z0-9]+" inputMode="latin" />
+          <input ref={userNameRef} type="text" id="user-name" className="block w-full my-2 py-2 px-3 outline-0 border border-light-gray focus:border-org rounded-lg" minLength={8} pattern="[a-zA-Z0-9]+" inputMode="latin" />
         </div>
         <div className="">
           <label htmlFor="phone" className="text-dark">

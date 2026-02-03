@@ -126,7 +126,7 @@ export default function NavbarShoppingCart() {
                   </div>
                   <div>
                     <div className="flex items-start justify-end text-sm text-[#FAA307] gap-1 ">
-                      <span>{product.rating.toFixed(1)}</span>
+                      <span>{product.rating?.toFixed(1)}</span>
                       <span>
                         <svg width="14" height="12" viewBox="0 0 14 12" fill="currentcolor" xmlns="http://www.w3.org/2000/svg">
                           <path

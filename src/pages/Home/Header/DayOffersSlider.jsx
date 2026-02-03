@@ -5,36 +5,19 @@ import { Pagination, Autoplay } from "swiper/modules";
 import AddToShoppingCartBtn from "../../../component/btns/AddToShoppingCartBtn";
 import "swiper/css";
 import "swiper/css/pagination";
+import { calcRealPrice } from "../../../utils/funcs";
 export default function HomeDayOffersSlider(params) {
   let [second, setSecond] = useState(15);
   let [minute, setMinute] = useState(11);
+  let [products, setProducts] = useState(null);
 
-  let products = [
-    {
-      id: 98,
-      img: "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/1.webp",
-      price: 13999.99,
-      Discount: 5.05,
-    },
-    {
-      id: 79,
-      img: "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/1.webp",
-      price: 1799.99,
-      Discount: 11.14,
-    },
-    {
-      id: 127,
-      img: "https://cdn.dummyjson.com/product-images/smartphones/oppo-k1/2.webp",
-      price: 299.99,
-      Discount: 18.29,
-    },
-    {
-      id: 115,
-      img: "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/1.webp",
-      price: 14999.99,
-      Discount: 6.92,
-    },
-  ];
+  let productsId = [79, 99, 160, 103];
+
+  useEffect(() => {
+    Promise.all(productsId.map((id) => fetch(`https://dummyjson.com/products/${id}`).then((r) => r.json())))
+      .then((data) => setProducts(data))
+      .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     let test = setTimeout(() => {
@@ -96,17 +79,17 @@ export default function HomeDayOffersSlider(params) {
           direction="vertical"
           slidesPerView={1}
         >
-          {products.map((product) => (
+          {products?.map((product) => (
             <SwiperSlide key={product.id} className="flex! flex-col items-center justify-center gap-2 p-3">
               <Link to={`/product/${product.id}`} className=" flex justify-center items-center h-8/10 w-full">
-                <img className=" h-full mx-auto" src={product.img} alt="product" />
+                <img className=" h-full mx-auto" src={product.thumbnail} alt={product.title} />
               </Link>
               <div className="h-2/10 flex justify-between items-center  w-full">
-                <AddToShoppingCartBtn id={product.id} />
+                <AddToShoppingCartBtn product={product} />
                 <div className="">
                   <div className="">
-                    <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.Discount}</span>
-                    <span className="text-gray/80 line-through text-sm mx-2">${(product.price / (1 - product.Discount / 100)).toFixed(2)}</span>
+                    <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%{product.discountPercentage}</span>
+                    <span className="text-gray/80 line-through text-sm mx-2">${calcRealPrice(product.price, product.discountPercentage)}</span>
                   </div>
                   <p className="text-lg lg:text-xl  text-red font-bold mt-0.5">{product.price} $</p>
                 </div>

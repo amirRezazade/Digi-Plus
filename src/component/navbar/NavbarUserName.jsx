@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getLocal } from "../../utils/funcs";
+import { getLocal, removeLocal } from "../../utils/funcs";
 
 export default function NavbarUserName() {
   let user = getLocal("user");
@@ -8,7 +8,7 @@ export default function NavbarUserName() {
   const navigate = useNavigate();
   function logout() {
     removeLocal("user");
-    navigate("/login", { replace: true });
+    navigate("/auth", { replace: true });
   }
   if (user) {
     return (

@@ -6,7 +6,7 @@ export default function SideBar({ open, onOpen }) {
   const navigate = useNavigate();
   function logout() {
     removeLocal("user");
-    navigate("/login", { replace: true });
+    navigate("/auth", { replace: true });
   }
   return (
     <aside onClick={(e) => e.target.nodeName === "ASIDE" && onOpen(false)} className={`side-bar grow lg:max-w-80 lg:min-w-80 fixed lg:sticky! lg:top-10! w-screen h-screen lg:w-auto! lg:h-auto! bg-black/50 lg:bg-transparent! top-0 right-0 z-5 transition-transform duration-400 ${open ? "translate-x-0" : "translate-x-1/1"} lg:translate-x-0`}>

@@ -1,14 +1,18 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function LoginForm({ onForm, form }) {
+  const alertRef = useRef(null);
+
   function typeControl(e) {
     e.target.previousElementSibling.type === "password" ? (e.target.previousElementSibling.type = "text") : (e.target.previousElementSibling.type = "password");
   }
   function submit(e) {
     e.preventDefault();
+    alertRef.current.textContent = "رمز عبور اشتباه است!";
   }
   return (
-    <div className={` absolute top-1/2 -translate-y-1/2 right-0 w-full px-3 xs:px-10! md:px-3! lg:px-10! ${form !== "login" ? "scale-30 opacity-0 pointer-events-none" : ""} transition-transform duration-500`}>
+    <div className={` absolute top-1/2 -translate-y-1/2 right-0 w-full px-3 xs:px-10! md:px-3! lg:px-10! ${form !== "login" ? "scale-30 opacity-0 pointer-events-none" : ""} transition-[scale_opacity] duration-500`}>
       <h1 className="font-bold text-xl xs:text-2xl sm:text-3xl! md:text-2xl! lg:text-4xl! text-dark py-3 text-center">
         ورود به <span className="text-red"> فروشگاه دیجی پلاس</span>
       </h1>
@@ -35,21 +39,25 @@ export default function LoginForm({ onForm, form }) {
           </div>
         </div>
         <p className="text-center text-red text-sm cursor-pointer">رمز عبور خود را فراموش کرده اید؟</p>
-        <button className="block mt-3 xs:mt-8! mb-3 w-full gradient rounded-lg cursor-pointer text-white py-3">ورود</button>
+        <p ref={alertRef} className=" text-red text-sm cursor-pointer mt-5"></p>
+
+        <button className="block mt-3  mb-3 w-full gradient rounded-lg cursor-pointer text-white py-3">ورود</button>
         <div className="flex justify-center gap-2">
           <span>حساب کاربری ندارید؟ </span>
           <button type="button" onClick={() => onForm("signup")} className="text-red cursor-pointer">
             ثبت نام
           </button>
         </div>
-        <Link to={"/"} className="flex items-center justify-center gap-1 group text-red fill-red mt-3.5">
-          <span>رفتن به صفحه اصلی</span>
-          <span className="group-hover:-translate-x-1 transition-transform duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22 16">
-              <path d="M12.6542 15.0209L6.50534 8.68754C6.2819 8.49587 6.18737 8.24587 6.18737 8.00004C6.18737 7.75421 6.28139 7.50504 6.46933 7.31254L12.6542 0.979206C13.0495 0.577956 13.7026 0.561289 14.1151 0.940039C14.5319 1.32046 14.5448 1.95587 14.1538 2.35421L8.64089 8.00004L14.1581 13.6459C14.5488 14.0443 14.5341 14.6771 14.1178 15.06C13.7026 15.4375 13.0495 15.4209 12.6542 15.0209Z"></path>
-            </svg>
-          </span>
-        </Link>
+        <div className="flex justify-center">
+          <Link to={"/"} className=" inline-flex items-center justify-center gap-1 group text-red fill-red mt-3.5">
+            <span>رفتن به صفحه اصلی</span>
+            <span className="group-hover:-translate-x-1 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22 16">
+                <path d="M12.6542 15.0209L6.50534 8.68754C6.2819 8.49587 6.18737 8.24587 6.18737 8.00004C6.18737 7.75421 6.28139 7.50504 6.46933 7.31254L12.6542 0.979206C13.0495 0.577956 13.7026 0.561289 14.1151 0.940039C14.5319 1.32046 14.5448 1.95587 14.1538 2.35421L8.64089 8.00004L14.1581 13.6459C14.5488 14.0443 14.5341 14.6771 14.1178 15.06C13.7026 15.4375 13.0495 15.4209 12.6542 15.0209Z"></path>
+              </svg>
+            </span>
+          </Link>
+        </div>
       </form>
     </div>
   );
