@@ -4,16 +4,19 @@ export default function ContactForm(params) {
   let user = getLocal("user") || [];
   let [fullName, setFullName] = useState(`${user.name}${user.lastName ? user.lastName : ""}`);
   let [phone, setPhone] = useState(user.phone);
-  let [email, setEmail] = useState(user.email);
+
+  function submit(e) {
+    e.preventDefault();
+  }
   return (
-    <div className="lg:max-w-80 2xl:max-w-110 w-full gray-shaddow border border-light-gray/40 rounded-2xl p-4">
+    <div className="lg:max-w-80 2xl:max-w-110 w-full gray-shaddow border border-light-gray/40 rounded-2xl p-4 bg-white">
       <div className="border-b border-light-gray/80 pb-3">
         <h2 className="text-lg font-bold text-dark py-1">
           درخواست مشاوره<span className="text-red"> رایگان</span>
         </h2>
         <p className="">کارشناسان ما در اسرع وقت پاسخگو شما خواهند بود.</p>
       </div>
-      <form className="py-4">
+      <form className="py-4" onSubmit={(e) => submit(e)}>
         <div className="">
           <label htmlFor="full-name" className="text-dark">
             نام خانوادگی

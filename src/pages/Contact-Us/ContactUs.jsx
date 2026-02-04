@@ -5,12 +5,14 @@ import SupportChat from "../../component/SupportChat/SupportCat";
 import ContactForm from "./ContactForm";
 import Infos from "./Infos";
 import FAQ from "./FAQ";
+import bgRounded from "../../assets/images/bg-images/bg-round.png";
+
 export default function ContactUs(params) {
   return (
     <>
       <Navbar />
-      <main className="custom-container text-gray text-sm">
-        <div className="flex items-center gap-3 text-gray text-sm text-nowrap overflow-auto hidden-scrollbar my-5 lg:my-9 px-4">
+      <main className=" text-gray text-sm">
+        <div className="custom-container flex items-center gap-3 text-gray text-sm text-nowrap overflow-auto hidden-scrollbar my-5 lg:my-9 px-4">
           <Link className="stroke-gray hover:stroke-org fill-white" to="/">
             <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -36,9 +38,13 @@ export default function ContactUs(params) {
           </span>
           <span className="text-dark">تماس با ما</span>
         </div>
-        <div className="flex flex-wrap-reverse lg:flex-nowrap justify-between items-start gap-8">
-          <ContactForm />
-          <Infos />
+        <div className="relative">
+          <img className="hidden lg:inline-block absolute right-0 top-1/3 xl:top-0 -z-2" src={bgRounded} alt="" />
+          <div className="custom-container flex flex-wrap-reverse lg:flex-nowrap justify-between items-start gap-8 bg-white xl:bg-transparent!">
+            <ContactForm />
+            <Infos />
+          </div>
+          <img className="hidden lg:inline-block absolute left-0 top-1/10 rotate-180 -z-2" src={bgRounded} alt="" />
         </div>
         <FAQ />
       </main>
