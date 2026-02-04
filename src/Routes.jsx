@@ -9,6 +9,7 @@ import MyAccount from "./pages/MyAccount/MyAccount";
 import PrivateRoute from "./component/PrivateRoute";
 import Auth from "./pages/Auth/Auth";
 import ContactUs from "./pages/Contact-Us/ContactUs";
+import AboutUs from "./pages/About-us/AboutUs";
 
 export default function AppRoutes() {
   return (
@@ -42,6 +43,7 @@ export default function AppRoutes() {
         }
       />
       <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/about-us" element={<AboutUs />} />
       <Route path="/auth" element={<Auth />} />
     </Routes>
   );
