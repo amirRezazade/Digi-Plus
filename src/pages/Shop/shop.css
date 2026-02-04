@@ -28,18 +28,18 @@
   cursor: pointer;
 }
 .price-min::-webkit-slider-thumb {
-  background: url("./assets/images/range-input-thumbs/min-price.png") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/min-price.png") center / contain no-repeat;
   z-index: 5;
 }
 .price-min::-moz-range-thumb {
-  background: url("./assets/images/range-input-thumbs/min-price.png") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/min-price.png") center / contain no-repeat;
   z-index: 5;
 }
 .price-max::-moz-range-thumb {
-  background: url("./assets/images/range-input-thumbs/max-price.png") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/max-price.png") center / contain no-repeat;
 }
 .price-max::-webkit-slider-thumb {
-  background: url("./assets/images/range-input-thumbs/max-price.png") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/max-price.png") center / contain no-repeat;
 }
 .price-max {
   background: none;

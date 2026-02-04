@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./shop.css";
 
 export default function FilteringForm({ params, onParams }) {
   const maxProductPrice = 40000;

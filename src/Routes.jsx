@@ -10,6 +10,7 @@ import PrivateRoute from "./component/PrivateRoute";
 import Auth from "./pages/Auth/Auth";
 import ContactUs from "./pages/Contact-Us/ContactUs";
 import AboutUs from "./pages/About-us/AboutUs";
+import NotFound from "./pages/404/NotFound";
 
 export default function AppRoutes() {
   return (
@@ -45,6 +46,7 @@ export default function AppRoutes() {
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/auth" element={<Auth />} />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 }

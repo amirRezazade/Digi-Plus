@@ -57,13 +57,11 @@ export default function Search() {
   }, [params, sorting]);
 
   return (
-    products && (
-      <main className="relative custom-container flex flex-col items-start lg:flex-row gap-8 lg:gap-6 py-10 ">
-        <div className="mx-auto w-full max-w-100 md:max-w-120 lg:max-w-65 xl:max-w-75 xl:min-w-75 lg:sticky top-10">
-          <FilteringForm params={params} onParams={setParams} />
-        </div>
-        <ShowProducts filteredProducts={filteredProducts || []} sorting={sorting} onSorting={setSorting} params={params} />
-      </main>
-    )
+    <main className="relative custom-container flex flex-col items-start lg:flex-row gap-8 lg:gap-6 py-10 ">
+      <div className="w-full max-w-100 md:max-w-120 lg:max-w-65 xl:max-w-75 xl:min-w-75 lg:sticky top-10">
+        <FilteringForm params={params} onParams={setParams} />
+      </div>
+      {products && <ShowProducts filteredProducts={filteredProducts || []} sorting={sorting} onSorting={setSorting} params={params} />}
+    </main>
   );
 }

@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 export default function Comment() {
   return (
-    <div className="custom-container mt-10 mb-5">
-      <div className="flex items-center justify-between gap-2">
-        <h2 class=" text-start inline-block font-bold text-black text-nowrap md:px-3 py-3 md:py-0.5 text-xl xs:text-2xl lg:text-3xl">
+    <div className="custom-container mt-10 md:mt-15! mb-5">
+      <div className="flex items-center justify-between gap-2 py-5">
+        <h2 class=" text-start inline-block font-bold text-black text-nowrap text-xl xs:text-2xl lg:text-3xl">
           نظرات<span class="text-red "> مشتریان</span>
         </h2>
         <div className="flex gap-2">
@@ -38,7 +38,7 @@ export default function Comment() {
           },
         }}
       >
-        <SwiperSlide className="">
+        <SwiperSlide>
           <div className="p-3.5 w-fit rounded-4xl bg-white gray-shaddow border border-light-gray/50 mx-auto hover:border-red transition-colors duration-300">
             <div className="flex items-center gap-2">
               <span className="inline-block relative rounded-full size-7 bg-red/15 after:absolute after:size-2 after:top-1/2 after:left-1/2 after:-translate-1/2 after:rounded-full after:bg-red before:absolute before:size-4 before:top-1/2 before:left-1/2 before:-translate-1/2 before:rounded-full before:bg-red/40"></span>
@@ -46,7 +46,7 @@ export default function Comment() {
             </div>
             <p className="leading-8 mb-6 mt-4"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. </p>
             <div className="flex justify-between">
-              <p className="">تنکابن، گیلان </p>
+              <p>تنکابن، گیلان </p>
               <div className="flex items-start gap-1 fill-star text-star text-lg font-bold">
                 <span>5</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22">
@@ -58,7 +58,7 @@ export default function Comment() {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+        <SwiperSlide>
           <div className="p-3.5 w-fit rounded-4xl bg-white gray-shaddow border border-light-gray/50 mx-auto hover:border-red transition-colors duration-300">
             <div className="flex items-center gap-2">
               <span className="inline-block relative rounded-full size-7 bg-red/15 after:absolute after:size-2 after:top-1/2 after:left-1/2 after:-translate-1/2 after:rounded-full after:bg-red before:absolute before:size-4 before:top-1/2 before:left-1/2 before:-translate-1/2 before:rounded-full before:bg-red/40"></span>
@@ -66,7 +66,7 @@ export default function Comment() {
             </div>
             <p className="leading-8 mb-6 mt-4"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. </p>
             <div className="flex justify-between">
-              <p className="">تنکابن، گیلان </p>
+              <p>تنکابن، گیلان </p>
               <div className="flex items-start gap-1 fill-star text-star text-lg font-bold">
                 <span>5</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22">
@@ -78,7 +78,7 @@ export default function Comment() {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+        <SwiperSlide>
           <div className="p-3.5 w-fit rounded-4xl bg-white gray-shaddow border border-light-gray/50 mx-auto hover:border-red transition-colors duration-300">
             <div className="flex items-center gap-2">
               <span className="inline-block relative rounded-full size-7 bg-red/15 after:absolute after:size-2 after:top-1/2 after:left-1/2 after:-translate-1/2 after:rounded-full after:bg-red before:absolute before:size-4 before:top-1/2 before:left-1/2 before:-translate-1/2 before:rounded-full before:bg-red/40"></span>
@@ -86,7 +86,7 @@ export default function Comment() {
             </div>
             <p className="leading-8 mb-6 mt-4"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. </p>
             <div className="flex justify-between">
-              <p className="">تنکابن، گیلان </p>
+              <p>تنکابن، گیلان </p>
               <div className="flex items-start gap-1 fill-star text-star text-lg font-bold">
                 <span>5</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22">
@@ -98,7 +98,7 @@ export default function Comment() {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+        <SwiperSlide>
           <div className="p-3.5 w-fit rounded-4xl bg-white gray-shaddow border border-light-gray/50 mx-auto hover:border-red transition-colors duration-300">
             <div className="flex items-center gap-2">
               <span className="inline-block relative rounded-full size-7 bg-red/15 after:absolute after:size-2 after:top-1/2 after:left-1/2 after:-translate-1/2 after:rounded-full after:bg-red before:absolute before:size-4 before:top-1/2 before:left-1/2 before:-translate-1/2 before:rounded-full before:bg-red/40"></span>
@@ -106,7 +106,7 @@ export default function Comment() {
             </div>
             <p className="leading-8 mb-6 mt-4"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. </p>
             <div className="flex justify-between">
-              <p className="">تنکابن، گیلان </p>
+              <p>تنکابن، گیلان </p>
               <div className="flex items-start gap-1 fill-star text-star text-lg font-bold">
                 <span>5</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22">
