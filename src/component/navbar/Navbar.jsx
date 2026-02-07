@@ -7,32 +7,38 @@ import NavbarShoppingCart from "./NavbarShoppingCart";
 import NavbarUserName from "./NavbarUserName";
 import NavbarLink from "./NavbarLink";
 import NavbarProductsList from "./NavbarProductsList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   let [openMenu, setOpenMenu] = useState(false);
+
+  useEffect(() => {
+    if (openMenu) {
+      document.body.classList.add("body-lock");
+    } else document.body.classList.remove("body-lock");
+  }, [openMenu]);
   return (
     <>
-      <Link to="/" className=" overflow-hidden">
+      <Link to="/shop" className=" overflow-hidden">
         <img className="hidden sm:block w-full max-h-16 bg-transparent" src={baner} alt="black-friday-logo" />
         <img className="sm:hidden block w-full max-h-16 bg-transparent" src={mobileBaner} alt="black-friday-mobile-logo" />
       </Link>
       <div className="hidden custom-container lg:flex pt-3 justify-between text-gray text-sm">
         <ul className="flex gap-2.5   divide-x divide-light-gray">
           <li className="px-2 py-0.5 text-hover">
-            <Link>راهنمای خرید</Link>
+            <Link to={"/"}>راهنمای خرید</Link>
           </li>
           <li className="px-2 py-0.5 text-hover">
-            <Link>شرایط گارانتی</Link>
+            <Link to={"/"}>شرایط گارانتی</Link>
           </li>
           <li className="px-2 py-0.5 text-hover">
-            <Link>سوالات متدوال</Link>
+            <Link to={"/contact-us"}>سوالات متدوال</Link>
           </li>
           <li className="px-2 py-0.5 text-hover">
-            <Link>تماس با ما</Link>
+            <Link to={"/contact-us"}>تماس با ما</Link>
           </li>
           <li className="px-2 py-0.5 text-hover">
-            <Link>درباره ما</Link>
+            <Link to={"/about-us"}>درباره ما</Link>
           </li>
         </ul>
         <div className="flex items-center gap-3">
@@ -93,7 +99,7 @@ export default function Navbar() {
           <NavbarShoppingCart />
         </div>
       </div>
-      <nav className={`fixed w-screen h-screen max-h-screen z-10 top-0 right-0 lg:relative lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0 transition-all duration-300 delay-200 opacity-0 invisible lg:opacity-100 lg:visible ${openMenu ? "opacity-100 visible" : ""}`} onClick={(e) => (e.target.nodeName == "NAV" ? setOpenMenu(false) : "")}>
+      <nav className={`fixed w-screen h-screen max-h-screen z-50 top-0 right-0 lg:relative lg:h-auto lg:w-auto lg:mx-12 xl:mx-15 2xl:mx-auto 2xl:max-w-[1400px] bg-black/50 lg:bg-black/0 transition-all duration-300 delay-200 opacity-0 invisible lg:opacity-100 lg:visible ${openMenu ? "opacity-100 visible" : ""}`} onClick={(e) => (e.target.nodeName == "NAV" ? setOpenMenu(false) : "")}>
         <div className={`relative hidden-scrollbar flex justify-between lg:items-center gap-3 lg:gap-0 lg:py-3.5 bg-white w-70 min-h-full max-h-full  lg:w-auto px-5 lg:px-0 flex-col lg:flex-row overflow-y-auto lg:overflow-y-visible transition-transform duration-500  lg:translate-x-0  ${openMenu ? "" : "translate-x-1/1"}`}>
           <div className="sticky top-0 z-1 bg-white lg:hidden flex justify-center items-center py-5 border-b border-light-gray ">
             <button className="me-auto cursor-pointer p-1.5 " onClick={() => setOpenMenu(false)}>
@@ -124,6 +130,28 @@ export default function Navbar() {
               دسته بندی <span className="text-red">محصولات</span>
             </p>
             <NavbarProductsList />
+          </div>
+          <div className="order-3">
+            <p className="lg:hidden text-xl font-bold text-dark">
+              پیوند های <span className="text-red">مفید</span>
+            </p>
+            <div className="grid lg:hidden grid-cols-2 gap-2 text-sm text-gray my-3">
+              <Link to={"/"} className="rounded-lg border border-light-gray text-center py-2 ">
+                صفحه اصلی
+              </Link>
+              <Link to={"/shop"} className="rounded-lg border border-light-gray text-center py-2 ">
+                فروشگاه
+              </Link>
+              <Link to={"/contact-us"} className="rounded-lg border border-light-gray text-center py-2 ">
+                تماس با ما
+              </Link>
+              <Link to={"/about-us"} className="rounded-lg border border-light-gray text-center py-2 ">
+                درباره ما
+              </Link>
+              <Link to={"/cart"} className="rounded-lg border border-light-gray text-center py-2 ">
+                سبد خرید
+              </Link>
+            </div>
           </div>
           <ul className="hidden order-2 lg:flex items-center gap-1.5 xl:gap-5 text-gray text-sm me-auto lg:ms-1 xl:ms-3">
             <li className="relative group rounded-[18px]  hover:text-org hover:bg-light transition-colors duration-300">
@@ -204,7 +232,7 @@ export default function Navbar() {
               <div className="navbar-hidden-item text-dark text-base">
                 <ul>
                   <NavbarLink text={"داخلی بلاگ"} to={"/"} />
-                  <NavbarLink text={"آرشیو مقالات"} to={"/blogs"} />
+                  <NavbarLink text={"آرشیو مقالات"} to={"/"} />
                 </ul>
               </div>
             </li>

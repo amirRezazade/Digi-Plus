@@ -6,63 +6,63 @@ import { useEffect, useState } from "react";
 export default function HomeCategorySlider() {
   const categories = [
     {
-      img: "https://digiplus.aet-web.ir/wp-content/uploads/2025/01/Rectangle-96-1.png",
+      img: "/src/assets/images/categories/mobile.png",
       name: "موبایل",
       id: "smartphones",
     },
     {
-      img: "https://digiplus.aet-web.ir/wp-content/uploads/2025/01/Rectangle-91.png",
+      img: "/src/assets/images/categories/laptop.png",
       name: "لپتاپ",
       id: "laptops",
     },
     {
-      img: "https://digiplus.aet-web.ir/wp-content/uploads/2025/01/Rectangle-92.png",
+      img: "/src/assets/images/categories/headphone.png",
       name: "لوازم جانبی ",
       id: "mobile-accessories",
     },
     {
-      img: "https://digiplus.aet-web.ir/wp-content/uploads/2025/01/Rectangle-93.png",
+      img: "/src/assets/images/categories/furniture.png",
       name: "مبلمان",
       id: "furniture",
     },
     {
-      img: "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/1.webp",
+      img: "/src/assets/images/categories/kitchen.webp",
       name: "لوزام آشپزخانه",
       id: "kitchen-accessories",
     },
     {
-      img: "https://digiplus.aet-web.ir/wp-content/uploads/2025/01/Rectangle-96.png",
+      img: "/src/assets/images/categories/mans.png",
       name: "مردانه",
       id: "mens-shirts,mens-shoes",
     },
     {
-      img: "https://cdn.dummyjson.com/product-images/tops/tartan-dress/thumbnail.webp",
+      img: "/src/assets/images/categories/tops.webp",
       name: "زنانه",
       id: "womens-dresses,womens-bags,tops",
     },
     {
-      img: "https://digiplus.aet-web.ir/wp-content/uploads/2025/01/Rectangle-95.png",
+      img: "/src/assets/images/categories/whatch.png",
       name: "ساعت",
       id: "womens-watches,mens-watches",
     },
     {
-      img: "https://cdn.dummyjson.com/product-images/beauty/red-lipstick/thumbnail.webp",
+      img: "/src/assets/images/categories/beauty.webp",
       name: "آرایشی و بهداشتی",
       id: "skin-care,beauty",
     },
     {
-      img: "https://digiplus.aet-web.ir/wp-content/uploads/2025/01/Rectangle-98.png",
+      img: "/src/assets/images/categories/fragrances.png",
       name: "عطر",
       id: "fragrances",
     },
     {
-      img: "https://cdn.dummyjson.com/product-images/sports-accessories/football/1.webp",
+      img: "/src/assets/images/categories/sport.webp",
       name: "لوازم ورزشی",
       id: "sports-accessories",
     },
 
     {
-      img: "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/1.webp",
+      img: "/src/assets/images/categories/motor-cycle.webp",
       name: "موتور سیکلت",
       id: "motorcycle",
     },

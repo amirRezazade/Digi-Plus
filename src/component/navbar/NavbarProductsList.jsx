@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import NavbarLink from "./NavbarLink";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import AddToShoppingCartBtn from "../btns/AddToShoppingCartBtn";
 export default function NavbarProductsList() {
   const [active, setActive] = useState("digital");
-  const [open, setOpen] = useState("digital");
+  const [open, setOpen] = useState(null);
   const [openSubLink, setOpenSubLink] = useState(null);
-
+  let [sponsorProduct, setSponsorProduct] = useState(null);
   const categories = [
     { id: "digital", title: "کالای دیجیتال" },
     { id: "homeAndChcken", title: "خانه و آشپزخانه" },
@@ -290,12 +290,17 @@ export default function NavbarProductsList() {
       },
     ],
   };
+  useEffect(() => {
+    fetch("https://dummyjson.com/products/159")
+      .then((res) => res.json())
+      .then((res) => setSponsorProduct(res));
+  }, []);
 
   return (
     <div className="lg:absolute top-[180%] lg:opacity-0 lg:invisible group-hover:top-[135%] lg:border border-light-gray lg:shadow-sm group-hover:visible group-hover:opacity-100 transition-[opacity_top_visibility] duration-300 right-0 bg-white  lg:px-5 py-3 rounded-2xl w-full lg:w-[91vw]  2xl:max-w-[1400px] ">
       <div className="grid grid-cols-1 lg:grid-cols-5 xl:grid-cols-15 gap-5 xl:gap-2 2xl:gap-5 items-stretch overflow-auto">
         {/* products categories  */}
-        <ul className="lg:col-span-1 xl:col-span-2 2xl:col-span-3 flex flex-col justify-around lg:pe-5 xl:pe-2 2xl:pe-8 divide-y divide-light-gray text-dark lg:border-e border-light-gray">
+        <ul className="lg:col-span-1 xl:col-span-2 2xl:col-span-3 flex flex-col justify-around lg:pe-5 xl:pe-2 2xl:pe-8 text-sm divide-y divide-light-gray text-dark lg:border-e border-light-gray">
           {categories.map((item) => (
             <li key={item.id} className={`transition-[max-height] duration-900 overflow-hidden lg:max-h-full ${open === item.id ? "max-h-200" : "max-h-12"}`} onMouseEnter={() => setActive(item.id)}>
               <button
@@ -353,32 +358,18 @@ export default function NavbarProductsList() {
         <div className="hidden xl:inline-block xl:col-span-3 2xl:ps-4">
           <div className="flex flex-col border border-org p-3 rounded-xl relative">
             <span className="p-0.5 gradient shadow-sm shadow-org text-[10px] w-auto absolute top-2 left-2 rounded-md">فروش ویژه!</span>
-            <Link to={"/product/id"}>
-              <img className="my-3 size-40 mx-auto" src="https://digiplus.aet-web.ir/wp-content/uploads/2025/01/mob2.svg" alt="" />
-              <p className="text-gray text-xs text-center">گوشی موبایل شیائومی مدل Redmi Note 13 4G دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت</p>
+            <Link to={"/product/159"}>
+              <img className="my-3 size-40 mx-auto" src="https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/1.webp" alt="iPad Mini 2021 " />
+              <p className="text-gray text-xs text-center">iPad Mini 2021 Starlight با دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت</p>
             </Link>
             <div className="flex items-center justify-between mt-2 pt-2 border-t border-light-gray">
-              <button className="size-11 rounded-xl flex justify-center items-center gradient cursor-pointer">
-                <svg className="m-0" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clipPath="url(#clip0_2099_13129)">
-                    <path
-                      d="M-0.833496 1.526C-0.833496 1.04976 -0.461968 0.666626 -0.00016284 0.666626H1.5797C2.51373 0.666626 3.31581 1.35055 3.48942 2.29586L4.77414 9.26038H15.1109C15.4894 9.26038 15.8193 8.99898 15.9165 8.62301L17.5276 2.44983C17.6457 1.9915 18.104 1.71936 18.5484 1.84469C18.9929 1.97001 19.2568 2.43909 19.1353 2.89742L17.5241 9.0706C17.229 10.1949 16.2394 10.9791 15.1109 10.9791H5.09359L5.28109 11.9996C5.35748 12.4043 5.70123 12.6979 6.10053 12.6979H16.1109C16.5728 12.6979 16.9443 13.081 16.9443 13.5573C16.9443 14.0335 16.5728 14.4166 16.1109 14.4166H6.10053C4.89914 14.4166 3.86789 13.5358 3.64567 12.3219L1.854 2.61812C1.8297 2.48206 1.71511 2.38538 1.5797 2.38538H-0.00016284C-0.461968 2.38538 -0.833496 2.00224 -0.833496 1.526ZM3.61095 17.2812C3.61095 17.0555 3.65406 16.832 3.73782 16.6235C3.82157 16.4149 3.94434 16.2255 4.0991 16.0659C4.25387 15.9063 4.4376 15.7797 4.63981 15.6933C4.84202 15.6069 5.05874 15.5625 5.27761 15.5625C5.49648 15.5625 5.71321 15.6069 5.91542 15.6933C6.11763 15.7797 6.30136 15.9063 6.45613 16.0659C6.61089 16.2255 6.73366 16.4149 6.81741 16.6235C6.90117 16.832 6.94428 17.0555 6.94428 17.2812C6.94428 17.5069 6.90117 17.7304 6.81741 17.9389C6.73366 18.1475 6.61089 18.3369 6.45613 18.4965C6.30136 18.6562 6.11763 18.7828 5.91542 18.8691C5.71321 18.9555 5.49648 19 5.27761 19C5.05874 19 4.84202 18.9555 4.63981 18.8691C4.4376 18.7828 4.25387 18.6562 4.0991 18.4965C3.94434 18.3369 3.82157 18.1475 3.73782 17.9389C3.65406 17.7304 3.61095 17.5069 3.61095 17.2812ZM15.2776 15.5625C15.7196 15.5625 16.1436 15.7435 16.4561 16.0659C16.7687 16.3882 16.9443 16.8254 16.9443 17.2812C16.9443 17.7371 16.7687 18.1742 16.4561 18.4965C16.1436 18.8189 15.7196 19 15.2776 19C14.8356 19 14.4117 18.8189 14.0991 18.4965C13.7865 18.1742 13.6109 17.7371 13.6109 17.2812C13.6109 16.8254 13.7865 16.3882 14.0991 16.0659C14.4117 15.7435 14.8356 15.5625 15.2776 15.5625ZM11.1109 2.38538V3.81767H12.4998C12.9616 3.81767 13.3332 4.20081 13.3332 4.67704C13.3332 5.15328 12.9616 5.53642 12.4998 5.53642H11.1109V6.96871C11.1109 7.44495 10.7394 7.82808 10.2776 7.82808C9.81581 7.82808 9.44428 7.44495 9.44428 6.96871V5.53642H8.05539C7.59359 5.53642 7.22206 5.15328 7.22206 4.67704C7.22206 4.20081 7.59359 3.81767 8.05539 3.81767H9.44428V2.38538C9.44428 1.90914 9.81581 1.526 10.2776 1.526C10.7394 1.526 11.1109 1.90914 11.1109 2.38538Z"
-                      fill="white"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2099_13129">
-                      <rect width="20" height="18.3333" fill="white" transform="translate(0 0.666626)"></rect>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </button>
+              {sponsorProduct && <AddToShoppingCartBtn product={sponsorProduct} />}
               <div>
                 <div className="felx items-center text-sm">
-                  <span className="text-org shadow shadow-light rounded ">6%</span>
-                  <span className="text-gray/80 px-3 line-through">555$</span>
+                  <span class="text-xs px-1 sm-shaddow gradient rounded text-white">%3.64</span>
+                  <span class="text-gray/80 line-through text-sm mx-2">$518.88</span>
                 </div>
-                <p className="text-xl text-red text-center">444$</p>
+                <p className="text-xl text-red text-end mt-1 font-bold">499.99$</p>
               </div>
             </div>
           </div>

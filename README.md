@@ -1,7 +1,6 @@
 # وب‌سایت نمونه کار: digi plus
 
-![Preview](images/demo.jpg)
-![Preview](images/searchdemo.jpg)
+![Preview](src/assets/images//demo.jpg)
 
 وبسایت digi-plus یک وبسایت فروشگاهی زیبا و مدرن با قابلیت های متنوع میباشد که با استفاده از React طراحی شده است .
 از dummy.json برای دریافت داده های فیک استفاده شده است.

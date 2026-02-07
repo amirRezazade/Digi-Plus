@@ -68,7 +68,7 @@ export default function NavbarShoppingCart() {
         <span className="size-4 text-org bg-white rounded-full text-xs absolute top-0 left-0 flex justify-center items-center sm-shaddow">{products.length}</span>
       </button>
 
-      <div className={`absolute ${openMenu ? "" : "opacity-0 invisible"} transition-[opacity_visibility] duration-400 top-[110%] left-0 flex flex-col text-gray rounded-2xl shadow-sm w-72 h-105 px-2 border border-light-gray bg-white z-19`}>
+      <div className={`absolute ${openMenu ? "" : "opacity-0 invisible"} transition-[opacity_visibility] duration-400 top-[110%] left-0 flex flex-col text-gray rounded-2xl shadow-sm w-[90vw] max-w-100 h-105 px-2 border border-light-gray bg-white z-19`}>
         <Link to={"/cart"} className="flex items-center gap-2  fill-gray hover:text-org hover:fill-org py-3">
           <svg className="transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
             <path d="M4.32507 5.31686C4.16673 5.31686 4.00007 5.2502 3.8834 5.13353C3.64173 4.89186 3.64173 4.49186 3.8834 4.2502L6.9084 1.2252C7.15007 0.983529 7.55007 0.983529 7.79173 1.2252C8.0334 1.46686 8.0334 1.86686 7.79173 2.10853L4.76673 5.13353C4.64173 5.2502 4.4834 5.31686 4.32507 5.31686Z"></path>
@@ -78,7 +78,7 @@ export default function NavbarShoppingCart() {
             <path d="M11.9668 15.2498C11.6251 15.2498 11.3418 14.9665 11.3418 14.6248V11.6665C11.3418 11.3248 11.6251 11.0415 11.9668 11.0415C12.3085 11.0415 12.5918 11.3248 12.5918 11.6665V14.6248C12.5918 14.9748 12.3085 15.2498 11.9668 15.2498Z"></path>
             <path d="M12.4083 18.9581H7.38329C4.39996 18.9581 3.73329 17.1831 3.47496 15.6415L2.29996 8.43313C2.24162 8.09146 2.47496 7.7748 2.81662 7.71646C3.15829 7.65813 3.47496 7.89146 3.53329 8.23313L4.70829 15.4331C4.94996 16.9081 5.44996 17.7081 7.38329 17.7081H12.4083C14.55 17.7081 14.7916 16.9581 15.0666 15.5081L16.4666 8.21646C16.5333 7.87479 16.8583 7.6498 17.2 7.7248C17.5416 7.79146 17.7583 8.11646 17.6916 8.45813L16.2916 15.7498C15.9666 17.4415 15.425 18.9581 12.4083 18.9581Z"></path>
           </svg>
-          <span className="transition-colors duration-300 text-sm">سفارش های من</span>
+          <span className="transition-colors duration-300 text-sm">سبدخرید من</span>
         </Link>
         <ul className="grow border-y border-light-gray divide-y divide-dashed divide-light-gray overflow-y-auto hidden-scrollbar overflow-x-hidden">
           {products.length ? (

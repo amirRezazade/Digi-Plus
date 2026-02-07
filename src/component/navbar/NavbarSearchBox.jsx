@@ -18,7 +18,10 @@ export default function NavbarSearchBox() {
           setResponse(list.products);
           setIsLoading(false);
         });
-    } else setResponse(null);
+    } else {
+      setResponse(null);
+      setIsLoading(false);
+    }
   }, [searchParam]);
 
   useEffect(() => {
@@ -74,7 +77,7 @@ export default function NavbarSearchBox() {
           </div>
         )}
         {/* default content  */}
-        {response == null && !isLoading && (
+        {searchParam.length < 2 && !isLoading && (
           <>
             {/* recent searchs  */}
             <div className="my-3 p-1 sm:p-3 border border-light-gray rounded-xl">
@@ -149,7 +152,7 @@ export default function NavbarSearchBox() {
           </>
         )}
         {/* search results  */}
-        {response && !isLoading && (
+        {searchParam.length > 1 && response && !isLoading && (
           <div className="my-3 sm:my-5 p-1.5 sm:p-3 border border-light-gray rounded-xl">
             <div className=" flex items-center justify-between gap-1.5 px-1.5 mb-2">
               <div className="flex items-center gap-1.5">
@@ -191,8 +194,8 @@ export default function NavbarSearchBox() {
                       <span>{product.title}</span>
                     </Link>
                     <p className="ps-8">
-                      در دسته بندی:{" "}
-                      <Link to={`./shop?categories=${product.category}`} className="text-red">
+                      در دسته بندی:
+                      <Link to={`/shop?categories=${product.category}&sortBy=name&page=1`} className="text-red hover:underline">
                         {product.category}
                       </Link>
                     </p>
