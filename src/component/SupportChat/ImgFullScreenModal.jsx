@@ -24,14 +24,14 @@ export default function ImgFullScreenModal() {
       setThumbsSwiper(null);
       setTimeout(() => {
         setImages(null);
-      }, 600);
+      }, 400);
       if (!images) return null;
     }
   }
 
   return (
-    <div onMouseDown={closeModal} className={`modal-bg hidden-scrollbar flex items-center justify-center transition-all duration-500 ${images ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
-      <div className={`${images?.length > 1 && "bg-white! "} w-full sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] xs:max-h-[87dvh] md:max-h-[90dvh] md:p-3 rounded-2xl overflow-hidden -rotate-y-90 opacity-0  invisible transition-all duration-900  ${isReadey && "rotate-y-0!  opacity-100 visible"}`}>
+    <div onMouseDown={closeModal} className={`modal-bg hidden-scrollbar py-5 flex items-center justify-center transition-all duration-500 ${images ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+      <div className={`${images?.length > 1 && "bg-white! "} w-full sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] xs:max-h-[87dvh] md:max-h-[90dvh] md:p-3 rounded-2xl overflow-hidden  transition-all duration-500  ${isReadey ? "" : "-rotate-y-90! opacity-0  invisible"}`}>
         {images?.length > 0 && (
           <div className="max-h-full relative">
             <Swiper

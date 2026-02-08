@@ -366,8 +366,8 @@ export default function NavbarProductsList() {
               {sponsorProduct && <AddToShoppingCartBtn product={sponsorProduct} />}
               <div>
                 <div className="felx items-center text-sm">
-                  <span class="text-xs px-1 sm-shaddow gradient rounded text-white">%3.64</span>
-                  <span class="text-gray/80 line-through text-sm mx-2">$518.88</span>
+                  <span className="text-xs px-1 sm-shaddow gradient rounded text-white">%3.64</span>
+                  <span className="text-gray/80 line-through text-sm mx-2">$518.88</span>
                 </div>
                 <p className="text-xl text-red text-end mt-1 font-bold">499.99$</p>
               </div>

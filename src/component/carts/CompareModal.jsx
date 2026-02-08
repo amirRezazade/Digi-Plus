@@ -29,8 +29,8 @@ export default function CompareModal() {
   }
 
   return (
-    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && close()} className={`modal-bg hidden-scrollbar transition-all duration-500 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
-      <div className={`mx-auto min-w-150 min-h-100 md:w-full md:max-w-[750px] md:min-h-120 lg:max-w-[850px] 2xl:max-w-[950px] mt-15 sm:mt-0 bg-white text-gray p-3 rounded-2xl grid grid-cols-13 items-stretch  divide-x divide-light-gray  relative -rotate-y-100 opacity-0  invisible transition-all duration-500 delay-100 ${isOpen && "rotate-y-0!  opacity-100 visible"} `}>
+    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && close()} className={`modal-bg hidden-scrollbar flex justify-center items-center transition-all duration-500 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+      <div className={` min-w-150 min-h-100 md:w-full md:max-w-[750px] md:min-h-120 lg:max-w-[850px] 2xl:max-w-[950px]  bg-white text-gray p-3 rounded-2xl grid grid-cols-13 items-stretch  divide-x divide-light-gray  relative  transition-all duration-500  ${isOpen ? "opacity-100! visible!" : "-rotate-y-100! opacity-0  invisible"} `}>
         <button onClick={() => close()} className="absolute right-2 bottom-[102%] text-2xl border border-light-gray rounded-lg text-light-gray cursor-pointer size-9 ">
           ×
         </button>

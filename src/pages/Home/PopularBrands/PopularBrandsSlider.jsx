@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -10,56 +10,56 @@ export default function PopularBrandsSlider() {
   let brands = [
     {
       name: "Apple",
-      img: "https://www.freepnglogos.com/uploads/apple-logo-png/apple-logo-png-dallas-shootings-don-add-are-speech-zones-used-4.png",
+      img: "/src/assets/images/brands/apple.png",
     },
 
     {
       name: "Oppo",
-      img: "https://www.freepnglogos.com/uploads/oppo-logo-png/oppo-green-png-logo-11.png",
+      img: "/src/assets/images/brands/oppo.png",
     },
     {
       name: "Realme",
-      img: "https://crystalpng.com/wp-content/uploads/2025/05/realme-logo-600x600.png",
+      img: "/src/assets/images/brands/realme.png",
     },
     {
       name: "Vivo",
-      img: "https://crystalpng.com/wp-content/uploads/2025/05/vivo-logo-1024x1024.png",
+      img: "/src/assets/images/brands/vivo.png",
     },
     {
       name: "Dodge",
-      img: "https://crystalpng.com/wp-content/uploads/2025/07/DODGE-1024x1024.png",
+      img: "/src/assets/images/brands/dodge.png",
     },
     {
       name: "Calvin Klein",
-      img: "https://logoeps.com/wp-content/uploads/2013/01/calvin-klein-.eps-logo-vector-200x200.png",
+      img: "/src/assets/images/brands/calvin-klein.png",
     },
     {
       name: "Samsung",
-      img: "https://www.freepnglogos.com/uploads/samsung-simple-logo-transparent-png-25.png",
+      img: "/src/assets/images/brands/samsung.png",
     },
     {
       name: "Annibale Colombos",
-      img: "https://annibalecolombo.com/Themes/default/img/logo.png",
+      img: "/src/assets/images/brands/annibale-colombo.png",
     },
     {
       name: "Rolex",
-      img: "https://www.freepnglogos.com/uploads/rolex-png-logo/rolex-company-png-logo-14.png",
+      img: "/src/assets/images/brands/rolex.png",
     },
     {
       name: "Nike",
-      img: "https://crystalpng.com/wp-content/uploads/2024/08/Nike-blue-logo-png.png",
+      img: "/src/assets/images/brands/nike.png",
     },
     {
       name: "Chrysler",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3w6L1C-awU6wxXdc0c0uqhZSd7_lp8GiXZx6isqGnnPoFRx2fSB1aUQ&s",
+      img: "/src/assets/images/brands/chrysler.png",
     },
     {
       name: "Chanel",
-      img: "https://crystalpng.com/wp-content/uploads/2025/02/chanel-logo-02-1024x1024.png",
+      img: "/src/assets/images/brands/chanel.png",
     },
     {
       name: "Gucci",
-      img: "https://www.inspireuplift.com/resizer/?image=https://cdn.inspireuplift.com/uploads/images/seller_products/14215/1706236904_MR-cricutbundlesvg-lg231223t216-261202494122.jpeg&width=800&height=800&quality=90&format=auto&fit=pad",
+      img: "/src/assets/images/brands/gucci.png",
     },
   ];
   return (
@@ -72,8 +72,8 @@ export default function PopularBrandsSlider() {
       </button>
       <div className="w-full h-full bg-white rounded-sm">
         <Swiper
-          className="h-full"
-          modules={[Navigation, Autoplay]}
+          className="h-full py-2!"
+          modules={[Navigation]}
           navigation={{
             nextEl: ".brands-next",
             prevEl: ".brands-prev",

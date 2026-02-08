@@ -2,9 +2,9 @@ import SimpleTitle from "../../../component/titles/SimpleTitle";
 import Title from "../../../component/titles/Title";
 import video from "../../../assets/images/special-offer-video.mp4";
 import poster from "../../../assets/images/special-offer-pster.png";
-import { useState } from "react";
+import { useRef } from "react";
 export default function SpecialOffer() {
-  let [playVideo, setPlayVideo] = useState(false);
+  let btnRef = useRef(null);
   return (
     <div className="custom-container flex flex-col xl:flex-row justify-between items-center lg:items-stretch lg:gap-5">
       <div className="lg:hidden w-full">
@@ -13,8 +13,8 @@ export default function SpecialOffer() {
 
       {/* video  */}
       <div className="w-auto mx-auto rounded-4xl overflow-hidden relative">
-        <video onClick={() => setPlayVideo(true)} src={video} poster={poster} controls></video>
-        <div className={`pointer-events-none absolute top-1/2 left-1/2 -translate-1/2 size-20 lg:size-27 gradient rounded-full border-5 border-white flex items-center justify-center ${playVideo ? "hidden" : "flex"} `}>
+        <video onPlay={(e) => (btnRef.current.style.opacity = "0")} onPause={(e) => (btnRef.current.style.opacity = "1")} src={video} poster={poster} controls></video>
+        <div ref={btnRef} className={`pointer-events-none absolute top-1/2 left-1/2 -translate-1/2 size-20 lg:size-27 gradient rounded-full border-5 border-white flex items-center justify-center `}>
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 42 48" fill="white">
               <path d="M39 18.8038C43 21.1133 43 26.8868 39 29.1962L8.99999 46.5167C4.99999 48.8261 -2.35776e-06 45.9393 -2.15587e-06 41.3205L-6.41661e-07 6.67948C-4.39766e-07 2.06068 5 -0.826063 9 1.48334L39 18.8038Z"></path>

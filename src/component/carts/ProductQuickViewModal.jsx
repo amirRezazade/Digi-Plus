@@ -37,9 +37,9 @@ export default function ProductQuickViewModal() {
   }
 
   return (
-    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && closeModal()} className={`modal-bg hidden-scrollbar transition-all duration-500 ${id ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && closeModal()} className={`modal-bg hidden-scrollbar flex justify-center items-center transition-all duration-500 ${id ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
       {data ? (
-        <div className={`mx-auto xs:max-w-100 sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] sm:max-h-[500px] mt-15 sm:mt-0 bg-white text-gray p-3 rounded-2xl flex flex-col sm:flex-row justify-center items-stretch gap-1 md:gap-3.5 relative  -rotate-y-100 opacity-0  invisible transition-all duration-500  ${isReady && "rotate-y-0!  opacity-100 visible"}`}>
+        <div className={` xs:max-w-100 sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] sm:max-h-[500px]  bg-white text-gray p-3 rounded-2xl flex flex-col sm:flex-row justify-center items-stretch gap-1 md:gap-3.5 relative transition-all duration-500  ${isReady ? " " : "-rotate-y-90! opacity-0  invisible"}`}>
           <button onClick={closeModal} className="absolute right-2 bottom-[102%] text-2xl border border-light-gray rounded-lg text-light-gray cursor-pointer size-9 ">
             ×
           </button>

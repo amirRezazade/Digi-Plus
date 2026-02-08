@@ -68,7 +68,7 @@ export default function NavbarShoppingCart() {
         <span className="size-4 text-org bg-white rounded-full text-xs absolute top-0 left-0 flex justify-center items-center sm-shaddow">{products.length}</span>
       </button>
 
-      <div className={`absolute ${openMenu ? "" : "opacity-0 invisible"} transition-[opacity_visibility] duration-400 top-[110%] left-0 flex flex-col text-gray rounded-2xl shadow-sm w-[90vw] max-w-100 h-105 px-2 border border-light-gray bg-white z-19`}>
+      <div className={`absolute ${openMenu ? "" : "opacity-0 invisible"} transition-[opacity_visibility] duration-400 top-[110%] left-0 flex flex-col text-gray rounded-2xl shadow-sm w-[90vw] max-w-100 h-105 px-2 border border-light-gray bg-white z-15`}>
         <Link to={"/cart"} className="flex items-center gap-2  fill-gray hover:text-org hover:fill-org py-3">
           <svg className="transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
             <path d="M4.32507 5.31686C4.16673 5.31686 4.00007 5.2502 3.8834 5.13353C3.64173 4.89186 3.64173 4.49186 3.8834 4.2502L6.9084 1.2252C7.15007 0.983529 7.55007 0.983529 7.79173 1.2252C8.0334 1.46686 8.0334 1.86686 7.79173 2.10853L4.76673 5.13353C4.64173 5.2502 4.4834 5.31686 4.32507 5.31686Z"></path>
@@ -150,7 +150,9 @@ export default function NavbarShoppingCart() {
               </li>
             ))
           ) : (
-            <img className="object-contain mt-10" src={emptyImg} alt="" />
+            <div className="flex items-center justify-center h-full">
+              <img className="object-contain" src={emptyImg} alt="" />
+            </div>
           )}
         </ul>
         <div className="flex items-center justify-between p-2">

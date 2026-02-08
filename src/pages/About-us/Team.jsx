@@ -10,8 +10,8 @@ export default function Team() {
   return (
     <div className="custom-container mt-10 mb-5">
       <div className="flex items-center justify-between gap-2">
-        <h2 class=" text-start inline-block font-bold text-black text-nowrap md:px-3 py-3 md:py-0.5 text-xl xs:text-2xl lg:text-3xl">
-          تیم<span class="text-red "> دیجی پلاس</span>
+        <h2 className=" text-start inline-block font-bold text-black text-nowrap md:px-3 py-3 md:py-0.5 text-xl xs:text-2xl lg:text-3xl">
+          تیم<span className="text-red "> دیجی پلاس</span>
         </h2>
         <div className="flex gap-2">
           <button className="team-prev size-8 rounded-lg bg-yel border border-org/40 fill-red hover:bg-linear-264 from-red to-[#ff7b00] hover:fill-white  flex justify-center items-center cursor-pointer">
