@@ -179,7 +179,9 @@ footer .swiper-wrapper {
   background-color: white !important;
   opacity: 100% !important;
 }
-
+.leaflet-control-attribution.leaflet-control a {
+  display: none;
+}
 /* tailwind costumation  */
 @theme {
   --font-peyda: "peyda";

@@ -4,9 +4,9 @@ import ProductCart from "../../component/carts/ProductCart";
 import { Link } from "react-router-dom";
 export default function Favorite() {
   let [products, setProducts] = useState(null);
+  let [productsId, setProductsId] = useState(getLocal("favorites"));
 
   useEffect(() => {
-    let productsId = getLocal("favorites");
     if (productsId) {
       Promise.all(productsId.map((id) => fetch(`https://dummyjson.com/products/${id}`).then((r) => r.json())))
         .then((data) => setProducts(data))
@@ -42,12 +42,18 @@ export default function Favorite() {
         <h3 className="relative  pt-3 pb-4 px-3 title-style text-dark text-base xs:text-lg md:text-xl">
           محصولات مورد علاقه <span className="text-red"> من</span>
         </h3>
-        {products?.length ? (
-          <div className="grid grid-cols-1  sm:grid-cols-2! md:grid-cols-3! lg:grid-cols-2! xl:grid-cols-3! 2xl:grid-cols-4! gap-5 py-4">
-            {products.map((p) => (
-              <ProductCart key={p.id} product={p} />
-            ))}
-          </div>
+        {productsId?.length ? (
+          products?.length ? (
+            <div className="grid grid-cols-1  sm:grid-cols-2! md:grid-cols-3! lg:grid-cols-2! xl:grid-cols-3! 2xl:grid-cols-4! gap-5 py-4">
+              {products.map((p) => (
+                <ProductCart key={p.id} product={p} />
+              ))}
+            </div>
+          ) : (
+            <div className="py-20 text-center">
+              <span className="block mx-auto size-15 border-8 border-light-gray border-t-org rounded-full animate-spin"> </span>
+            </div>
+          )
         ) : (
           <div className="flex items-center justify-center gap-4 ">
             <div className="flex flex-col items-center justify-center gap-5 py-15">

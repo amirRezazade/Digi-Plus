@@ -215,7 +215,7 @@ export default function Navbar() {
                 <ul>
                   <NavbarLink text={"فروشگاه"} to={"/shop"} />
                   <NavbarLink text={"سبد خرید"} to={"/cart"} />
-                  <NavbarLink text={"صفحه محصول"} to={"/product"} />
+                  <NavbarLink text={"صفحه محصول"} to={"/product/12"} />
                   <NavbarLink text={"صفحه پرداخت"} to={"/checkout"} />
                 </ul>
               </div>

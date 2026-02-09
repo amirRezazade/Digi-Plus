@@ -100,7 +100,7 @@ export default function FilteringForm({ params, onParams }) {
   }
 
   return (
-    <div className="rounded-2xl border-light-gray border gray-shaddow p-4 text-sm text-gray">
+    <div className="max-w-[70vw] xs:max-w-80  h-full lg:h-fit! bg-white lg:rounded-2xl border-light-gray lg:border gray-shaddow p-4 text-sm text-gray overflow-auto hidden-scrollbar">
       <div className="flex items-center gap-3">
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor">
@@ -270,7 +270,7 @@ export default function FilteringForm({ params, onParams }) {
           </span>
           <div className="flex items-center justify-between gap-2 mt-2">
             <span>5</span>
-            <input dir="ltr" className="range-input rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} onMouseUp={setMinRatingInUrl} />
+            <input dir="ltr" className="range-input rating-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={0.1} max={5} value={minRating || 0} onChange={(e) => setMinRating(Number(e.target.value))} onPointerUp={setMinRatingInUrl} />
 
             <span>0</span>
           </div>
@@ -281,7 +281,7 @@ export default function FilteringForm({ params, onParams }) {
           </span>
           <div className="flex items-center justify-between gap-2 mt-2">
             <span>100</span>
-            <input dir="ltr" className="range-input discount-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={1} max={100} value={minDiscount} onChange={(e) => setMinDiscount(Number(e.target.value))} onMouseUp={setMinDiscountInParam} />
+            <input dir="ltr" className="range-input discount-range-input grow focus:border-0 focus:outline-0 " type="range" min={0} step={1} max={100} value={minDiscount} onChange={(e) => setMinDiscount(Number(e.target.value))} onPointerUp={setMinDiscountInParam} />
 
             <span>0</span>
           </div>

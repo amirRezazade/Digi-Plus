@@ -6,6 +6,7 @@ import ShowProducts from "./products";
 export default function Search() {
   let [products, setProducts] = useState(null);
   let [searchParams, setSearchParams] = useSearchParams();
+  let [open, setOpen] = useState(false);
   let [params, setParams] = useState({
     brands: [],
     categories: [],
@@ -58,7 +59,10 @@ export default function Search() {
 
   return (
     <main className="relative custom-container flex flex-col items-start lg:flex-row gap-8 lg:gap-6 py-10 ">
-      <div className="w-full max-w-100 md:max-w-120 lg:max-w-65 xl:max-w-75 xl:min-w-75 lg:sticky top-10">
+      <button onClick={() => setOpen(true)} className="z-3 sticky gradient text-white rounded-2xl top-5 right-5 cursor-pointer text-sm px-3 py-1 lg:hidden">
+        فیلتر ها
+      </button>
+      <div onClick={(e) => e.target.classList.contains("filters-bg") && setOpen(false)} className={`filters-bg fixed w-screen h-screen max-h-screen z-10 top-0 right-0 bg-black/50 lg:bg-transparent! transition-all duration-500 ${!open && "translate-x-3/2 opacity-0 invisible"} lg:translate-x-0! lg:visible! lg:opacity-100!  lg:sticky lg:top-10 lg:max-w-65 xl:max-w-75 xl:min-w-75`}>
         <FilteringForm params={params} onParams={setParams} />
       </div>
       {products && <ShowProducts filteredProducts={filteredProducts || []} sorting={sorting} onSorting={setSorting} params={params} />}

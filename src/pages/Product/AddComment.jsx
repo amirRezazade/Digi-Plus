@@ -27,7 +27,7 @@ export default function AddComment() {
         ثبت
         <span className="text-red"> دیدگاه</span>
       </h3>
-      <form className="text-gray text-sm">
+      <form className="text-gray text-sm" onSubmit={(e) => submit(e)}>
         <div>
           <label htmlFor="full-name" className="cursor-pointer">
             نام و نام خانوادگی شما <span className="text-red">*</span>
@@ -112,7 +112,7 @@ export default function AddComment() {
           </div>
         </div>
         <div className="text-end p-3">
-          <button type="button" className="gradient rounded-lg px-15 py-3 text-base mt-5 sm-shaddow cursor-pointer text-white hover:scale-105 transition-transform divide-neutral-400">
+          <button type="submit" className="gradient rounded-lg px-15 py-3 text-base mt-5 sm-shaddow cursor-pointer text-white hover:scale-105 transition-transform divide-neutral-400">
             ثبت
           </button>
         </div>

@@ -129,7 +129,9 @@ export default function Infos(params) {
           </div>
         </div>
       </div>
-      <Map />
+      <div className="h-85 rounded-2xl  overflow-hidden z-0!">
+        <Map />
+      </div>
     </section>
   );
 }
