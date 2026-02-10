@@ -1,6 +1,6 @@
 # وب‌سایت نمونه کار: digi plus
 
-![Preview](src/assets/images//demo.jpg)
+<img width="100%"  src="src/assets/images/demo.png">
 
 وبسایت digi-plus یک وبسایت فروشگاهی زیبا و مدرن با قابلیت های متنوع میباشد که با استفاده از React طراحی شده است .
 از dummy.json برای دریافت داده های فیک استفاده شده است.
@@ -33,7 +33,6 @@
 - tailwind css
 - SwiperJS
 - persian-date
+- leaflet
 - Netlify
 - DummyJson : برای دریافت اطلاعات محصولات و ...
-
-## 🚀 نحوه راه‌اندازی پروژه

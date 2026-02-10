@@ -37,17 +37,17 @@ export default function ProductQuickViewModal() {
   }
 
   return (
-    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && closeModal()} className={`modal-bg hidden-scrollbar flex justify-center items-center transition-all duration-500 ${id ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+    <div onMouseDown={(e) => e.target.classList.contains("modal-bg") && closeModal()} className={`modal-bg hidden-scrollbar relative transition-all duration-500 ${id ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
       {data ? (
-        <div className={` xs:max-w-100 sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] sm:max-h-[500px]  bg-white text-gray p-3 rounded-2xl flex flex-col sm:flex-row justify-center items-stretch gap-1 md:gap-3.5 relative transition-all duration-500  ${isReady ? " " : "-rotate-y-90! opacity-0  invisible"}`}>
+        <div className={`max-w-[90vw] xs:max-w-100 sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] sm:max-h-[500px] absolute left-1/2 -translate-x-1/2 mt-10 sm:mt-5! bg-white text-gray p-3 rounded-2xl flex flex-col sm:flex-row justify-center items-stretch gap-1 md:gap-3.5  transition-all duration-500  ${isReady ? " " : "-rotate-y-90! opacity-0  invisible"}`}>
           <button onClick={closeModal} className="absolute right-2 bottom-[102%] text-2xl border border-light-gray rounded-lg text-light-gray cursor-pointer size-9 ">
             ×
           </button>
 
-          <div className="grow  sm:w-1/2 p-3 bg-light-gray/40 rounded-xl">
+          <div className="grow  sm:w-1/2 p-1.5 xs:p-3! bg-light-gray/40 rounded-xl">
             <div className="bg-white w-full h-full p-1 md:p-5 rounded-lg flex flex-col justify-between select-none overflow-hidden">
               {data.images.length < 2 ? (
-                <img className="w-full h-full" src={data.thumbnail} alt={data.title} />
+                <img className="max-w-full max-h-full" src={data.thumbnail} alt={data.title} />
               ) : (
                 <>
                   <Swiper className="max-w-full max-h-full overflow-hidden" thumbs={{ swiper: thumbsSwiper }} modules={[Thumbs]}>
@@ -57,10 +57,22 @@ export default function ProductQuickViewModal() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <Swiper onSwiper={setThumbsSwiper} spaceBetween={10} slidesPerView={data.images.length} watchSlidesProgress modules={[Thumbs]} className=" mt-3 w-full h-20 sm:h-28 overflow-hidden">
+                  <Swiper
+                    onSwiper={setThumbsSwiper}
+                    spaceBetween={10}
+                    slidesPerView={data.images.length > 4 ? 4 : data.images.length}
+                    breakpoints={{
+                      450: {
+                        slidesPerView: data.images.length,
+                      },
+                    }}
+                    watchSlidesProgress
+                    modules={[Thumbs]}
+                    className=" mt-3 w-full h-20 sm:h-28 overflow-hidden"
+                  >
                     {data.images.map((src, i) => (
-                      <SwiperSlide key={i} className="opacity-60 cursor-pointer">
-                        <img src={src} className="w-full h-full object-contain rounded-lg " />
+                      <SwiperSlide key={i} className="opacity-60 cursor-pointer flex! items-center! justify-center!">
+                        <img src={src} className="max-w-full max-h-full object-contain rounded-lg " />
                       </SwiperSlide>
                     ))}
                   </Swiper>

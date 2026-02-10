@@ -3,66 +3,79 @@ import "swiper/css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import mobile from "../../../assets/images/categories/mobile.png";
+import laptop from "../../../assets/images/categories/laptop.png";
+import headphone from "../../../assets/images/categories/headphone.png";
+import furniture from "../../../assets/images/categories/furniture.png";
+import kitchen from "../../../assets/images/categories/kitchen.webp";
+import mans from "../../../assets/images/categories/mans.png";
+import tops from "../../../assets/images/categories/tops.webp";
+import whatch from "../../../assets/images/categories/whatch.png";
+import beauty from "../../../assets/images/categories/beauty.webp";
+import fragrances from "../../../assets/images/categories/fragrances.png";
+import sport from "../../../assets/images/categories/sport.webp";
+import morotCycle from "../../../assets/images/categories/motor-cycle.webp";
+
 export default function HomeCategorySlider() {
   const categories = [
     {
-      img: "/src/assets/images/categories/mobile.png",
+      img: mobile,
       name: "موبایل",
       id: "smartphones",
     },
     {
-      img: "/src/assets/images/categories/laptop.png",
+      img: laptop,
       name: "لپتاپ",
       id: "laptops",
     },
     {
-      img: "/src/assets/images/categories/headphone.png",
+      img: headphone,
       name: "لوازم جانبی ",
       id: "mobile-accessories",
     },
     {
-      img: "/src/assets/images/categories/furniture.png",
+      img: furniture,
       name: "مبلمان",
       id: "furniture",
     },
     {
-      img: "/src/assets/images/categories/kitchen.webp",
+      img: kitchen,
       name: "لوزام آشپزخانه",
       id: "kitchen-accessories",
     },
     {
-      img: "/src/assets/images/categories/mans.png",
+      img: mans,
       name: "مردانه",
       id: "mens-shirts,mens-shoes",
     },
     {
-      img: "/src/assets/images/categories/tops.webp",
+      img: tops,
       name: "زنانه",
       id: "womens-dresses,womens-bags,tops",
     },
     {
-      img: "/src/assets/images/categories/whatch.png",
+      img: whatch,
       name: "ساعت",
       id: "womens-watches,mens-watches",
     },
     {
-      img: "/src/assets/images/categories/beauty.webp",
+      img: beauty,
       name: "آرایشی و بهداشتی",
       id: "skin-care,beauty",
     },
     {
-      img: "/src/assets/images/categories/fragrances.png",
+      img: fragrances,
       name: "عطر",
       id: "fragrances",
     },
     {
-      img: "/src/assets/images/categories/sport.webp",
+      img: sport,
       name: "لوازم ورزشی",
       id: "sports-accessories",
     },
 
     {
-      img: "/src/assets/images/categories/motor-cycle.webp",
+      img: morotCycle,
       name: "موتور سیکلت",
       id: "motorcycle",
     },

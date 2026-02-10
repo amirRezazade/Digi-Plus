@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Navbar />
       <header className="custom-container py-8 text-center text-gray -z-1">
-        <div className="xl:grid grid-cols-12 items-center gap-6 justify-between select-none ">
+        <div className="xl:flex items-center gap-6 justify-between select-none ">
           <HomeMainSlider />
           <HomeDayOffersSlider />
         </div>

@@ -61,8 +61,8 @@ export default function LeftBox() {
                     <path d="M31.8027 30.5668C30.8461 30.5668 30.0527 29.7734 30.0527 28.8168C30.0527 14.2334 33.0161 11.1769 41.4861 6.16019C42.3261 5.67019 43.3994 5.95021 43.8894 6.76688C44.3794 7.60688 44.0994 8.68014 43.2827 9.17014C35.7227 13.6501 33.5527 15.5168 33.5527 28.8168C33.5527 29.7734 32.7594 30.5668 31.8027 30.5668Z" fill="#DC2F02"></path>
                   </g>
                   <defs>
-                    <filter id="filter0_d_2103_5130" x="2.91602" y="5.91821" width="52.168" height="44.1786" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <filter id="filter0_d_2103_5130" x="2.91602" y="5.91821" width="52.168" height="44.1786" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
                       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
                       <feOffset dx="2"></feOffset>
                       <feComposite in2="hardAlpha" operator="out"></feComposite>
@@ -112,8 +112,8 @@ export default function LeftBox() {
                     <path d="M31.8027 30.5668C30.8461 30.5668 30.0527 29.7734 30.0527 28.8168C30.0527 14.2334 33.0161 11.1769 41.4861 6.16019C42.3261 5.67019 43.3994 5.95021 43.8894 6.76688C44.3794 7.60688 44.0994 8.68014 43.2827 9.17014C35.7227 13.6501 33.5527 15.5168 33.5527 28.8168C33.5527 29.7734 32.7594 30.5668 31.8027 30.5668Z" fill="#DC2F02"></path>
                   </g>
                   <defs>
-                    <filter id="filter0_d_2103_5130" x="2.91602" y="5.91821" width="52.168" height="44.1786" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <filter id="filter0_d_2103_5130" x="2.91602" y="5.91821" width="52.168" height="44.1786" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
                       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
                       <feOffset dx="2"></feOffset>
                       <feComposite in2="hardAlpha" operator="out"></feComposite>

@@ -58,7 +58,7 @@ export default function Search() {
   }, [params, sorting]);
 
   return (
-    <main className="relative custom-container flex flex-col items-start lg:flex-row gap-8 lg:gap-6 py-10 ">
+    <main className="relative custom-container flex flex-col items-start lg:flex-row gap-x-8 lg:gap-6 py-10 ">
       <button onClick={() => setOpen(true)} className="z-3 sticky gradient text-white rounded-2xl top-5 right-5 cursor-pointer text-sm px-3 py-1 lg:hidden">
         فیلتر ها
       </button>

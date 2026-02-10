@@ -7,7 +7,7 @@ import ProductBuyCart from "./ProductBuyCart";
 import Tags from "./Tags";
 import Reviews from "./Reviews";
 import AddComment from "./AddComment";
-
+import productNotFound from "../../assets/images/product-not-found.webp";
 export default function Main() {
   let { id } = useParams();
   let [response, setResponse] = useState(null);
@@ -53,7 +53,7 @@ export default function Main() {
       </main>
     ) : (
       <div className="py-10">
-        <img className="mx-auto" src="https://cdni.iconscout.com/illustration/premium/thumb/sorry-item-not-found-illustration-svg-download-png-2809510.png" alt="product-not-found" />
+        <img className="mx-auto" src={productNotFound} alt="product-not-found" />
         <h4 className="text-center text-lg text-red">محصول پیدا نشد!</h4>
       </div>
     );

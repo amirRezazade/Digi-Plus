@@ -18,22 +18,23 @@ export default function ImgFullScreenModal() {
     }, 300);
   }, [images]);
 
-  function closeModal(e) {
-    if (e.target.classList.contains("modal-bg")) {
-      setIsReady(false);
-      setThumbsSwiper(null);
-      setTimeout(() => {
-        setImages(null);
-      }, 400);
-      if (!images) return null;
-    }
+  function closeModal() {
+    setIsReady(false);
+    setThumbsSwiper(null);
+    setTimeout(() => {
+      setImages(null);
+    }, 400);
+    if (!images) return null;
   }
 
   return (
-    <div onMouseDown={closeModal} className={`modal-bg hidden-scrollbar py-5 flex items-center justify-center transition-all duration-500 ${images ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
-      <div className={`${images?.length > 1 && "bg-white! "} w-full sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] xs:max-h-[87dvh] md:max-h-[90dvh] md:p-3 rounded-2xl overflow-hidden  transition-all duration-500  ${isReadey ? "" : "-rotate-y-90! opacity-0  invisible"}`}>
+    <div onPointerDown={(e) => e.target.classList.contains("modal-bg") && closeModal()} className={`modal-bg hidden-scrollbar py-5 relative transition-all duration-500 ${images ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+      <div className={`${images?.length > 1 ? "bg-white! w-full " : "w-auto"}  px-5 absolute top-1/2 left-1/2 -translate-1/2 mt-15 xs:mt-10! md:mt-0! sm:max-w-full md:max-w-[750px] lg:max-w-[800px] xl:max-w-[930px] xs:max-h-[87dvh] md:max-h-[90dvh] md:p-3 rounded-2xl transition-all duration-500  ${isReadey ? "" : "-rotate-y-90! opacity-0  invisible"}`}>
+        <button onClick={closeModal} className="absolute right-2 bottom-[102%] text-2xl border border-light-gray rounded-lg text-light-gray cursor-pointer size-9 ">
+          ×
+        </button>
         {images?.length > 0 && (
-          <div className="max-h-full relative">
+          <div className="max-h-screen relative">
             <Swiper
               navigation={{
                 nextEl: ".modal-next",
@@ -44,12 +45,12 @@ export default function ImgFullScreenModal() {
               thumbs={{ swiper: thumbsSwiper }}
               modules={[Thumbs, Navigation]}
               slidesPerView={1}
-              className="w-full! max-h-full!"
+              className=" max-h-full!"
             >
               {images &&
                 images.map((img) => (
-                  <SwiperSlide>
-                    <img className={`w-full rounded-2xl max-w-100  sm:max-w-110 md:max-w-120 mx-auto object-contain `} src={img} alt="" />
+                  <SwiperSlide className="w-atuo!">
+                    <img className={` rounded-2xl max-w-100  sm:max-w-110 md:max-w-120 mx-auto object-contain `} src={img} alt="" />
                   </SwiperSlide>
                 ))}
             </Swiper>
