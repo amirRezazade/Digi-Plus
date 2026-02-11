@@ -48,14 +48,14 @@
   background: none;
 }
 .rating-range-input::-webkit-slider-thumb {
-  background: url("./assets/images/range-input-thumbs/rating.svg") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/rating.svg") center / contain no-repeat;
 }
 .rating-range-input::-moz-range-thumb {
-  background: url("./assets/images/range-input-thumbs/rating.svg") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/rating.svg") center / contain no-repeat;
 }
 .discount-range-input::-webkit-slider-thumb {
-  background: url("./assets/images/range-input-thumbs/discount.svg") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/discount.svg") center / contain no-repeat;
 }
 .discount-range-input::-moz-range-thumb {
-  background: url("./assets/images/range-input-thumbs/discount.svg") center / contain no-repeat;
+  background: url("../../assets/images/range-input-thumbs/discount.svg") center / contain no-repeat;
 }

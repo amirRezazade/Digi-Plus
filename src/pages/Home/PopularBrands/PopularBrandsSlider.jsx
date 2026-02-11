@@ -6,60 +6,74 @@ import "swiper/css/pagination";
 import bgImg from "../../../assets/images/bg-images/popular-brand-bg.png";
 import { Link } from "react-router-dom";
 
+import apple from "../../../assets/images/brands/apple.png";
+import oppo from "../../../assets/images/brands/oppo.png";
+import realme from "../../../assets/images/brands/realme.png";
+import vivo from "../../../assets/images/brands/vivo.png";
+import dodge from "../../../assets/images/brands/dodge.png";
+import samsung from "../../../assets/images/brands/samsung.png";
+import rolex from "../../../assets/images/brands/rolex.png";
+import nike from "../../../assets/images/brands/nike.png";
+import chrysler from "../../../assets/images/brands/chrysler.png";
+import chanel from "../../../assets/images/brands/chanel.png";
+import gucci from "../../../assets/images/brands/gucci.png";
+import kalvinKlein from "../../../assets/images/brands/calvin-klein.png";
+import annibaleColombo from "../../../assets/images/brands/annibale-colombo.png";
+
 export default function PopularBrandsSlider() {
   let brands = [
     {
       name: "Apple",
-      img: "/src/assets/images/brands/apple.png",
+      img: apple,
     },
 
     {
       name: "Oppo",
-      img: "/src/assets/images/brands/oppo.png",
+      img: oppo,
     },
     {
       name: "Realme",
-      img: "/src/assets/images/brands/realme.png",
+      img: realme,
     },
     {
       name: "Vivo",
-      img: "/src/assets/images/brands/vivo.png",
+      img: vivo,
     },
     {
       name: "Dodge",
-      img: "/src/assets/images/brands/dodge.png",
+      img: dodge,
     },
     {
       name: "Calvin Klein",
-      img: "/src/assets/images/brands/calvin-klein.png",
+      img: kalvinKlein,
     },
     {
       name: "Samsung",
-      img: "/src/assets/images/brands/samsung.png",
+      img: samsung,
     },
     {
       name: "Annibale Colombos",
-      img: "/src/assets/images/brands/annibale-colombo.png",
+      img: annibaleColombo,
     },
     {
       name: "Rolex",
-      img: "/src/assets/images/brands/rolex.png",
+      img: rolex,
     },
     {
       name: "Nike",
-      img: "/src/assets/images/brands/nike.png",
+      img: nike,
     },
     {
       name: "Chrysler",
-      img: "/src/assets/images/brands/chrysler.png",
+      img: chrysler,
     },
     {
       name: "Chanel",
-      img: "/src/assets/images/brands/chanel.png",
+      img: chanel,
     },
     {
       name: "Gucci",
-      img: "/src/assets/images/brands/gucci.png",
+      img: gucci,
     },
   ];
   return (
