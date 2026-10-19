@@ -34,5 +34,5 @@
 - SwiperJS
 - persian-date
 - leaflet
-- Netlify
+- Vercel
 - DummyJson : برای دریافت اطلاعات محصولات و ...
