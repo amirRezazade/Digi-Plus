@@ -7,7 +7,7 @@
 
 ## 🔗 لینک دمو
 
-<a href="https://digi-plus.netlify.app/" target="_blank">مشاهده وب‌سایت به صورت زنده</a>
+<a href="https://digi-plus-store.vercel.app/" target="_blank">مشاهده وب‌سایت به صورت زنده</a>
 
 ---
 
@@ -22,7 +22,7 @@
 - صفحه ثبت سفارش و پرداخت
 - صفحه داشبورد کاربر
 - احراز هویت کاربر با jwt
-- دپلوی شده روی Netlify
+- دپلوی شده روی vercel
 
 ---
 
